@@ -15,3 +15,5 @@ TODO (pre November):
   		-micah is learning networking this week, we will both watch finepointcgi vids on networking and server browser
     		-update- me and mike will learn server browser on monday together
       		-before then, I will learn ANIMATION TREES and try to set up a characters animation in siege
+		-I will also learn and implement(with mike on monday after watching 2 vids) rigid body motion 
+  		-a good starting point vid for the above: https://www.youtube.com/watch?v=pnBioV2HkS8
