@@ -12,3 +12,4 @@ TODO (pre November):
 		  3. alongside characters, practive ideal art -> engine flow, impliment into siege(animation-wise)
 		  4. recruit sam and paul and prep them for jam help
 		-as of now, I am going on fall break and will learn server browser during that time
+  		-micah is learning networking this week, we will both watch finepointcgi vids on networking and server browser
