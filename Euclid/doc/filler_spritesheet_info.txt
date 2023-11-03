@@ -1,0 +1,8 @@
+In the filler spritesheet:
+	The green square is grass terrain
+	The blue square is home 
+	The yellow square is a farm
+	The dark blue square is a tower
+	The small brown circle is a generic resource
+	The red circle is an enemy
+	The blue circle is the player

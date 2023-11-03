@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cqn1djklucwvp"]
+
+[node name="BuildingGUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1149.0
+offset_bottom = 644.0
