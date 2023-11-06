@@ -1,0 +1,2 @@
+To add commoditys (resources, but refered to as commoditys to distinguish them from godot class resource)
+to the game, add a resource of type Commodity to the array called commoditys in the GameState autoload

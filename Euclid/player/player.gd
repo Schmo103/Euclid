@@ -44,7 +44,8 @@ func _integrate_forces(s : PhysicsDirectBodyState2D):
 	#apply slide
 	for idx in s.get_contact_count():
 		var n = s.get_contact_local_normal(idx)
-		lv = lv.slide(n)
+		if lv.normalized().dot(n) <= 0.4:
+			lv = lv.slide(n)
 
 
 	
