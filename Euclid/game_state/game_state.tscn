@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://brk4bq6a2nepe"]
+
+[ext_resource type="Script" path="res://game_state/game_state.gd" id="1_nxrfd"]
+[ext_resource type="Resource" uid="uid://dqamfeee8l6uc" path="res://resources/commodity_resources/filler_resource.tres" id="2_m72g1"]
+
+[node name="GameState" type="Node"]
+script = ExtResource("1_nxrfd")
+commoditys = [ExtResource("2_m72g1")]

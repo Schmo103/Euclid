@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8g86kwn61fu3"]
+
+[ext_resource type="Script" path="res://building_system/building_gui/commodity_display.gd" id="1_x5yaa"]
+[ext_resource type="Texture2D" uid="uid://cbwiro87ui3ce" path="res://art/filler_resource.png" id="2_rl5ub"]
+
+[node name="CommodityDisplay" type="HBoxContainer"]
+script = ExtResource("1_x5yaa")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_rl5ub")
+expand_mode = 3
+
+[node name="Number" type="Label" parent="."]
+layout_mode = 2
+text = "0"
+
+[node name="Spacer" type="Label" parent="."]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2

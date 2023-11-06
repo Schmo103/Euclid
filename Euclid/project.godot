@@ -15,6 +15,10 @@ run/main_scene="res://menu/menu.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://art/icon.svg"
 
+[autoload]
+
+GameState="*res://game_state/game_state.tscn"
+
 [input]
 
 player_up={
