@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="TowerStats" load_steps=4 format=3 uid="uid://dclus14rfvurj"]
+
+[ext_resource type="Texture2D" uid="uid://d2t34jhxjn023" path="res://art/filler_farm_icon.png" id="1_lo5ek"]
+[ext_resource type="PackedScene" uid="uid://dq3c086d7rslo" path="res://towers/farm_tower.tscn" id="2_gfmai"]
+[ext_resource type="Script" path="res://resource_scripts/tower_stats.gd" id="3_6h2jl"]
+
+[resource]
+script = ExtResource("3_6h2jl")
+name = "farm"
+icon = ExtResource("1_lo5ek")
+scene = ExtResource("2_gfmai")
+price = {
+"filler": 4
+}
+size = Vector2(32, 32)
+type = 0

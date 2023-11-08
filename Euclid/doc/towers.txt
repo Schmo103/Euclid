@@ -1,0 +1,7 @@
+The price of the towers is stored in the price dictionary in the TowerStats resources. 
+The dictionary format is:
+	
+	{"name-of-commodity": 2,
+	"name-of-other-commodity": 3} 
+	
+	i.e. the commodity as a string is the key and the value is the required quantity of the commodity as an integer

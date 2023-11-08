@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkxe1qk38c3ay"]
+
+[ext_resource type="Script" path="res://building_system/building_gui/tower_display.gd" id="1_v6apf"]
+
+[node name="TowerDisplay" type="Button"]
+icon_alignment = 1
+script = ExtResource("1_v6apf")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

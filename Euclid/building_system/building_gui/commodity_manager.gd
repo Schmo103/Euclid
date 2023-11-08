@@ -5,14 +5,17 @@ var commocity_display_scene : PackedScene = preload("res://building_system/build
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	build_commodity_menu()
+	
+	
+func build_commodity_menu():
 	for commodity in GameState.commoditys:
 		add_commodity_display(commodity)
 		
 		
 func add_commodity_display(c : Commodity) -> void:
 	var d := commocity_display_scene.instantiate()
-	d.icon = c.image
-	d.commodity_name = c.name
+	d.commodity = c
 	add_child(d)
 	
 	
