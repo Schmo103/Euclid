@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b4itb828yaxe0"]
 
-[ext_resource type="Script" path="res://menu/nenu.gd" id="1_0ri4r"]
+[ext_resource type="Script" path="res://menu/menu.gd" id="1_exymb"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_0ri4r")
+script = ExtResource("1_exymb")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqn1djklucwvp"]
+[gd_scene load_steps=4 format=3 uid="uid://cqn1djklucwvp"]
 
 [ext_resource type="Script" path="res://building_system/building_gui/building_gui.gd" id="1_rcgub"]
-[ext_resource type="Script" path="res://building_system/building_gui/Commoditys.gd" id="2_a3s3c"]
+[ext_resource type="Script" path="res://building_system/building_gui/commodity_manager.gd" id="2_84wft"]
+[ext_resource type="Script" path="res://building_system/building_gui/tower_display_manager.gd" id="3_1oh66"]
 
 [node name="BuildingGUI" type="Control"]
 layout_mode = 3
@@ -17,4 +18,18 @@ offset_left = 28.0
 offset_top = 21.0
 offset_right = 68.0
 offset_bottom = 61.0
-script = ExtResource("2_a3s3c")
+script = ExtResource("2_84wft")
+
+[node name="TowerManager" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.164
+anchor_top = 0.742
+anchor_right = 0.164
+anchor_bottom = 0.742
+offset_left = 0.563995
+offset_top = -1.84802
+offset_right = 831.564
+offset_bottom = 131.152
+columns = 5
+script = ExtResource("3_1oh66")
