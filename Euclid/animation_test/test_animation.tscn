@@ -92,6 +92,7 @@ bone_angle = 0.0
 [node name="arm_right" type="Bone2D" parent="godot_guy(he\'s a mess lol)/skeleton/hip/chest"]
 position = Vector2(-97, -147)
 rotation = 0.107937
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -97, -147)
 
 [node name="hand_right" type="Bone2D" parent="godot_guy(he\'s a mess lol)/skeleton/hip/chest/arm_right"]
@@ -115,6 +116,7 @@ bone_angle = 77.838
 [node name="leg_left" type="Bone2D" parent="godot_guy(he\'s a mess lol)/skeleton/hip"]
 position = Vector2(52, 10)
 rotation = -2.07076
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 52, 10)
 
 [node name="calf_left" type="Bone2D" parent="godot_guy(he\'s a mess lol)/skeleton/hip/leg_left"]
