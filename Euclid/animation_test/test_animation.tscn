@@ -1,0 +1,147 @@
+[gd_scene load_steps=3 format=3 uid="uid://csqdcma86em03"]
+
+[ext_resource type="Texture2D" uid="uid://bmtvd8usy7r18" path="res://animation_test/gBot_pieces.png" id="1_dv8qb"]
+[ext_resource type="Texture2D" uid="uid://mbdr72hlidet" path="res://animation_test/gBot_complete.png" id="2_4rjtl"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="godot_guy(he\'s a mess lol)" type="Node2D" parent="."]
+
+[node name="polygons" type="Node2D" parent="godot_guy(he\'s a mess lol)"]
+
+[node name="arm_left" type="Polygon2D" parent="godot_guy(he\'s a mess lol)/polygons"]
+position = Vector2(48, 133)
+texture = ExtResource("1_dv8qb")
+skeleton = NodePath("../../skeleton")
+polygon = PackedVector2Array(172.449, 47.449, 186.225, 190.306, 187.245, 201.531, 180.612, 266.837, 210.714, 359.184, 282.143, 344.388, 302.551, 293.878, 249.49, 195.918, 245.408, 183.673, 279.082, 57.6531, 250, 26.5306, 205.102, 30.102)
+uv = PackedVector2Array(172.449, 47.449, 186.225, 190.306, 187.245, 201.531, 180.612, 266.837, 210.714, 359.184, 282.143, 344.388, 302.551, 293.878, 249.49, 195.918, 245.408, 183.673, 279.082, 57.6531, 250, 26.5306, 205.102, 30.102)
+bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/chest", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/chest/head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/chest/head/jaw", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/chest/arm_right", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/chest/arm_right/hand_right", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/chest/left_arm", PackedFloat32Array(1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1), "hip/chest/left_arm/left_hand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leg_left", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "hip/leg_left/calf_left", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leg_left/calf_left/foot_left", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leg_right", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leg_right/calf_right", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leg_right/calf_right/foot_right", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+
+[node name="leg_left" type="Polygon2D" parent="godot_guy(he\'s a mess lol)/polygons"]
+position = Vector2(-64, -2)
+texture = ExtResource("1_dv8qb")
+skeleton = NodePath("../../skeleton")
+polygon = PackedVector2Array(296.04, 375.248, 236.634, 557.426, 241.584, 713.861, 432.673, 702.97, 353.465, 545.545, 358.416, 383.168)
+uv = PackedVector2Array(296.04, 375.248, 236.634, 557.426, 241.584, 713.861, 432.673, 702.97, 353.465, 545.545, 358.416, 383.168)
+bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/chest", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/chest/head", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/chest/head/jaw", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/chest/arm_right", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/chest/arm_right/hand_right", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/chest/left_arm", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/chest/left_arm/left_hand", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/leg_left", PackedFloat32Array(1, 1, 1, 1, 1, 1), "hip/leg_left/calf_left", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/leg_left/calf_left/foot_left", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/leg_right", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/leg_right/calf_right", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/leg_right/calf_right/foot_right", PackedFloat32Array(0, 0, 0, 0, 0, 0)]
+
+[node name="leg_right" type="Polygon2D" parent="godot_guy(he\'s a mess lol)/polygons"]
+position = Vector2(55, 15)
+texture = ExtResource("1_dv8qb")
+skeleton = NodePath("../../skeleton")
+polygon = PackedVector2Array(79.2079, 372.277, 22.7723, 536.634, 14.8515, 698.02, 211.881, 699.01, 126.733, 543.564, 127.723, 380.198)
+uv = PackedVector2Array(79.2079, 372.277, 22.7723, 536.634, 14.8515, 698.02, 211.881, 699.01, 126.733, 543.564, 127.723, 380.198)
+bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/chest", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/chest/head", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/chest/head/jaw", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/chest/arm_right", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/chest/arm_right/hand_right", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/chest/left_arm", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/chest/left_arm/left_hand", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/leg_left", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/leg_left/calf_left", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/leg_left/calf_left/foot_left", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/leg_right", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/leg_right/calf_right", PackedFloat32Array(0, 0, 0, 0, 0, 0), "hip/leg_right/calf_right/foot_right", PackedFloat32Array(0, 0, 0, 0, 0, 0)]
+
+[node name="body" type="Polygon2D" parent="godot_guy(he\'s a mess lol)/polygons"]
+position = Vector2(-235, 98)
+texture = ExtResource("1_dv8qb")
+skeleton = NodePath("../../skeleton")
+polygon = PackedVector2Array(444.554, 6.93069, 376.238, 38.6139, 327.723, 123.762, 351.485, 240.594, 341.584, 295.049, 379.208, 348.515, 471.287, 345.545, 500, 297.03, 493.069, 247.525, 532.673, 168.317, 484.158, 17.8218)
+uv = PackedVector2Array(444.554, 6.93069, 376.238, 38.6139, 327.723, 123.762, 351.485, 240.594, 341.584, 295.049, 379.208, 348.515, 471.287, 345.545, 500, 297.03, 493.069, 247.525, 532.673, 168.317, 484.158, 17.8218)
+
+[node name="arm_right" type="Polygon2D" parent="godot_guy(he\'s a mess lol)/polygons"]
+position = Vector2(21, 139)
+texture = ExtResource("1_dv8qb")
+skeleton = NodePath("../../skeleton")
+polygon = PackedVector2Array(80.198, 7.92079, 143.564, 47.5248, 103.96, 185.149, 140.594, 321.782, 112.871, 359.406, 55.4455, 366.337, 17.8218, 291.089, 30.6931, 187.129, 26.7327, 29.703)
+uv = PackedVector2Array(80.198, 7.92079, 143.564, 47.5248, 103.96, 185.149, 140.594, 321.782, 112.871, 359.406, 55.4455, 366.337, 17.8218, 291.089, 30.6931, 187.129, 26.7327, 29.703)
+
+[node name="head" type="Polygon2D" parent="godot_guy(he\'s a mess lol)/polygons"]
+position = Vector2(-440, -428)
+texture = ExtResource("1_dv8qb")
+skeleton = NodePath("../../skeleton")
+polygon = PackedVector2Array(653.465, 241.584, 547.525, 268.317, 464.356, 372.277, 493.069, 526.733, 632.673, 545.545, 828.713, 525.743, 825.743, 300.99, 714.852, 247.525)
+uv = PackedVector2Array(653.465, 241.584, 547.525, 268.317, 464.356, 372.277, 493.069, 526.733, 632.673, 545.545, 828.713, 525.743, 825.743, 300.99, 714.852, 247.525)
+
+[node name="jaw" type="Polygon2D" parent="godot_guy(he\'s a mess lol)/polygons"]
+position = Vector2(-427, -516)
+texture = ExtResource("1_dv8qb")
+skeleton = NodePath("../../skeleton")
+polygon = PackedVector2Array(602.97, 563.366, 477.228, 572.277, 509.901, 686.139, 682.178, 700, 830.693, 657.426, 827.723, 553.465)
+uv = PackedVector2Array(602.97, 563.366, 477.228, 572.277, 509.901, 686.139, 682.178, 700, 830.693, 657.426, 827.723, 553.465)
+
+[node name="reference" type="Sprite2D" parent="godot_guy(he\'s a mess lol)"]
+visible = false
+modulate = Color(1, 1, 1, 0.286275)
+position = Vector2(216, 254)
+texture = ExtResource("2_4rjtl")
+metadata/_edit_lock_ = true
+
+[node name="skeleton" type="Skeleton2D" parent="godot_guy(he\'s a mess lol)"]
+
+[node name="hip" type="Bone2D" parent="godot_guy(he\'s a mess lol)/skeleton"]
+position = Vector2(192, 406)
+rest = Transform2D(1, 0, 0, 1, 192, 406)
+
+[node name="chest" type="Bone2D" parent="godot_guy(he\'s a mess lol)/skeleton/hip"]
+position = Vector2(1, -43)
+rest = Transform2D(1, 0, 0, 1, 1, -43)
+
+[node name="head" type="Bone2D" parent="godot_guy(he\'s a mess lol)/skeleton/hip/chest"]
+position = Vector2(3, -210)
+rest = Transform2D(1, 0, 0, 1, 3, -210)
+
+[node name="jaw" type="Bone2D" parent="godot_guy(he\'s a mess lol)/skeleton/hip/chest/head"]
+position = Vector2(-91, -38)
+rest = Transform2D(1, 0, 0, 1, -91, -38)
+auto_calculate_length_and_angle = false
+length = 145.027
+bone_angle = 0.0
+
+[node name="arm_right" type="Bone2D" parent="godot_guy(he\'s a mess lol)/skeleton/hip/chest"]
+position = Vector2(-97, -147)
+rotation = 0.107937
+rest = Transform2D(1, 0, 0, 1, -97, -147)
+
+[node name="hand_right" type="Bone2D" parent="godot_guy(he\'s a mess lol)/skeleton/hip/chest/arm_right"]
+position = Vector2(-14, 118)
+rest = Transform2D(1, 0, 0, 1, -14, 118)
+auto_calculate_length_and_angle = false
+length = 110.0
+bone_angle = 84.334
+
+[node name="left_arm" type="Bone2D" parent="godot_guy(he\'s a mess lol)/skeleton/hip/chest"]
+position = Vector2(77, -135)
+rest = Transform2D(1, 0, 0, 1, 77, -135)
+
+[node name="left_hand" type="Bone2D" parent="godot_guy(he\'s a mess lol)/skeleton/hip/chest/left_arm"]
+position = Vector2(-5, 102)
+rest = Transform2D(1, 0, 0, 1, -5, 102)
+auto_calculate_length_and_angle = false
+length = 99.526
+bone_angle = 77.838
+
+[node name="leg_left" type="Bone2D" parent="godot_guy(he\'s a mess lol)/skeleton/hip"]
+position = Vector2(52, 10)
+rotation = -2.07076
+rest = Transform2D(1, 0, 0, 1, 52, 10)
+
+[node name="calf_left" type="Bone2D" parent="godot_guy(he\'s a mess lol)/skeleton/hip/leg_left"]
+position = Vector2(-28, 98)
+rotation = -0.781585
+rest = Transform2D(1, 0, 0, 1, -28, 98)
+
+[node name="foot_left" type="Bone2D" parent="godot_guy(he\'s a mess lol)/skeleton/hip/leg_left/calf_left"]
+position = Vector2(10, 125)
+rest = Transform2D(1, 0, 0, 1, 10, 125)
+auto_calculate_length_and_angle = false
+length = 80.589
+bone_angle = 12.973
+
+[node name="leg_right" type="Bone2D" parent="godot_guy(he\'s a mess lol)/skeleton/hip"]
+position = Vector2(-51, 24)
+rest = Transform2D(1, 0, 0, 1, -51, 24)
+
+[node name="calf_right" type="Bone2D" parent="godot_guy(he\'s a mess lol)/skeleton/hip/leg_right"]
+position = Vector2(-26, 96)
+rest = Transform2D(1, 0, 0, 1, -26, 96)
+
+[node name="foot_right" type="Bone2D" parent="godot_guy(he\'s a mess lol)/skeleton/hip/leg_right/calf_right"]
+position = Vector2(2, 118)
+rest = Transform2D(1, 0, 0, 1, 2, 118)
+auto_calculate_length_and_angle = false
+length = 71.297
+bone_angle = 12.973
+
+[node name="player" type="Node2D" parent="."]
