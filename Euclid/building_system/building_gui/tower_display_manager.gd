@@ -8,6 +8,7 @@ func _ready():
 	build_tower_menu()
 	
 	
+#adds a tower button for every tower in GameState.towers
 func build_tower_menu():
 	for tower in GameState.towers:
 		var t := tower_dispay_scene.instantiate()

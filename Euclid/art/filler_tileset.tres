@@ -1,7 +1,8 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dygg4moh6j0tj"]
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://dygg4moh6j0tj"]
 
 [ext_resource type="Texture2D" uid="uid://cm6vuj2ilkpwa" path="res://art/filler_art_spritesheet.png" id="1_cxyn6"]
 [ext_resource type="PackedScene" uid="uid://dq3c086d7rslo" path="res://towers/farm_tower/farm_tower.tscn" id="2_prqk0"]
+[ext_resource type="PackedScene" uid="uid://buehegmukws0f" path="res://towers/base_tower/base_tower.tscn" id="3_cthse"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n0kkb"]
 texture = ExtResource("1_cxyn6")
@@ -98,6 +99,7 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ojnol"]
 resource_name = "towers"
 scenes/0/scene = ExtResource("2_prqk0")
+scenes/1/scene = ExtResource("3_cthse")
 
 [resource]
 tile_size = Vector2i(32, 32)

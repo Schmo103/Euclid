@@ -6,7 +6,8 @@
 [resource]
 script = ExtResource("3_6h2jl")
 name = "farm"
-icon = ExtResource("1_lo5ek")
+menu_icon = ExtResource("1_lo5ek")
+build_icon = ExtResource("1_lo5ek")
 price = {
 "filler": 4
 }
