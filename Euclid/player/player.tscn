@@ -7,7 +7,6 @@
 radius = 31.1448
 
 [node name="Player" type="RigidBody2D"]
-position = Vector2(143, 95)
 custom_integrator = true
 max_contacts_reported = 3
 contact_monitor = true
