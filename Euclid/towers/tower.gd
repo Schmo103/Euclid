@@ -7,8 +7,9 @@ enum tower_types {UTIL, DEFENSE}
 
 @export var health := 10:
 	set(h):
-		if h < 0:
+		if h <= 0:
 			health = 0
+			fall()
 		else:
 			health = h
 
@@ -19,4 +20,4 @@ func take_damage(dmg : int) -> void:
 	
 #destroy the tower
 func fall() -> void:
-	pass
+	print("tower is destroyed")

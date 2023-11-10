@@ -48,5 +48,5 @@ func _integrate_forces(s : PhysicsDirectBodyState2D):
 			lv = lv.slide(n)
 
 
-	
+	#set linear velocity
 	s.set_linear_velocity(lv * step)

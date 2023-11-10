@@ -7,17 +7,15 @@
 [node name="BuildingGUI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1149.0
-offset_bottom = 644.0
 script = ExtResource("1_rcgub")
 
 [node name="CommodityManager" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 28.0
-offset_top = 21.0
-offset_right = 68.0
-offset_bottom = 61.0
+offset_left = 89.0
+offset_top = 72.0
+offset_right = 91.0
+offset_bottom = 75.0
 script = ExtResource("2_84wft")
 
 [node name="TowerManager" type="GridContainer" parent="."]
@@ -27,9 +25,9 @@ anchor_left = 0.164
 anchor_top = 0.742
 anchor_right = 0.164
 anchor_bottom = 0.742
-offset_left = 0.563995
-offset_top = -1.84802
-offset_right = 831.564
-offset_bottom = 131.152
+offset_left = 138.0
+offset_top = 484.0
+offset_right = 147.0
+offset_bottom = 484.0
 columns = 5
 script = ExtResource("3_1oh66")
