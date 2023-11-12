@@ -9,6 +9,7 @@ var cell_pos : Vector2i
 
 
 func _ready() -> void:
+	super()
 	#check back_tile_map for commodity type to produce
 	var cell_size = get_parent().tile_set.tile_size
 	cell_pos = Vector2i(position.x - (cell_size.x / 2), position.y - (cell_size.y / 2)) / cell_size

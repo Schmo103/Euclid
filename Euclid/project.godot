@@ -47,6 +47,12 @@ player_attack={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="StandardPhysics"
+2d_physics/layer_2="TowerLayer"
+2d_physics/layer_3="MobLayer"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
