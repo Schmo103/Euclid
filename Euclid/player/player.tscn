@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://xuh3cejcnnw"]
+[gd_scene load_steps=5 format=3 uid="uid://xuh3cejcnnw"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_8a4sk"]
 [ext_resource type="Texture2D" uid="uid://cm6vuj2ilkpwa" path="res://art/filler_art_spritesheet.png" id="2_4uf64"]
+[ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="3_cscvt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lqa0a"]
 radius = 31.1448
@@ -12,7 +13,6 @@ max_contacts_reported = 3
 contact_monitor = true
 lock_rotation = true
 script = ExtResource("1_8a4sk")
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
@@ -26,3 +26,10 @@ shape = SubResource("CircleShape2D_lqa0a")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
+
+[node name="HealthDisplay" parent="." instance=ExtResource("3_cscvt")]
+offset_left = -27.0
+offset_top = -45.0
+offset_right = 111.0
+offset_bottom = -3.0
+value = 100.0
