@@ -21,4 +21,17 @@ enum types {UTIL, DEFENSE}
 @export var source_id : int = -1
 @export var alternative_tile_id : int = -1
 
+@export_subgroup("Custom Building")
+@export var auto_exit_build_mode : bool = true
+#@export var drag_building_enabled : bool = false
+@export var use_custom_can_build: bool = false
+@export var use_custom_build : bool = false
+
+func can_build(_objects : Array, _tile_pos : Vector2) -> bool:
+	return true
+	
+	
+func build(_tile_pos : Vector2) -> void:
+	pass
+
 

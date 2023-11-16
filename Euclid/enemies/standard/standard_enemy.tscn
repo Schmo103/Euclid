@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://duuehqyuhrv7t"]
+
+[ext_resource type="Script" path="res://enemies/standard/standard_enemy.gd" id="1_mpa65"]
+[ext_resource type="Texture2D" uid="uid://cm6vuj2ilkpwa" path="res://art/filler_art_spritesheet.png" id="2_xduw2"]
+[ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="3_yqmvh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4mtmw"]
+radius = 31.0
+
+[node name="StandardEnemy" type="RigidBody2D" node_paths=PackedStringArray("health_display", "nav_agent")]
+collision_layer = 5
+custom_integrator = true
+max_contacts_reported = 1
+contact_monitor = true
+lock_rotation = true
+script = ExtResource("1_mpa65")
+health_display = NodePath("HealthDisplay")
+nav_agent = NodePath("NavigationAgent2D")
+speed = 7000
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_xduw2")
+hframes = 16
+vframes = 16
+frame = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4mtmw")
+
+[node name="HealthDisplay" parent="." instance=ExtResource("3_yqmvh")]
+offset_left = -28.0
+offset_top = -48.0
+offset_right = 110.0
+offset_bottom = -6.0
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 10.0
+target_desired_distance = 64.0
+path_postprocessing = 1
+radius = 32.0
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
