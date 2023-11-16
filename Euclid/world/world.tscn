@@ -19,14 +19,14 @@ size = Vector2(64, 64)
 script = ExtResource("1_ybw44")
 home_tile_pos = Vector2(8, 4)
 
+[node name="GUILayer" type="CanvasLayer" parent="."]
+
+[node name="BuildingGUI" parent="GUILayer" instance=ExtResource("3_wdhqa")]
+metadata/_edit_use_anchors_ = true
+
 [node name="BuildManager" type="Node" parent="." node_paths=PackedStringArray("build_icon")]
 script = ExtResource("3_ioyl6")
 build_icon = NodePath("../BuildIcon")
-
-[node name="GUILayer" type="CanvasLayer" parent="BuildManager"]
-
-[node name="BuildingGUI" parent="BuildManager/GUILayer" instance=ExtResource("3_wdhqa")]
-metadata/_edit_use_anchors_ = true
 
 [node name="BackTileMap" type="TileMap" parent="."]
 scale = Vector2(2, 2)
@@ -75,3 +75,10 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuildIcon/MobDetector"]
 shape = SubResource("RectangleShape2D_py527")
+
+[node name="Message" type="Label" parent="BuildIcon"]
+offset_left = -39.0
+offset_top = -48.0
+offset_right = 4.0
+offset_bottom = -25.0
+horizontal_alignment = 1

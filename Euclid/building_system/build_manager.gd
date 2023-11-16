@@ -124,6 +124,7 @@ func can_pay(price : Dictionary) -> bool:
 func can_build() -> bool:
 	var bodies : Array = build_icon.get_area_overlapping_bodies()
 	if tower_to_be_built.use_custom_can_build:
+		build_icon.set_message(tower_to_be_built.custom_can_build_message)
 		return tower_to_be_built.can_build(bodies, pos_to_tile(build_icon.position))
 	else:
 		return bodies.size() == 0

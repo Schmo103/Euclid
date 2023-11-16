@@ -1,8 +1,8 @@
 class_name WallStats
 extends TowerStats
 
-signal new_tower_built(tile_pos : Vector2)
-signal tower_destroyed(tile_pos : Vector2)
+signal new_wall_built(tile_pos : Vector2)
+signal wall_destroyed(tile_pos : Vector2)
 
 var possible_corners : Array = [Vector2(-1, -1), Vector2(1, -1), Vector2(1, 1), Vector2(-1, 1)]
 var possible_adjacent_positions : Array = [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]
@@ -11,6 +11,7 @@ var corners : Array = []
 
 #checks if can build wall
 func can_build(objects : Array, tile_pos : Vector2) -> bool:
+	custom_can_build_message = ""
 	adjacent_positions = []
 	corners = []
 	for ob in objects:
@@ -31,6 +32,7 @@ func can_build(objects : Array, tile_pos : Vector2) -> bool:
 			return false
 	for c in corners:
 		if !validate_diagonal(c):
+			custom_can_build_message = "Walls can't be built diagonally"
 			return false
 	return true
 	

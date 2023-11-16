@@ -13,6 +13,9 @@ var left_ids := [0, 18] #left and down
 var right_ids := [2, 6] #right and up
 var solo_id := [7, 7]
 
+var top_corner_ids := [20, 21] #left and right
+var bottom_corner_ids := [26, 27] #left and right
+
 var ids : Array = [middle_ids, left_ids, right_ids, solo_id]
 
 #dictionary representing adjacent wall towers
@@ -20,8 +23,10 @@ var adjacents : Dictionary = {Vector2.UP: false, Vector2.DOWN: false, Vector2.LE
 
 func _ready() -> void:
 	super()
-	tower_stats.new_tower_built.connect(_on_new_wall_placed)
-	tower_stats.new_tower_built.emit(tile_pos)
+	tower_stats.wall_destroyed.connect(_on_wall_destroyed)
+	tower_stats.new_wall_built.connect(_on_new_wall_placed)
+	tower_stats.new_wall_built.emit(tile_pos)
+	
 	
 	
 func update_image() -> void:
@@ -32,11 +37,21 @@ func update_image() -> void:
 			edge = edges.MIDDLE
 			set_image(middle_ids[0])
 		elif adjacents[Vector2.RIGHT]:
-			edge = edges.LEFT
-			set_image(left_ids[0])
+			if adjacents[Vector2.UP]:
+				set_image(bottom_corner_ids[0])
+			elif adjacents[Vector2.DOWN]:
+				set_image(top_corner_ids[0])
+			else:
+				edge = edges.LEFT
+				set_image(left_ids[0])
 		else: #Vector2.LEFT
-			edge = edges.RIGHT
-			set_image(right_ids[0])
+			if adjacents[Vector2.UP]:
+				set_image(bottom_corner_ids[1])
+			elif adjacents[Vector2.DOWN]:
+				set_image(top_corner_ids[1])
+			else:
+				edge = edges.RIGHT
+				set_image(right_ids[0])
 	elif adjacents[Vector2.UP] or adjacents[Vector2.DOWN]:
 		horizontal = false
 		if adjacents[Vector2.UP] and adjacents[Vector2.DOWN]:
@@ -56,6 +71,11 @@ func update_image() -> void:
 func _on_new_wall_placed(wall_tile_pos : Vector2) -> void:
 	if tile_pos.distance_to(wall_tile_pos) <= 1:
 		update_image()
+		
+		
+func _on_wall_destroyed(wall_tile_pos : Vector2) -> void:
+	if tile_pos.distance_to(wall_tile_pos) <= 1:
+		fall()
 		
 		
 func update_adjacent_walls() -> void:
