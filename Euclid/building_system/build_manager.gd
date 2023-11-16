@@ -42,10 +42,19 @@ func _unhandled_input(event):
 			if can_build():
 				build_tower(tower_to_be_built, get_mouse_position())
 				pay_price(tower_to_be_built.price)
-				set_build_mode(false)
+				if tower_to_be_built.auto_exit_build_mode or !can_pay(tower_to_be_built.price):
+					set_build_mode(false)
 		#exits build mode on right click
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
 				set_build_mode(false)
+	#code that doesnt work but I might fix up if we have time for drag building
+#	if event is InputEventMouseMotion and building and tower_to_be_built.drag_building_enabled:
+#		if Input.is_action_pressed("left_click"):
+#			if can_build():
+#				build_tower(tower_to_be_built, get_mouse_position())
+#				pay_price(tower_to_be_built.price)
+#				if tower_to_be_built.auto_exit_build_mode or !can_pay(tower_to_be_built.price):
+#					set_build_mode(false)
 	
 	
 #function called when a tower button is pressed
@@ -113,7 +122,11 @@ func can_pay(price : Dictionary) -> bool:
 	
 #checks if we can build at build_icons current location
 func can_build() -> bool:
-	return build_icon.get_area_overlapping_bodies().size() == 0
+	var bodies : Array = build_icon.get_area_overlapping_bodies()
+	if tower_to_be_built.use_custom_can_build:
+		return tower_to_be_built.can_build(bodies, pos_to_tile(build_icon.position))
+	else:
+		return bodies.size() == 0
 	
 
 #updates the amounts in the commodity display menu

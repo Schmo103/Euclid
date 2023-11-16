@@ -5,3 +5,13 @@ The dictionary format is:
 	"name-of-other-commodity": 3} 
 	
 	i.e. the commodity as a string is the key and the amount is the required quantity of the commodity as an integer
+
+
+When adding towers make sure to:
+	Create scene
+	Have scene extend Tower
+	Add scene to tileset
+	Create TowerStats resource
+	Set TowerStats Tile Information exported variables to correct values
+	Add TowerStats resource to GameState.towers array
+	Make sure tower collision layer is also on tower layer (2)

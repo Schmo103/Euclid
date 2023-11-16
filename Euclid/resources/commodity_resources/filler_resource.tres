@@ -7,4 +7,4 @@
 script = ExtResource("2_fiwfo")
 name = "filler"
 icon = ExtResource("1_5swfy")
-starting_amount = 5
+starting_amount = 16

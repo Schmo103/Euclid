@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://brk4bq6a2nepe"]
+[gd_scene load_steps=5 format=3 uid="uid://brk4bq6a2nepe"]
 
 [ext_resource type="Script" path="res://game_state/game_state.gd" id="1_nxrfd"]
 [ext_resource type="Resource" uid="uid://dqamfeee8l6uc" path="res://resources/commodity_resources/filler_resource.tres" id="2_m72g1"]
 [ext_resource type="Resource" uid="uid://dclus14rfvurj" path="res://resources/tower_resources/farm_tower_stats.tres" id="3_32cx0"]
+[ext_resource type="Resource" uid="uid://j1os3ev6vbmi" path="res://resources/tower_resources/wall.tres" id="4_xp82c"]
 
 [node name="GameState" type="Node"]
 script = ExtResource("1_nxrfd")
 commoditys = Array[Resource("res://resource_scripts/commodity.gd")]([ExtResource("2_m72g1")])
-towers = Array[Resource("res://resource_scripts/tower_stats.gd")]([ExtResource("3_32cx0")])
+towers = Array[Resource("res://resource_scripts/tower_stats.gd")]([ExtResource("3_32cx0"), ExtResource("4_xp82c")])

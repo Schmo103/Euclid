@@ -1,3 +1,4 @@
+class_name FarmTower
 extends Tower
 
 #the commodity type this farm produces
@@ -9,6 +10,7 @@ var cell_pos : Vector2i
 
 
 func _ready() -> void:
+	#calls _ready function of parent class Tower
 	super()
 	#check back_tile_map for commodity type to produce
 	var cell_size = get_parent().tile_set.tile_size

@@ -3,6 +3,7 @@ extends Node2D
 
 enum tower_types {UTIL, DEFENSE}
 
+@export var tower_stats : TowerStats
 @export_enum("UTIL", "DEFENSE") var type : int = tower_types.UTIL
 
 @export var health := 10:
@@ -25,6 +26,7 @@ func _ready():
 	
 func _exit_tree():
 	#make tile navigatable when leaving scene tree
+	#note: right now this will happen even if the tile originally wasnt navigatable
 	GameState.back_tile_map.set_tile_navigatable(tile_pos, true)
 	
 
@@ -35,3 +37,4 @@ func take_damage(dmg : int) -> void:
 #destroy the tower
 func fall() -> void:
 	print("tower is destroyed")
+	queue_free()

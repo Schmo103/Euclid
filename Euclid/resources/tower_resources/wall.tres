@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WallStats" load_steps=3 format=3 uid="uid://j1os3ev6vbmi"]
+
+[ext_resource type="Texture2D" uid="uid://bfx5aawr6wigj" path="res://art/filler_wall_icon.png" id="1_3mucc"]
+[ext_resource type="Script" path="res://resource_scripts/wall_stats.gd" id="1_6p5xy"]
+
+[resource]
+script = ExtResource("1_6p5xy")
+name = "Wall"
+menu_icon = ExtResource("1_3mucc")
+build_icon = ExtResource("1_3mucc")
+price = {
+"filler": 1
+}
+type = 0
+source_id = 1
+alternative_tile_id = 2
+auto_exit_build_mode = false
+drag_building_enabled = true
+use_custom_can_build = true
