@@ -9,11 +9,12 @@ name = "Wall"
 menu_icon = ExtResource("1_3mucc")
 build_icon = ExtResource("1_3mucc")
 price = {
-"filler": 1
+"wood": 1
 }
 type = 0
-source_id = 1
-alternative_tile_id = 2
+source_id = 0
+alternative_tile_id = 3
 auto_exit_build_mode = false
-drag_building_enabled = true
+can_replace_walls = false
 use_custom_can_build = true
+use_custom_build = false

@@ -5,18 +5,19 @@
 [ext_resource type="Resource" uid="uid://j1os3ev6vbmi" path="res://resources/tower_resources/wall.tres" id="2_exu66"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2xg0"]
-size = Vector2(32, 32)
+size = Vector2(32, 22)
 
 [node name="Wall" type="StaticBody2D" groups=["wall"]]
 collision_layer = 3
 script = ExtResource("1_1idnh")
 tower_stats = ExtResource("2_exu66")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_b2xg0")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_n86jt")
 hframes = 6
 vframes = 6
 frame = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_b2xg0")

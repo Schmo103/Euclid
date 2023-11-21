@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8g86kwn61fu3"]
 
 [ext_resource type="Script" path="res://building_system/building_gui/commodity_display.gd" id="1_x5yaa"]
-[ext_resource type="Texture2D" uid="uid://cbwiro87ui3ce" path="res://art/filler_resource.png" id="2_rl5ub"]
+[ext_resource type="Texture2D" uid="uid://cbwiro87ui3ce" path="res://art/filler_commoditys/wood.png" id="2_rl5ub"]
 
 [node name="CommodityDisplay" type="HBoxContainer"]
 script = ExtResource("1_x5yaa")

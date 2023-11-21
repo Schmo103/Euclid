@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Commodity" load_steps=3 format=3 uid="uid://diebxvj5e76cf"]
+
+[ext_resource type="Script" path="res://resource_scripts/commodity.gd" id="1_ciljx"]
+[ext_resource type="Texture2D" uid="uid://cbwiro87ui3ce" path="res://art/filler_commoditys/wood.png" id="1_lylqw"]
+
+[resource]
+script = ExtResource("1_ciljx")
+name = "wood"
+icon = ExtResource("1_lylqw")
+starting_amount = 16

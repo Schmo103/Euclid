@@ -4,8 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cm6vuj2ilkpwa" path="res://art/filler_art_spritesheet.png" id="2_4uf64"]
 [ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="3_cscvt"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lqa0a"]
-radius = 31.1448
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t6cpi"]
+radius = 20.0
+height = 62.0
 
 [node name="Player" type="RigidBody2D"]
 custom_integrator = true
@@ -22,7 +23,9 @@ vframes = 16
 frame = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_lqa0a")
+position = Vector2(0, 12)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_t6cpi")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true

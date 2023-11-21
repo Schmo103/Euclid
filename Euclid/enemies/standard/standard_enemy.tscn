@@ -4,8 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cm6vuj2ilkpwa" path="res://art/filler_art_spritesheet.png" id="2_xduw2"]
 [ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="3_yqmvh"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4mtmw"]
-radius = 31.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3xlfo"]
+radius = 20.0
+height = 62.0
 
 [node name="StandardEnemy" type="RigidBody2D" node_paths=PackedStringArray("health_display", "nav_agent")]
 collision_layer = 5
@@ -26,7 +27,9 @@ vframes = 16
 frame = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_4mtmw")
+position = Vector2(0, 12)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3xlfo")
 
 [node name="HealthDisplay" parent="." instance=ExtResource("3_yqmvh")]
 offset_left = -28.0

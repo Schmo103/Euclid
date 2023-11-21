@@ -2,3 +2,6 @@ To add commoditys (resources, but refered to as commoditys to distinguish them f
 to the game, add a resource of type Commodity to the array called commoditys in the GameState autoload
 
 Commoditys will (at least for now) be referenced by their string property name
+
+When removing commodity types, make sure the commodity is no longer referenced in the price of towers or as
+the product of commodity tiles

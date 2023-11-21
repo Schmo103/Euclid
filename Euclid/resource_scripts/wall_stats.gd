@@ -32,7 +32,7 @@ func can_build(objects : Array, tile_pos : Vector2) -> bool:
 			return false
 	for c in corners:
 		if !validate_diagonal(c):
-			custom_can_build_message = "Walls can't be built diagonally"
+			custom_can_build_message = "To build walls diagonally you must connect them with a corner"
 			return false
 	return true
 	

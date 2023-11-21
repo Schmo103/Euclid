@@ -1,28 +1,42 @@
 class_name FarmTower
 extends Tower
 
-#the commodity type this farm produces
-var commodity_type : String = ""
+#the list of commodities this farm produces
+var commodities : Array[String] = []
 #the amount this farm produces per cycle
 var production_rate := 1
-
-var cell_pos : Vector2i
+#the "radius" of the square that this farm produces commodities from
+#if the radius is 2, than this will result in a 5 by 5 square
+@export var produce_range_radius : int = 2
 
 
 func _ready() -> void:
 	#calls _ready function of parent class Tower
 	super()
-	#check back_tile_map for commodity type to produce
-	var cell_size = get_parent().tile_set.tile_size
-	cell_pos = Vector2i(position.x - (cell_size.x / 2), position.y - (cell_size.y / 2)) / cell_size
-	var c = GameState.back_tile_map.get_cell_tile_data(0, cell_pos)
-	if c != null:
-		var c_type = c.get_custom_data("commodity")
-		if c_type != null and c_type != "":
-			commodity_type = c_type
+	update_commodities()
 
 
 #produce resources
 func _on_farm_timer_timeout() -> void:
-	if commodity_type != null and commodity_type != "":
-		GameState.build_manager.add_commodities(commodity_type, production_rate)
+	for c in commodities:
+		GameState.build_manager.add_commodities(c, production_rate)
+		
+		
+#find commodities within range and add them to commodities array
+func update_commodities() -> void:
+	var start_tile = tile_pos - Vector2(produce_range_radius, produce_range_radius)
+	var tile = start_tile
+	
+	var end_tile_x = tile.x + 2 * produce_range_radius + 1
+	while(tile.x < end_tile_x):
+		
+		var end_tile_y = tile.y + 2 * produce_range_radius + 1
+		while(tile.y < end_tile_y):
+			var c : String = GameState.front_tile_map.get_tile_commodity_type(tile)
+			if c != "":
+				commodities.append(c)
+			tile.y += 1
+		tile.y = start_tile.y
+		
+		tile.x += 1
+	
