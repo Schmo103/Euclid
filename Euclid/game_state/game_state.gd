@@ -1,6 +1,8 @@
 class_name GameStateData
 extends Node
 
+signal set_up_commodities
+
 #the commoditys in the game
 @export var commoditys : Array[Commodity]
 #the towers in the game

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://wl0jap5jixjj"]
+
+[ext_resource type="Script" path="res://towers/commodity_terrain/wood_object/wood_object.gd" id="1_hrgys"]
+[ext_resource type="Texture2D" uid="uid://bx350kepcynr8" path="res://art/filler_commoditys/wood_rock.png" id="1_yt3kr"]
+[ext_resource type="Resource" uid="uid://diebxvj5e76cf" path="res://resources/commodity_resources/wood.tres" id="2_338ii"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hc6wa"]
+size = Vector2(32, 19)
+
+[node name="WoodObject" type="StaticBody2D"]
+collision_layer = 3
+script = ExtResource("1_hrgys")
+commodity = ExtResource("2_338ii")
+type = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yt3kr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_hc6wa")

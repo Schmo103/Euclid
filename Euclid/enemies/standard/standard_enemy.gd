@@ -14,6 +14,8 @@ func _ready() -> void:
 	set_destination()
 	
 
+func _process(_delta):
+	z_index = ((position - GameState.real_tile_size / 2).snapped(GameState.real_tile_size) / GameState.real_tile_size).y
 
 
 func _integrate_forces(s : PhysicsDirectBodyState2D) -> void:

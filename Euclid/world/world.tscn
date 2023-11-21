@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cykj8da6g4hau"]
+[gd_scene load_steps=13 format=3 uid="uid://cykj8da6g4hau"]
 
 [ext_resource type="TileSet" uid="uid://dygg4moh6j0tj" path="res://art/filler_tileset.tres" id="1_eqabd"]
 [ext_resource type="Script" path="res://world/world.gd" id="1_ybw44"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://world/back_tile_map.gd" id="5_vpunx"]
 [ext_resource type="PackedScene" uid="uid://duuehqyuhrv7t" path="res://enemies/standard/standard_enemy.tscn" id="7_tfv0m"]
 [ext_resource type="Script" path="res://world/front_tile_map.gd" id="7_yor02"]
+[ext_resource type="TileSet" uid="uid://3774p1f6mp38" path="res://world/front_tile_map_tile_set.tres" id="8_4ifru"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eclf2"]
 size = Vector2(64, 64)
@@ -29,6 +30,7 @@ script = ExtResource("3_ioyl6")
 build_icon = NodePath("../BuildIcon")
 
 [node name="BackTileMap" type="TileMap" parent="."]
+z_index = -4026
 scale = Vector2(2, 2)
 tile_set = ExtResource("1_eqabd")
 format = 2
@@ -54,13 +56,16 @@ collision_layer = 5
 position = Vector2(-278, 269)
 
 [node name="FrontTileMap" type="TileMap" parent="."]
+z_as_relative = false
 scale = Vector2(2, 2)
-tile_set = ExtResource("1_eqabd")
+tile_set = ExtResource("8_4ifru")
 format = 2
-layer_0/tile_data = PackedInt32Array(262152, 1, 65536)
+layer_0/name = "Objects"
+layer_0/tile_data = PackedInt32Array(262152, 0, 65536, 65540, 1, 65536, 262148, 1, 65536)
 script = ExtResource("7_yor02")
 
 [node name="BuildIcon" type="Sprite2D" parent="."]
+z_index = 4026
 script = ExtResource("3_6n720")
 faded_modulate = Color(0.552941, 0.552941, 0.552941, 1)
 
@@ -77,8 +82,8 @@ collision_mask = 4
 shape = SubResource("RectangleShape2D_py527")
 
 [node name="Message" type="Label" parent="BuildIcon"]
-offset_left = -39.0
-offset_top = -48.0
-offset_right = 4.0
-offset_bottom = -25.0
+offset_left = -241.0
+offset_top = -72.0
+offset_right = 241.0
+offset_bottom = -19.0
 horizontal_alignment = 1

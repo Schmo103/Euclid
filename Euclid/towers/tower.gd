@@ -1,10 +1,10 @@
 class_name Tower
 extends Node2D
 
-enum tower_types {UTIL, DEFENSE}
+enum tower_types {UTIL, DEFENSE, TERRAIN}
 
 @export var tower_stats : TowerStats
-@export_enum("UTIL", "DEFENSE") var type : int = tower_types.UTIL
+@export_enum("UTIL", "DEFENSE", "TERRAIN") var type : int = tower_types.UTIL
 
 @export var health := 10:
 	set(h):
@@ -21,7 +21,8 @@ func _ready():
 	#make tile not navigatable
 	tile_pos = (global_position - GameState.real_tile_size / 2).snapped(GameState.real_tile_size) / GameState.real_tile_size
 	GameState.back_tile_map.set_tile_navigatable(tile_pos, false)
-	print(str(tile_pos))
+	@warning_ignore("narrowing_conversion")
+	z_index = tile_pos.y
 	
 	
 func _exit_tree():

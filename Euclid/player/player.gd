@@ -6,6 +6,9 @@ var max_speed := 13000
 
 var lv : Vector2 = Vector2.ZERO
 
+func _process(_delta):
+	z_index = ((position - GameState.real_tile_size / 2).snapped(GameState.real_tile_size) / GameState.real_tile_size).y
+
 func _integrate_forces(s : PhysicsDirectBodyState2D):
 	var step = s.get_step()
 	

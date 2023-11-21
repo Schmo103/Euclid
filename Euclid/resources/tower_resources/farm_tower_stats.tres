@@ -9,8 +9,12 @@ name = "farm"
 menu_icon = ExtResource("1_lo5ek")
 build_icon = ExtResource("1_lo5ek")
 price = {
-"filler": 4
+"wood": 4
 }
 type = 0
-source_id = 1
-alternative_tile_id = 0
+source_id = 0
+alternative_tile_id = 2
+auto_exit_build_mode = true
+can_replace_walls = false
+use_custom_can_build = false
+use_custom_build = false

@@ -126,6 +126,7 @@ func can_build() -> bool:
 	if tower_to_be_built.use_custom_can_build:
 		build_icon.set_message(tower_to_be_built.custom_can_build_message)
 		return tower_to_be_built.can_build(bodies, pos_to_tile(build_icon.position))
+#		return tower_to_be_built.can_build(bodies, pos_to_tile(get_mouse_position())
 	else:
 		return bodies.size() == 0
 	
