@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cykj8da6g4hau"]
+[gd_scene load_steps=24 format=3 uid="uid://cykj8da6g4hau"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_ybw44"]
 [ext_resource type="PackedScene" uid="uid://xuh3cejcnnw" path="res://player/player.tscn" id="2_bcibk"]
@@ -10,7 +10,11 @@
 [ext_resource type="Script" path="res://world/back_tile_map.gd" id="5_vpunx"]
 [ext_resource type="PackedScene" uid="uid://duuehqyuhrv7t" path="res://enemies/standard/standard_enemy.tscn" id="7_tfv0m"]
 [ext_resource type="Script" path="res://world/front_tile_map.gd" id="7_yor02"]
-[ext_resource type="TileSet" uid="uid://4invw1rwbabh" path="res://world/front_tile_map_tile_set.tres" id="8_4ifru"]
+[ext_resource type="PackedScene" uid="uid://buehegmukws0f" path="res://towers/base_tower/base_tower.tscn" id="9_autc4"]
+[ext_resource type="PackedScene" uid="uid://dq3c086d7rslo" path="res://towers/farm_tower/farm_tower.tscn" id="10_krs7q"]
+[ext_resource type="PackedScene" uid="uid://b2kyy21bd4dep" path="res://towers/wall/wall.tscn" id="11_70i1t"]
+[ext_resource type="PackedScene" uid="uid://cef18jyr72ni8" path="res://towers/missile_tower/missile_tower.tscn" id="12_tmc8m"]
+[ext_resource type="PackedScene" uid="uid://cwte17ddcw616" path="res://towers/laser_tower/laser_tower.tscn" id="13_ythck"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sv1bm"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -32,6 +36,18 @@ navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_xl8ud")
 sources/1 = SubResource("TileSetScenesCollectionSource_ng6xn")
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_c2k6l"]
+resource_name = "Towers"
+scenes/1/scene = ExtResource("9_autc4")
+scenes/2/scene = ExtResource("10_krs7q")
+scenes/3/scene = ExtResource("11_70i1t")
+scenes/4/scene = ExtResource("12_tmc8m")
+scenes/5/scene = ExtResource("13_ythck")
+
+[sub_resource type="TileSet" id="TileSet_nfrer"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetScenesCollectionSource_c2k6l")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eclf2"]
 size = Vector2(64, 64)
 
@@ -48,7 +64,7 @@ player_spawn_timer = NodePath("PlayerSpawnTimer")
 [node name="BuildingGUI" parent="GUILayer" instance=ExtResource("3_wdhqa")]
 metadata/_edit_use_anchors_ = true
 
-[node name="BuildManager" type="Node" parent="." node_paths=PackedStringArray("build_icon")]
+[node name="BuildManager" type="Node2D" parent="." node_paths=PackedStringArray("build_icon")]
 script = ExtResource("3_ioyl6")
 build_icon = NodePath("../BuildIcon")
 
@@ -69,17 +85,16 @@ script = ExtResource("5_vpunx")
 [node name="Mobs" type="Node2D" parent="."]
 
 [node name="Player" parent="Mobs" instance=ExtResource("2_bcibk")]
-position = Vector2(139, 42)
+position = Vector2(549, 465)
 
 [node name="Enemies" type="Node2D" parent="Mobs"]
 
 [node name="StandardEnemy" parent="Mobs/Enemies" instance=ExtResource("7_tfv0m")]
-position = Vector2(-91, 296)
+position = Vector2(225, 294)
 
 [node name="FrontTileMap" type="TileMap" parent="."]
-z_as_relative = false
 scale = Vector2(2, 2)
-tile_set = ExtResource("8_4ifru")
+tile_set = SubResource("TileSet_nfrer")
 format = 2
 layer_0/name = "Objects"
 layer_0/tile_data = PackedInt32Array(262152, 0, 65536)

@@ -23,10 +23,10 @@ var adjacents : Dictionary = {Vector2.UP: false, Vector2.DOWN: false, Vector2.LE
 
 func _ready() -> void:
 	super()
-	tower_stats.wall_destroyed.connect(_on_wall_destroyed)
-	tower_stats.new_wall_built.connect(_on_new_wall_placed)
-	tower_stats.update_image.connect(_on_forced_image_update)
-	tower_stats.new_wall_built.emit(tile_pos)
+	WallManager.wall_destroyed.connect(_on_wall_destroyed)
+	WallManager.new_wall_built.connect(_on_new_wall_placed)
+	WallManager.update_image.connect(_on_forced_image_update)
+	WallManager.new_wall_built.emit(tile_pos)
 	update_image()
 	
 	
@@ -86,19 +86,18 @@ func _on_forced_image_update(pos : Vector2, r : int) -> void:
 		
 func fall() -> void:
 	super()
-	tower_stats.wall_destroyed.emit(tile_pos)
-	tower_stats.update_image.emit(tile_pos, 1)
+	WallManager.wall_destroyed.emit(tile_pos)
+	WallManager.update_image.emit(tile_pos, 1)
 	
 	
 func fall_without_triggering_explosion() -> void:
 	super.fall()
-	tower_stats.update_image.emit(tile_pos, 1)
+	WallManager.update_image.emit(tile_pos, 1)
 	
 		
 func update_adjacent_walls() -> void:
 	for offset in adjacents:
-		adjacents[offset] = (GameState.front_tile_map.get_cell_source_id(0, tile_pos + offset) != -1)
-		
+		adjacents[offset] = GameState.front_tile_map.tower_data.has(offset + tile_pos)
 		
 func set_image(id : int) -> void:
 	$Sprite2D.frame = id

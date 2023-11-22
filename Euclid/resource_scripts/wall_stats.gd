@@ -45,7 +45,7 @@ func validate_diagonal(diag : Vector2) -> bool:
 func check_pos_has_only_one_adjacent(pos : Vector2) -> bool:
 	var one : bool = false
 	for a in possible_adjacent_positions:
-		if GameState.front_tile_map.get_cell_source_id(0, a + pos) != -1:
+		if GameState.front_tile_map.tower_data.has(a + pos):
 			if one:
 				return false
 			else:

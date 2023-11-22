@@ -5,7 +5,6 @@ signal fell
 
 enum tower_types {UTIL, DEFENSE, TERRAIN}
 
-@export var tower_stats : TowerStats
 @export_enum("UTIL", "DEFENSE", "TERRAIN")
 var type : int = tower_types.UTIL
 
@@ -34,13 +33,16 @@ func _ready():
 	
 	if health_display != null:
 		health_display.max_value = health
+		
+	GameState.front_tile_map.register_tower(tile_pos)
 	
 	
 func _exit_tree():
 	#make tile navigatable when leaving scene tree
 	#note: right now this will happen even if the tile originally wasnt navigatable
 	GameState.back_tile_map.set_tile_navigatable(tile_pos, true)
-	GameState.front_tile_map.erase_cell(0, tile_pos)
+	GameState.front_tile_map.remove_tower(tile_pos)
+
 	
 
 func take_damage(dmg : int) -> void:
@@ -50,5 +52,6 @@ func take_damage(dmg : int) -> void:
 #destroy the tower
 func fall() -> void:
 	fell.emit()
+	GameState.front_tile_map.remove_tower(tile_pos)
 	queue_free()
 	

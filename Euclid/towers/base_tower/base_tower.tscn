@@ -30,3 +30,4 @@ offset_bottom = 11.0
 scale = Vector2(0.3, 0.15)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
