@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://world/back_tile_map.gd" id="5_vpunx"]
 [ext_resource type="PackedScene" uid="uid://duuehqyuhrv7t" path="res://enemies/standard/standard_enemy.tscn" id="7_tfv0m"]
 [ext_resource type="Script" path="res://world/front_tile_map.gd" id="7_yor02"]
-[ext_resource type="TileSet" uid="uid://3774p1f6mp38" path="res://world/front_tile_map_tile_set.tres" id="8_4ifru"]
+[ext_resource type="TileSet" uid="uid://4invw1rwbabh" path="res://world/front_tile_map_tile_set.tres" id="8_4ifru"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sv1bm"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -74,7 +74,7 @@ position = Vector2(139, 42)
 [node name="Enemies" type="Node2D" parent="Mobs"]
 
 [node name="StandardEnemy" parent="Mobs/Enemies" instance=ExtResource("7_tfv0m")]
-position = Vector2(167, 296)
+position = Vector2(-91, 296)
 
 [node name="FrontTileMap" type="TileMap" parent="."]
 z_as_relative = false

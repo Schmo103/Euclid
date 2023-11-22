@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://cef18jyr72ni8"]
+
+[ext_resource type="Texture2D" uid="uid://tsoxc08vbmom" path="res://art/icon.svg" id="1_0ansi"]
+[ext_resource type="Script" path="res://towers/missile_tower/missile_tower.gd" id="1_v2k5x"]
+[ext_resource type="Resource" uid="uid://duk56pcippyn3" path="res://resources/tower_resources/missile_tower_stats.tres" id="2_0lfwc"]
+[ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="4_76p3g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5hmj"]
+size = Vector2(32, 22)
+
+[node name="MissileTower" type="StaticBody2D" node_paths=PackedStringArray("health_display")]
+script = ExtResource("1_v2k5x")
+tower_stats = ExtResource("2_0lfwc")
+health_display = NodePath("HealthDisplay")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_0ansi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_l5hmj")
+
+[node name="HealthDisplay" parent="." instance=ExtResource("4_76p3g")]
+offset_left = -13.0
+offset_top = -25.0
+offset_right = 125.0
+offset_bottom = 17.0
+scale = Vector2(0.19, 0.1)
