@@ -12,7 +12,7 @@ var lv : Vector2
 var dir : Vector2
 var moving : bool = false
 
-var damage_dealt : int = 1
+@export var damage_dealt : int = 1
 
 
 func _ready() -> void:

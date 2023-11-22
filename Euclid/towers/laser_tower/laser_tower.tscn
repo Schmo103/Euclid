@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwte17ddcw616"]
+[gd_scene load_steps=5 format=3 uid="uid://cwte17ddcw616"]
 
 [ext_resource type="Texture2D" uid="uid://tsoxc08vbmom" path="res://art/icon.svg" id="1_635r3"]
 [ext_resource type="Script" path="res://towers/laser_tower/laser_tower.gd" id="1_i48fo"]
-[ext_resource type="Resource" uid="uid://bf6tpnmarf5d2" path="res://resources/tower_resources/laser_tower_stats.tres" id="2_qu04b"]
 [ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="3_m34yn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vplbq"]
@@ -11,7 +10,6 @@ size = Vector2(32, 22)
 [node name="LaserTower" type="StaticBody2D" node_paths=PackedStringArray("health_display")]
 collision_layer = 3
 script = ExtResource("1_i48fo")
-tower_stats = ExtResource("2_qu04b")
 type = 1
 health_display = NodePath("HealthDisplay")
 

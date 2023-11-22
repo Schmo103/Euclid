@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="WallStats" load_steps=3 format=3 uid="uid://j1os3ev6vbmi"]
+[gd_resource type="Resource" script_class="WallStats" load_steps=4 format=3 uid="uid://j1os3ev6vbmi"]
 
 [ext_resource type="Texture2D" uid="uid://bfx5aawr6wigj" path="res://art/filler_wall_icon.png" id="1_3mucc"]
 [ext_resource type="Script" path="res://resource_scripts/wall_stats.gd" id="1_6p5xy"]
+[ext_resource type="PackedScene" uid="uid://b2kyy21bd4dep" path="res://towers/wall/wall.tscn" id="2_8s3re"]
 
 [resource]
 script = ExtResource("1_6p5xy")
@@ -12,6 +13,7 @@ price = {
 "wood": 1
 }
 type = 0
+scene = ExtResource("2_8s3re")
 source_id = 0
 alternative_tile_id = 3
 auto_exit_build_mode = false

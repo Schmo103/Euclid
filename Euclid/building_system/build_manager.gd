@@ -1,5 +1,5 @@
 class_name BuildManager
-extends Node
+extends Node2D
 
 @onready var building_gui : BuildingGui = GameState.building_gui
 
@@ -40,7 +40,7 @@ func _unhandled_input(event):
 		#builds tower on left click
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if can_build():
-				build_tower(tower_to_be_built, get_mouse_position())
+				build_tower(tower_to_be_built, get_local_mouse_position())
 				pay_price(tower_to_be_built.price)
 				if tower_to_be_built.auto_exit_build_mode or !can_pay(tower_to_be_built.price):
 					set_build_mode(false)
@@ -72,9 +72,9 @@ func set_build_mode(b : bool) -> void:
 		
 
 #builds tower at position
-func build_tower(tower : TowerStats, cell_pos : Vector2) -> void:
-	var cp : Vector2i = Vector2i(pos_to_tile(cell_pos))
-	GameState.front_tile_map.set_cell(0, cp, tower.source_id, Vector2i.ZERO, tower.alternative_tile_id)
+func build_tower(tower : TowerStats, tower_pos : Vector2) -> void:
+	var cp : Vector2 = Vector2(pos_to_tile(tower_pos))
+	GameState.front_tile_map.build_tower(tower.scene, cp)
 	
 	
 #pays price

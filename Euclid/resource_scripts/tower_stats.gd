@@ -18,6 +18,7 @@ enum types {UTIL, DEFENSE}
 
 #information corresponding to the tile that should be placed when this tower is built
 @export_subgroup("Tile Information")
+@export var scene : PackedScene
 @export var source_id : int = -1
 @export var alternative_tile_id : int = -1
 
