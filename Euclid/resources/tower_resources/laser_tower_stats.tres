@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="TowerStats" load_steps=3 format=3 uid="uid://bf6tpnmarf5d2"]
+
+[ext_resource type="Texture2D" uid="uid://tsoxc08vbmom" path="res://art/icon.svg" id="1_xcf85"]
+[ext_resource type="Script" path="res://resource_scripts/tower_stats.gd" id="2_7k287"]
+
+[resource]
+script = ExtResource("2_7k287")
+name = "Laser Tower"
+menu_icon = ExtResource("1_xcf85")
+build_icon = ExtResource("1_xcf85")
+price = {
+"wood": 1
+}
+type = 1
+source_id = 0
+alternative_tile_id = 5
+auto_exit_build_mode = true
+can_replace_walls = false
+use_custom_can_build = false
+use_custom_build = false
