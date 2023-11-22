@@ -26,6 +26,7 @@ health_display = NodePath("HealthDisplay")
 nav_agent = NodePath("NavigationAgent2D")
 state_machine = NodePath("StateMachine")
 target_detector = NodePath("TargetDetector")
+damage_dealt = 5
 speed = 7000
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

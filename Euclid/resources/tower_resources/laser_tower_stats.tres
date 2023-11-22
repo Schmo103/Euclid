@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="TowerStats" load_steps=3 format=3 uid="uid://bf6tpnmarf5d2"]
+[gd_resource type="Resource" script_class="TowerStats" load_steps=4 format=3 uid="uid://bf6tpnmarf5d2"]
 
 [ext_resource type="Texture2D" uid="uid://tsoxc08vbmom" path="res://art/icon.svg" id="1_xcf85"]
+[ext_resource type="PackedScene" uid="uid://cwte17ddcw616" path="res://towers/laser_tower/laser_tower.tscn" id="2_4g7m7"]
 [ext_resource type="Script" path="res://resource_scripts/tower_stats.gd" id="2_7k287"]
 
 [resource]
@@ -12,6 +13,7 @@ price = {
 "wood": 1
 }
 type = 1
+scene = ExtResource("2_4g7m7")
 source_id = 0
 alternative_tile_id = 5
 auto_exit_build_mode = true
