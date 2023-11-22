@@ -9,6 +9,7 @@
 size = Vector2(32, 22)
 
 [node name="MissileTower" type="StaticBody2D" node_paths=PackedStringArray("health_display")]
+collision_layer = 3
 script = ExtResource("1_v2k5x")
 tower_stats = ExtResource("2_0lfwc")
 health_display = NodePath("HealthDisplay")
