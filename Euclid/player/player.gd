@@ -2,9 +2,14 @@ extends RigidBody2D
 
 signal fell
 
+@onready var visuals = $left_right_visuals
+@onready var norm_scale = $left_right_visuals.scale
+@onready var a_player = $left_right_visuals/AnimationPlayer
+
 var walk_accel := 1000
-var friction := 500
-var max_speed := 13000
+var friction := 700
+var max_speed := 18000
+var walking = false
 
 @export var health_display : Control
 
@@ -42,14 +47,28 @@ func _integrate_forces(s : PhysicsDirectBodyState2D):
 	var step = s.get_step()
 	
 	#apply movement
-	if Input.is_action_pressed("player_right"):
-		lv.x += walk_accel
-	if Input.is_action_pressed("player_left"):
-		lv.x -= walk_accel
 	if Input.is_action_pressed("player_up"):
 		lv.y -= walk_accel
+		$temp/backward_ref. visible = true
+		$temp/forward_ref. visible = false
+		$left_right_visuals.visible = false
 	if Input.is_action_pressed("player_down"):
 		lv.y += walk_accel 
+		$temp/forward_ref. visible = true
+		$temp/backward_ref. visible = false
+		$left_right_visuals.visible = false
+	if Input.is_action_pressed("player_right"):
+		lv.x += walk_accel
+		visuals.scale.x = norm_scale.x
+		$temp/forward_ref. visible = false
+		$temp/backward_ref. visible = false
+		$left_right_visuals.visible = true
+	if Input.is_action_pressed("player_left"):
+		lv.x -= walk_accel
+		visuals.scale.x = norm_scale.x * -1
+		$temp/forward_ref. visible = false
+		$temp/backward_ref. visible = false
+		$left_right_visuals.visible = true
 		
 	#apply friction to x axis
 	var x_sign : int = sign(lv.x)
@@ -83,4 +102,12 @@ func _integrate_forces(s : PhysicsDirectBodyState2D):
 	#set linear velocity
 	s.set_linear_velocity(lv * step)
 	
-	
+	if !walking:
+		if lv * step != Vector2.ZERO:
+			walking = true
+			a_player.play("run_left_right", -1, 5.0)
+	elif walking:
+		if lv * step == Vector2.ZERO:
+			walking = false
+			a_player.play("RESET")
+
