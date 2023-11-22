@@ -8,12 +8,14 @@
 radius = 20.0
 height = 62.0
 
-[node name="Player" type="RigidBody2D"]
+[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("health_display") groups=["player"]]
+collision_layer = 13
 custom_integrator = true
 max_contacts_reported = 3
 contact_monitor = true
 lock_rotation = true
 script = ExtResource("1_8a4sk")
+health_display = NodePath("HealthDisplay")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)

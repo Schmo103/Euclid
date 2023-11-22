@@ -3,6 +3,7 @@ extends TowerStats
 
 signal new_wall_built(tile_pos : Vector2)
 signal wall_destroyed(tile_pos : Vector2)
+signal update_image(tile_pos : Vector2, r : int)
 
 var possible_corners : Array = [Vector2(-1, -1), Vector2(1, -1), Vector2(1, 1), Vector2(-1, 1)]
 var possible_adjacent_positions : Array = [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]

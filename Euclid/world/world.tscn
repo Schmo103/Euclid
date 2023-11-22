@@ -37,9 +37,11 @@ size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_py527"]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" node_paths=PackedStringArray("player_spawn_timer")]
 script = ExtResource("1_ybw44")
 home_tile_pos = Vector2(8, 4)
+player_scene = ExtResource("2_bcibk")
+player_spawn_timer = NodePath("PlayerSpawnTimer")
 
 [node name="GUILayer" type="CanvasLayer" parent="."]
 
@@ -55,7 +57,6 @@ z_index = -4026
 scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_efxu0")
 format = 2
-layer_0/tile_data = PackedInt32Array(131076, 1, 65536, 262148, 1, 65536)
 layer_1/name = "Navigation"
 layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 0)
@@ -68,13 +69,12 @@ script = ExtResource("5_vpunx")
 [node name="Mobs" type="Node2D" parent="."]
 
 [node name="Player" parent="Mobs" instance=ExtResource("2_bcibk")]
-position = Vector2(100, 100)
-collision_layer = 5
+position = Vector2(139, 42)
 
 [node name="Enemies" type="Node2D" parent="Mobs"]
 
 [node name="StandardEnemy" parent="Mobs/Enemies" instance=ExtResource("7_tfv0m")]
-position = Vector2(-278, 269)
+position = Vector2(167, 296)
 
 [node name="FrontTileMap" type="TileMap" parent="."]
 z_as_relative = false
@@ -108,3 +108,8 @@ offset_top = -72.0
 offset_right = 241.0
 offset_bottom = -19.0
 horizontal_alignment = 1
+
+[node name="PlayerSpawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="PlayerSpawnTimer" to="." method="_on_player_spawn_timer_timeout"]
