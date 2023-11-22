@@ -40,7 +40,6 @@ func _exit_tree():
 	#make tile navigatable when leaving scene tree
 	#note: right now this will happen even if the tile originally wasnt navigatable
 	GameState.back_tile_map.set_tile_navigatable(tile_pos, true)
-	GameState.front_tile_map.erase_cell(0, tile_pos)
 	
 
 func take_damage(dmg : int) -> void:
@@ -51,3 +50,4 @@ func take_damage(dmg : int) -> void:
 func fall() -> void:
 	fell.emit()
 	queue_free()
+	GameState.front_tile_map.erase_cell(0, tile_pos)
