@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dq3c086d7rslo"]
+
+[ext_resource type="Script" path="res://towers/farm_tower/farm_tower.gd" id="1_05r2u"]
+[ext_resource type="Resource" uid="uid://dclus14rfvurj" path="res://resources/tower_resources/farm_tower_stats.tres" id="2_4vnmy"]
+[ext_resource type="Texture2D" uid="uid://cm6vuj2ilkpwa" path="res://art/filler_art_spritesheet.png" id="2_qk1ss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_retlc"]
+size = Vector2(32, 22)
+
+[node name="FarmTower" type="StaticBody2D" groups=["farm"]]
+collision_layer = 3
+script = ExtResource("1_05r2u")
+tower_stats = ExtResource("2_4vnmy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qk1ss")
+hframes = 16
+vframes = 16
+frame = 2
+
+[node name="FarmTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_retlc")
+
+[connection signal="timeout" from="FarmTimer" to="." method="_on_farm_timer_timeout"]

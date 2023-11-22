@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://duuehqyuhrv7t"]
+
+[ext_resource type="Script" path="res://enemies/standard/standard_enemy.gd" id="1_mpa65"]
+[ext_resource type="Texture2D" uid="uid://cm6vuj2ilkpwa" path="res://art/filler_art_spritesheet.png" id="2_xduw2"]
+[ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="3_yqmvh"]
+[ext_resource type="Script" path="res://enemies/standard/state_machine.gd" id="4_7enym"]
+[ext_resource type="Script" path="res://enemies/standard/traveling.gd" id="5_p03hv"]
+[ext_resource type="Script" path="res://enemies/standard/fighting.gd" id="6_u6d1y"]
+[ext_resource type="Script" path="res://enemies/standard/attacking.gd" id="7_tu2eq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3xlfo"]
+radius = 20.0
+height = 62.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lgs81"]
+radius = 76.0066
+
+[node name="StandardEnemy" type="RigidBody2D" node_paths=PackedStringArray("health_display", "nav_agent", "state_machine", "target_detector")]
+collision_layer = 5
+custom_integrator = true
+max_contacts_reported = 1
+contact_monitor = true
+lock_rotation = true
+script = ExtResource("1_mpa65")
+health_display = NodePath("HealthDisplay")
+nav_agent = NodePath("NavigationAgent2D")
+state_machine = NodePath("StateMachine")
+target_detector = NodePath("TargetDetector")
+speed = 7000
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_xduw2")
+hframes = 16
+vframes = 16
+frame = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_3xlfo")
+
+[node name="TargetDetector" type="Area2D" parent="."]
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetDetector"]
+shape = SubResource("CircleShape2D_lgs81")
+
+[node name="HealthDisplay" parent="." instance=ExtResource("3_yqmvh")]
+offset_left = -28.0
+offset_top = -48.0
+offset_right = 110.0
+offset_bottom = -6.0
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 64.0
+target_desired_distance = 64.0
+path_postprocessing = 1
+radius = 32.0
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_7enym")
+initial_state = NodePath("Traveling")
+
+[node name="Traveling" type="Node" parent="StateMachine" node_paths=PackedStringArray("fighting", "enemy")]
+script = ExtResource("5_p03hv")
+fighting = NodePath("../Fighting")
+enemy = NodePath("../..")
+
+[node name="Fighting" type="Node" parent="StateMachine" node_paths=PackedStringArray("attacking", "traveling", "enemy")]
+script = ExtResource("6_u6d1y")
+attacking = NodePath("../Attacking")
+traveling = NodePath("../Traveling")
+enemy = NodePath("../..")
+
+[node name="Attacking" type="Node" parent="StateMachine" node_paths=PackedStringArray("fighting", "attacking_timer", "enemy")]
+script = ExtResource("7_tu2eq")
+fighting = NodePath("../Fighting")
+attacking_timer = NodePath("AttackingTimer")
+enemy = NodePath("../..")
+
+[node name="AttackingTimer" type="Timer" parent="StateMachine/Attacking"]
+one_shot = true
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

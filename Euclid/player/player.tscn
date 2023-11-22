@@ -6,8 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://bs1ykhalf5yq6" path="res://player/left-right.png" id="4_2r3ce"]
 [ext_resource type="Texture2D" uid="uid://cob8bhqgm31l4" path="res://player/left-right-ref.png" id="4_onb86"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lqa0a"]
-radius = 31.1448
+
+[ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="3_cscvt"]
+
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t6cpi"]
+radius = 20.0
+height = 62.0
 
 [sub_resource type="Animation" id="Animation_0eo6b"]
 resource_name = "run_left_right"
@@ -839,13 +844,16 @@ _data = {
 "run_left_right": SubResource("Animation_0eo6b")
 }
 
-[node name="Player" type="RigidBody2D"]
+
+[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("health_display") groups=["player"]]
+collision_layer = 13
+
 custom_integrator = true
 max_contacts_reported = 3
 contact_monitor = true
 lock_rotation = true
 script = ExtResource("1_8a4sk")
-metadata/_edit_group_ = true
+health_display = NodePath("HealthDisplay")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -856,8 +864,13 @@ vframes = 16
 frame = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
 visible = false
 shape = SubResource("CircleShape2D_lqa0a")
+
+position = Vector2(0, 12)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_t6cpi")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
@@ -1002,3 +1015,10 @@ uv = PackedVector2Array(258.974, 866.667, 200, 894.872, 217.949, 1002.56, 302.56
 libraries = {
 "": SubResource("AnimationLibrary_b0xbs")
 }
+
+[node name="HealthDisplay" parent="." instance=ExtResource("3_cscvt")]
+offset_left = -27.0
+offset_top = -45.0
+offset_right = 111.0
+offset_bottom = -3.0
+

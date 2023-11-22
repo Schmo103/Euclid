@@ -1,11 +1,43 @@
 extends RigidBody2D
 
+signal fell
+
 var walk_accel := 1000
 var friction := 500
 var max_speed := 13000
 
+@export var health_display : Control
+
+@export var health := 10:
+	set(h):
+		if h <= 0:
+			health = 0
+			die()
+		else:
+			health = h
+		health_display.value = health
+		
+
 var lv : Vector2 = Vector2.ZERO
 
+func _ready() -> void:
+	health_display.max_value = health
+	
+
+func _process(_delta):
+	z_index = ((position - GameState.real_tile_size / 2).snapped(GameState.real_tile_size) / GameState.real_tile_size).y
+
+
+func take_damage(dmg : int) -> void:
+	health -= dmg
+	
+	
+func die() -> void:
+	fell.emit()
+	GameState.world.on_player_died()
+	queue_free()
+	
+	
 func _integrate_forces(s : PhysicsDirectBodyState2D):
 	var step = s.get_step()
 	
@@ -48,5 +80,7 @@ func _integrate_forces(s : PhysicsDirectBodyState2D):
 			lv = lv.slide(n)
 
 
-	
+	#set linear velocity
 	s.set_linear_velocity(lv * step)
+	
+	

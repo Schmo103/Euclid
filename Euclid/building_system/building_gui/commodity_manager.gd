@@ -8,17 +8,20 @@ func _ready():
 	build_commodity_menu()
 	
 	
+#adds a commodity display for every commodity in GameState
 func build_commodity_menu():
 	for commodity in GameState.commoditys:
 		add_commodity_display(commodity)
 		
 		
+#takes a Commodity resource and adds a commodity display
 func add_commodity_display(c : Commodity) -> void:
 	var d := commocity_display_scene.instantiate()
 	d.commodity = c
 	add_child(d)
 	
 	
+#sets the amount on a given commodity dispay
 func set_commodity_count(commodity : String, count : int) -> void:
 	if has_node(commodity):
 		get_node(commodity).commodity_count = count

@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2kyy21bd4dep"]
+
+[ext_resource type="Script" path="res://towers/wall/wall.gd" id="1_1idnh"]
+[ext_resource type="Texture2D" uid="uid://dc6aduxowcykg" path="res://art/filler_wall_spritesheet.png" id="1_n86jt"]
+[ext_resource type="Resource" uid="uid://j1os3ev6vbmi" path="res://resources/tower_resources/wall.tres" id="2_exu66"]
+[ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="4_frdxj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2xg0"]
+size = Vector2(32, 22)
+
+[node name="Wall" type="StaticBody2D" node_paths=PackedStringArray("health_display") groups=["wall"]]
+collision_layer = 3
+script = ExtResource("1_1idnh")
+tower_stats = ExtResource("2_exu66")
+health_display = NodePath("HealthDisplay")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_n86jt")
+hframes = 6
+vframes = 6
+frame = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_b2xg0")
+
+[node name="HealthDisplay" parent="." instance=ExtResource("4_frdxj")]
+offset_left = -13.0
+offset_top = -25.0
+offset_right = 125.0
+offset_bottom = 17.0
+scale = Vector2(0.19, 0.1)
