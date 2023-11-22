@@ -3,7 +3,7 @@ extends TileMap
 
 #variables regarding which tile to set when setting navigation shape
 var navigation_layer : int = 1
-var navigation_tile_atlas : int = 2
+var navigation_tile_atlas : int = 0
 var navigation_tile_coords : Vector2 = Vector2(0, 0)
 
 
