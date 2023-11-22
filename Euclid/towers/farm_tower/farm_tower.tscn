@@ -7,7 +7,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_retlc"]
 size = Vector2(32, 22)
 
-[node name="FarmTower" type="Node2D"]
+[node name="FarmTower" type="StaticBody2D" groups=["farm"]]
+collision_layer = 3
 script = ExtResource("1_05r2u")
 tower_stats = ExtResource("2_4vnmy")
 
@@ -17,15 +18,12 @@ hframes = 16
 vframes = 16
 frame = 2
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 5)
-shape = SubResource("RectangleShape2D_retlc")
-
 [node name="FarmTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_retlc")
 
 [connection signal="timeout" from="FarmTimer" to="." method="_on_farm_timer_timeout"]

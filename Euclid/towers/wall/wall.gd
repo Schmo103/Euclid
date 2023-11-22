@@ -25,8 +25,9 @@ func _ready() -> void:
 	super()
 	tower_stats.wall_destroyed.connect(_on_wall_destroyed)
 	tower_stats.new_wall_built.connect(_on_new_wall_placed)
+	tower_stats.update_image.connect(_on_forced_image_update)
 	tower_stats.new_wall_built.emit(tile_pos)
-	
+	update_image()
 	
 	
 func update_image() -> void:
@@ -75,8 +76,24 @@ func _on_new_wall_placed(wall_tile_pos : Vector2) -> void:
 		
 func _on_wall_destroyed(wall_tile_pos : Vector2) -> void:
 	if tile_pos.distance_to(wall_tile_pos) <= 1:
-		fall()
+		fall_without_triggering_explosion()
 		
+		
+func _on_forced_image_update(pos : Vector2, r : int) -> void:
+	if tile_pos.distance_to(pos) <= r:
+		update_image()
+		
+		
+func fall() -> void:
+	super()
+	tower_stats.wall_destroyed.emit(tile_pos)
+	tower_stats.update_image.emit(tile_pos, 1)
+	
+	
+func fall_without_triggering_explosion() -> void:
+	super.fall()
+	tower_stats.update_image.emit(tile_pos, 1)
+	
 		
 func update_adjacent_walls() -> void:
 	for offset in adjacents:

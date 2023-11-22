@@ -6,6 +6,9 @@ The dictionary format is:
 	
 	i.e. the commodity as a string is the key and the amount is the required quantity of the commodity as an integer
 
+All towers are in group "tower"
+The base is in group "base"
+The farm is in group "farm"
 
 When adding towers make sure to:
 	Create scene
