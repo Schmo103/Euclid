@@ -105,7 +105,7 @@ func _integrate_forces(s : PhysicsDirectBodyState2D):
 	if !walking:
 		if lv * step != Vector2.ZERO:
 			walking = true
-			a_player.play("run_left_right", -1, 5.0)
+			a_player.play("run_left_right", -1, 4.0)
 	elif walking:
 		if lv * step == Vector2.ZERO:
 			walking = false
