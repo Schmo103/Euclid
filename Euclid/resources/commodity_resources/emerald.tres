@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Commodity" load_steps=3 format=3 uid="uid://64vl85wduhsw"]
+
+[ext_resource type="Texture2D" uid="uid://de3l47te5e1t5" path="res://art/filler_commoditys/emerald.png" id="1_j45y0"]
+[ext_resource type="Script" path="res://resource_scripts/commodity.gd" id="2_ndvtw"]
+
+[resource]
+script = ExtResource("2_ndvtw")
+name = "emerald"
+icon = ExtResource("1_j45y0")
+starting_amount = 0

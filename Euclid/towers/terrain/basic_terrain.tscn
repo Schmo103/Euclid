@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfdrt2rk4myc2"]
+
+[ext_resource type="Texture2D" uid="uid://ca88ew57pvcco" path="res://towers/commodity_terrain/rocky-ground.png" id="1_i0r30"]
+[ext_resource type="Script" path="res://towers/terrain/basic_terrain.gd" id="2_j0kli"]
+
+[node name="BasicTerrain" type="Sprite2D"]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_i0r30")
+hframes = 6
+script = ExtResource("2_j0kli")

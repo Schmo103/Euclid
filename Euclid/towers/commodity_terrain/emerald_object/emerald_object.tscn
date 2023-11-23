@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://di3rki5htar22"]
+
+[ext_resource type="Script" path="res://towers/commodity_terrain/emerald_object/emerald_object.gd" id="1_bht53"]
+[ext_resource type="Texture2D" uid="uid://ca88ew57pvcco" path="res://towers/commodity_terrain/rocky-ground.png" id="1_g6c83"]
+[ext_resource type="Resource" uid="uid://64vl85wduhsw" path="res://resources/commodity_resources/emerald.tres" id="2_pgr45"]
+
+[node name="EmeraldObject" type="Node2D"]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_bht53")
+commodity = ExtResource("2_pgr45")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_g6c83")
+hframes = 6
+frame = 1
