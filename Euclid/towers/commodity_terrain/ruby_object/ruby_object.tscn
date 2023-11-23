@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://d6y70emb2jnc"]
+
+[ext_resource type="Texture2D" uid="uid://ca88ew57pvcco" path="res://towers/commodity_terrain/rocky-ground.png" id="1_t5nqm"]
+[ext_resource type="Script" path="res://towers/commodity_terrain/ruby_object/ruby_object.gd" id="1_yaoqf"]
+[ext_resource type="Resource" uid="uid://c415ea6pim7ii" path="res://resources/commodity_resources/ruby.tres" id="2_jrssr"]
+
+[node name="RubyObject" type="Node2D"]
+script = ExtResource("1_yaoqf")
+commodity = ExtResource("2_jrssr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_t5nqm")
+hframes = 6
+frame = 3

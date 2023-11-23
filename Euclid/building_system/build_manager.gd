@@ -128,6 +128,12 @@ func can_build() -> bool:
 		return tower_to_be_built.can_build(bodies, pos_to_tile(build_icon.position))
 #		return tower_to_be_built.can_build(bodies, pos_to_tile(get_mouse_position())
 	else:
+		if build_icon.get_area_overlapping_entitys().size() > 0:
+			build_icon.set_message("Towers can't be built on top of entities")
+		elif build_icon.get_are_overlapping_towers().size() > 0:
+			build_icon.set_message("Towers can't be adjacent to each other")
+		else:
+			build_icon.set_message("")
 		return bodies.size() == 0
 	
 

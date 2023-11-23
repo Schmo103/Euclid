@@ -21,6 +21,14 @@ func get_area_overlapping_bodies() -> Array[Node2D]:
 	return bodies
 	
 	
+func get_area_overlapping_entitys() -> Array[Node2D]:
+	return mob_detector.get_overlapping_bodies()
+	
+	
+func get_are_overlapping_towers() -> Array[Node2D]:
+	return tower_detector.get_overlapping_bodies()
+	
+	
 func set_message(m : String) -> void:
 	message.text = m
 	
