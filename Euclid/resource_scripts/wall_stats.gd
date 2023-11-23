@@ -25,11 +25,17 @@ func can_build(objects : Array, tile_pos : Vector2) -> bool:
 			elif possible_adjacent_positions.has(v):
 				adjacent_positions.append(v)
 		else:
+			if ob.is_in_group("entity"):
+				custom_can_build_message = "Towers can't be built on top of entities"
+			else:
+				custom_can_build_message = "Towers can't be built adjacent to each other"
 			return false
 	if adjacent_positions.size() > 2:
+		custom_can_build_message = "Each wall can only connect to two other walls"
 		return false
 	for ad in adjacent_positions:
 		if !check_pos_has_only_one_adjacent(tile_pos + ad):
+			custom_can_build_message = "Each wall can only connect to two other walls"
 			return false
 	for c in corners:
 		if !validate_diagonal(c):

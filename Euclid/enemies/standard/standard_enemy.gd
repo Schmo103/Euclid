@@ -16,6 +16,7 @@ var moving : bool = false
 
 
 func _ready() -> void:
+	super()
 	health_display.max_value = health
 	
 	

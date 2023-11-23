@@ -843,7 +843,7 @@ _data = {
 "run_left_right": SubResource("Animation_0eo6b")
 }
 
-[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("health_display") groups=["player"]]
+[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("health_display") groups=["entity", "player"]]
 collision_layer = 13
 custom_integrator = true
 max_contacts_reported = 3

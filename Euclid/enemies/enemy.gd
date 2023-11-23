@@ -7,6 +7,9 @@ extends RigidBody2D
 		
 @export var speed : int
 
+func _ready() -> void:
+	add_to_group("entity")
+	
 
 func take_damage(dmg : int) -> void:
 	health -= dmg
