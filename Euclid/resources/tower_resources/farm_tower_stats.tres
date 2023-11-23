@@ -10,7 +10,7 @@ name = "farm"
 menu_icon = ExtResource("1_lo5ek")
 build_icon = ExtResource("1_lo5ek")
 price = {
-"wood": 4
+"iron": 4
 }
 type = 0
 scene = ExtResource("2_boh8r")

@@ -10,7 +10,7 @@ name = "Laser Tower"
 menu_icon = ExtResource("1_xcf85")
 build_icon = ExtResource("1_xcf85")
 price = {
-"wood": 1
+"iron": 1
 }
 type = 1
 scene = ExtResource("2_4g7m7")
