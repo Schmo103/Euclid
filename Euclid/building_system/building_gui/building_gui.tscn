@@ -21,10 +21,6 @@ script = ExtResource("2_84wft")
 [node name="TowerManager" type="GridContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.164
-anchor_top = 0.742
-anchor_right = 0.164
-anchor_bottom = 0.742
 offset_left = 138.0
 offset_top = 484.0
 offset_right = 147.0

@@ -132,6 +132,9 @@ func can_build() -> bool:
 			build_icon.set_message("Towers can't be built on top of entities")
 		elif build_icon.get_are_overlapping_towers().size() > 0:
 			build_icon.set_message("Towers can't be built adjacent to each other")
+			for t in build_icon.get_are_overlapping_towers():
+				if t.is_in_group("tower") and t.tile_pos == pos_to_tile(build_icon.position):
+					build_icon.set_message("Towers can't be built on top of each other")
 		else:
 			build_icon.set_message("")
 		return bodies.size() == 0
