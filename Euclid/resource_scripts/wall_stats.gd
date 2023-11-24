@@ -19,6 +19,7 @@ func can_build(objects : Array, tile_pos : Vector2) -> bool:
 		if ob.is_in_group("wall"):
 			var v : Vector2 = ob.tile_pos - tile_pos
 			if v == Vector2.ZERO:
+				custom_can_build_message = "Towers can't be built on top of each other"
 				return false
 			elif possible_corners.has(v):
 				corners.append(v)
@@ -28,14 +29,17 @@ func can_build(objects : Array, tile_pos : Vector2) -> bool:
 			if ob.is_in_group("entity"):
 				custom_can_build_message = "Towers can't be built on top of entities"
 			else:
-				custom_can_build_message = "Towers can't be built adjacent to each other"
+				if ob.is_in_group("tower") and ob.tile_pos == tile_pos:
+					custom_can_build_message = "Towers can't be built on top of each other"
+				else:
+					custom_can_build_message = "Towers can't be built adjacent to each other"
 			return false
 	if adjacent_positions.size() > 2:
-		custom_can_build_message = "Each wall can only connect to two other walls"
+		custom_can_build_message = "Walls can't be layered"
 		return false
 	for ad in adjacent_positions:
 		if !check_pos_has_only_one_adjacent(tile_pos + ad):
-			custom_can_build_message = "Each wall can only connect to two other walls"
+			custom_can_build_message = "Walls can't be layered"
 			return false
 	for c in corners:
 		if !validate_diagonal(c):
