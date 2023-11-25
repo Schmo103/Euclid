@@ -104,7 +104,7 @@ position = Vector2(549, 465)
 [node name="Enemies" type="Node2D" parent="Mobs"]
 
 [node name="StandardEnemy" parent="Mobs/Enemies" instance=ExtResource("7_tfv0m")]
-position = Vector2(225, 294)
+position = Vector2(-307, 264)
 
 [node name="FrontTileMap" type="TileMap" parent="."]
 scale = Vector2(2, 2)
@@ -126,7 +126,7 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_eclf2")
 
 [node name="MobDetector" type="Area2D" parent="BuildIcon"]
-collision_mask = 4
+collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuildIcon/MobDetector"]
 shape = SubResource("RectangleShape2D_py527")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cqn1djklucwvp"]
 
 [ext_resource type="Script" path="res://building_system/building_gui/building_gui.gd" id="1_rcgub"]
-[ext_resource type="Script" path="res://building_system/building_gui/commodity_manager.gd" id="2_84wft"]
+[ext_resource type="PackedScene" uid="uid://bq2igicwpvari" path="res://building_system/building_gui/commodity_manager.tscn" id="2_d2hjl"]
 [ext_resource type="Script" path="res://building_system/building_gui/tower_display_manager.gd" id="3_1oh66"]
 
 [node name="BuildingGUI" type="Control"]
@@ -9,14 +9,12 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_rcgub")
 
-[node name="CommodityManager" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 89.0
-offset_top = 72.0
-offset_right = 91.0
-offset_bottom = 75.0
-script = ExtResource("2_84wft")
+[node name="CommodityManager" parent="." instance=ExtResource("2_d2hjl")]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 52.0
+offset_right = 71.0
+offset_bottom = 53.0
 
 [node name="TowerManager" type="GridContainer" parent="."]
 layout_mode = 1

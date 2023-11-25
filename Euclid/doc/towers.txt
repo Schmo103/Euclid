@@ -13,8 +13,7 @@ The farm is in group "farm"
 When adding towers make sure to:
 	Create scene
 	Have scene extend Tower
-	Add scene to tileset
 	Create TowerStats resource
-	Set TowerStats Tile Information exported variables to correct values
+	Set TowerStats scene to the correct scene
 	Add TowerStats resource to GameState.towers array
 	Make sure tower collision layer is also on tower layer (2)
