@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq2igicwpvari"]
+
+[ext_resource type="Script" path="res://building_system/building_gui/commodity_manager.gd" id="1_r8v1g"]
+
+[node name="CommodityManager" type="HBoxContainer"]
+offset_right = 2.0
+offset_bottom = 3.0
+script = ExtResource("1_r8v1g")

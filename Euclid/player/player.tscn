@@ -844,7 +844,7 @@ _data = {
 }
 
 [node name="Player" type="RigidBody2D" node_paths=PackedStringArray("health_display") groups=["entity", "player"]]
-collision_layer = 13
+collision_layer = 9
 custom_integrator = true
 max_contacts_reported = 3
 contact_monitor = true

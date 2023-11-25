@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq3c086d7rslo"]
+[gd_scene load_steps=6 format=3 uid="uid://dq3c086d7rslo"]
 
 [ext_resource type="Script" path="res://towers/farm_tower/farm_tower.gd" id="1_05r2u"]
 [ext_resource type="Texture2D" uid="uid://cm6vuj2ilkpwa" path="res://art/filler_art_spritesheet.png" id="2_qk1ss"]
 [ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="3_1itt7"]
+[ext_resource type="PackedScene" uid="uid://l51do8sx5uap" path="res://towers/tower_menu.tscn" id="4_6yrhs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_retlc"]
 size = Vector2(32, 22)
@@ -32,5 +33,10 @@ offset_top = -25.0
 offset_right = 125.0
 offset_bottom = 17.0
 scale = Vector2(0.19, 0.1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="TowerMenu" parent="." instance=ExtResource("4_6yrhs")]
 
 [connection signal="timeout" from="FarmTimer" to="." method="_on_farm_timer_timeout"]

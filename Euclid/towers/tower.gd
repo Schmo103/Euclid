@@ -3,6 +3,8 @@ extends Node2D
 
 signal fell
 
+const TILE_SIZE = 32.0
+
 enum tower_types {UTIL, DEFENSE, TERRAIN}
 
 @export_enum("UTIL", "DEFENSE", "TERRAIN")
@@ -22,6 +24,8 @@ var tile_pos : Vector2
 
 @export var health_display : Control
 
+@export var tower_menu : TowerMenu
+
 
 func _ready():
 	#make tile not navigatable
@@ -35,6 +39,11 @@ func _ready():
 		health_display.max_value = health
 		
 	GameState.front_tile_map.register_tower(tile_pos)
+	
+	if tower_menu != null:
+		tower_menu.sell_clicked.connect(_on_sell_clicked)
+	else:
+		push_error("Tower: " + str(self) + " at pos: " + str(tile_pos) + "has no menu assigned") 
 	
 	
 func _exit_tree():
@@ -55,3 +64,33 @@ func fall() -> void:
 	GameState.front_tile_map.remove_tower(tile_pos)
 	queue_free()
 	
+
+func _unhandled_input(event) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			var mp = get_local_mouse_position()
+			if max(abs(mp.x), abs(mp.y)) < TILE_SIZE / 2.0:
+				print("tower " + str(self) + "has seriously been clicked at pos: " + str(tile_pos))
+				safe_set_tower_menu_visible(true)
+			else:
+				safe_set_tower_menu_visible(false)
+				
+				
+func sell() -> void:
+	fall()
+	
+	
+func safe_set_tower_menu_visible(b : bool) -> void:
+	if tower_menu != null:
+		tower_menu.visible = b
+	
+	
+func safe_get_tower_menu_visible() -> bool:
+	if tower_menu != null:
+		return tower_menu.visible
+	else:
+		return false
+		
+		
+func _on_sell_clicked() -> void:
+	sell()
