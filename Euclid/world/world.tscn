@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cykj8da6g4hau"]
+[gd_scene load_steps=30 format=3 uid="uid://cykj8da6g4hau"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_ybw44"]
 [ext_resource type="PackedScene" uid="uid://xuh3cejcnnw" path="res://player/player.tscn" id="2_bcibk"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://b2kyy21bd4dep" path="res://towers/wall/wall.tscn" id="11_70i1t"]
 [ext_resource type="PackedScene" uid="uid://cef18jyr72ni8" path="res://towers/missile_tower/missile_tower.tscn" id="12_tmc8m"]
 [ext_resource type="PackedScene" uid="uid://cwte17ddcw616" path="res://towers/laser_tower/laser_tower.tscn" id="13_ythck"]
+[ext_resource type="Script" path="res://world/missiles.gd" id="20_0jy7k"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sv1bm"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -104,7 +105,7 @@ position = Vector2(549, 465)
 [node name="Enemies" type="Node2D" parent="Mobs"]
 
 [node name="StandardEnemy" parent="Mobs/Enemies" instance=ExtResource("7_tfv0m")]
-position = Vector2(-307, 264)
+position = Vector2(399, 302)
 
 [node name="FrontTileMap" type="TileMap" parent="."]
 scale = Vector2(2, 2)
@@ -113,6 +114,10 @@ format = 2
 layer_0/name = "Objects"
 layer_0/tile_data = PackedInt32Array(262152, 0, 65536)
 script = ExtResource("7_yor02")
+
+[node name="Missiles" type="Node2D" parent="."]
+z_index = 4096
+script = ExtResource("20_0jy7k")
 
 [node name="BuildIcon" type="Sprite2D" parent="."]
 z_index = 4026

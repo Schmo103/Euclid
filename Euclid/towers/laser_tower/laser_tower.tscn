@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwte17ddcw616"]
+[gd_scene load_steps=7 format=3 uid="uid://cwte17ddcw616"]
 
 [ext_resource type="Texture2D" uid="uid://tsoxc08vbmom" path="res://art/icon.svg" id="1_635r3"]
 [ext_resource type="Script" path="res://towers/laser_tower/laser_tower.gd" id="1_i48fo"]
@@ -8,9 +8,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vplbq"]
 size = Vector2(32, 22)
 
-[node name="LaserTower" type="StaticBody2D" node_paths=PackedStringArray("health_display", "tower_menu")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5kc2r"]
+radius = 125.0
+
+[node name="LaserTower" type="StaticBody2D" node_paths=PackedStringArray("enemy_detector", "laser_fire_postion", "laser_line", "health_display", "tower_menu")]
 collision_layer = 3
 script = ExtResource("1_i48fo")
+enemy_detector = NodePath("EnemyDetector")
+laser_fire_postion = NodePath("LaserFirePosition")
+laser_line = NodePath("LaserLine")
 type = 1
 health_display = NodePath("HealthDisplay")
 tower_menu = NodePath("TowerMenu")
@@ -31,3 +37,25 @@ offset_bottom = 18.0
 scale = Vector2(0.19, 0.1)
 
 [node name="TowerMenu" parent="." instance=ExtResource("4_mn7y1")]
+
+[node name="LaserFirePosition" type="Node2D" parent="."]
+
+[node name="LoadTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="EnemyDetector" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+shape = SubResource("CircleShape2D_5kc2r")
+
+[node name="FireTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="LaserLine" type="Line2D" parent="."]
+width = 2.0
+default_color = Color(0.0392157, 0.607843, 0.941176, 1)
+antialiased = true
+
+[connection signal="timeout" from="LoadTimer" to="." method="_on_load_timer_timeout"]
+[connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]

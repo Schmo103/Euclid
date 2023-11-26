@@ -1,14 +1,15 @@
 class_name Enemy
 extends RigidBody2D
 
-@export var health : int = 10:
+@export var health : int = 100:
 	set(h):
-		set_health(h)
+		health = set_health(h)
 		
 @export var speed : int
 
 func _ready() -> void:
 	add_to_group("entity")
+	add_to_group("enemy")
 	
 
 func take_damage(dmg : int) -> void:
@@ -22,7 +23,9 @@ func die() -> void:
 	queue_free()
 
 
-func set_health(h : int) -> void:
-	health = h
-	if health < 0:
-		health = 0
+func set_health(h : int) -> int:
+#	health = h
+	if h < 0:
+		return 0
+	else:
+		return h

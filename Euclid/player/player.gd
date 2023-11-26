@@ -13,7 +13,7 @@ var walking = false
 
 @export var health_display : Control
 
-@export var health := 10:
+@export var health := 100:
 	set(h):
 		if h <= 0:
 			health = 0

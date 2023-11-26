@@ -8,10 +8,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_retlc"]
 size = Vector2(32, 22)
 
-[node name="FarmTower" type="StaticBody2D" node_paths=PackedStringArray("health_display") groups=["farm"]]
+[node name="FarmTower" type="StaticBody2D" node_paths=PackedStringArray("health_display", "tower_menu") groups=["farm"]]
 collision_layer = 3
 script = ExtResource("1_05r2u")
 health_display = NodePath("HealthDisplay")
+tower_menu = NodePath("TowerMenu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_qk1ss")
@@ -33,9 +34,6 @@ offset_top = -25.0
 offset_right = 125.0
 offset_bottom = 17.0
 scale = Vector2(0.19, 0.1)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
 
 [node name="TowerMenu" parent="." instance=ExtResource("4_6yrhs")]
 
