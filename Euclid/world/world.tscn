@@ -105,7 +105,7 @@ position = Vector2(549, 465)
 [node name="Enemies" type="Node2D" parent="Mobs"]
 
 [node name="StandardEnemy" parent="Mobs/Enemies" instance=ExtResource("7_tfv0m")]
-position = Vector2(399, 302)
+position = Vector2(307, 344)
 
 [node name="FrontTileMap" type="TileMap" parent="."]
 scale = Vector2(2, 2)
@@ -142,6 +142,7 @@ offset_top = -72.0
 offset_right = 241.0
 offset_bottom = -19.0
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="PlayerSpawnTimer" type="Timer" parent="."]
 one_shot = true
