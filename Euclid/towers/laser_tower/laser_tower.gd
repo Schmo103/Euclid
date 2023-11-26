@@ -59,11 +59,15 @@ func set_target() -> void:
 		return
 	else:
 		target = null
+		var d : float = -1
 		for b in bodies:
 			if b.is_in_group("enemy"):
-				target = b
-				return
-				
+				var new_d : float = to_global(position).distance_to(target.global_position)
+				if d == -1 or new_d < d:
+					target = b
+					d = new_d
+		return
+
 
 func can_fire() -> bool:
 	return loaded and not firing
