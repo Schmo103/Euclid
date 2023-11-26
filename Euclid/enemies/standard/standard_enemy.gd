@@ -12,7 +12,7 @@ var lv : Vector2
 var dir : Vector2
 var moving : bool = false
 
-@export var damage_dealt : int = 1
+@export var damage_dealt : int = 10
 
 
 func _ready() -> void:
@@ -57,10 +57,9 @@ func _integrate_forces(s : PhysicsDirectBodyState2D) -> void:
 		s.set_linear_velocity(Vector2.ZERO)
 	
 	
-func set_health(h : int) -> void:
-	super(h)
-	health_display.value = h
-
+func set_health(h : int) -> int:
+	health_display.value = super(h)
+	return super(h)
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	lv = safe_velocity

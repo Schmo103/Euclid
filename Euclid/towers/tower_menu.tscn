@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://towers/tower_menu.gd" id="1_x1hlq"]
 
 [node name="TowerMenu" type="Control"]
+z_index = 4096
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

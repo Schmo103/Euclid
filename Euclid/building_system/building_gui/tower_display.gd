@@ -33,7 +33,7 @@ func set_price_visible(b : bool) -> void:
 	
 	
 func set_up_price_display() -> void:
-	commodity_display_manager.set_commodities_to_price(tower_stats.price, false)
+	commodity_display_manager.set_commodities_to_price(tower_stats.price)
 			
 			
 func update_size_dependant_properties() -> void:

@@ -10,7 +10,7 @@ enum tower_types {UTIL, DEFENSE, TERRAIN}
 @export_enum("UTIL", "DEFENSE", "TERRAIN")
 var type : int = tower_types.UTIL
 
-@export var health := 10:
+@export var health := 100:
 	set(h):
 		if h <= 0:
 			health = 0
@@ -42,6 +42,7 @@ func _ready():
 	
 	if tower_menu != null:
 		tower_menu.sell_clicked.connect(_on_sell_clicked)
+#		tower_menu.position =
 	else:
 		push_error("Tower: " + str(self) + " at pos: " + str(tile_pos) + "has no menu assigned") 
 	
