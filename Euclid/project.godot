@@ -75,6 +75,7 @@ left_click={
 2d_physics/layer_2="TowerLayer"
 2d_physics/layer_3="EnemyLayer"
 2d_physics/layer_4="PlayerLayer"
+2d_physics/layer_5="EnemyShapeForLaserLayer"
 
 [rendering]
 

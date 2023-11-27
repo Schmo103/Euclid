@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cykj8da6g4hau"]
+[gd_scene load_steps=33 format=3 uid="uid://cykj8da6g4hau"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_ybw44"]
 [ext_resource type="PackedScene" uid="uid://xuh3cejcnnw" path="res://player/player.tscn" id="2_bcibk"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://building_system/build_manager.gd" id="3_ioyl6"]
 [ext_resource type="PackedScene" uid="uid://cqn1djklucwvp" path="res://building_system/building_gui/building_gui.tscn" id="3_wdhqa"]
 [ext_resource type="Texture2D" uid="uid://lys7qnvna8qx" path="res://art/navigation_tile_image.png" id="4_6hx1i"]
+[ext_resource type="PackedScene" uid="uid://bdfwmr3hcam26" path="res://in_game_menu/wave_alert.tscn" id="4_hh281"]
 [ext_resource type="PackedScene" uid="uid://wl0jap5jixjj" path="res://towers/commodity_terrain/wood_object/wood_object.tscn" id="5_s60qf"]
 [ext_resource type="Script" path="res://world/back_tile_map.gd" id="5_vpunx"]
 [ext_resource type="PackedScene" uid="uid://c1b6l71w4tch3" path="res://towers/commodity_terrain/iron_object/iron_object.tscn" id="7_p20la"]
@@ -17,9 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://dq3c086d7rslo" path="res://towers/farm_tower/farm_tower.tscn" id="10_krs7q"]
 [ext_resource type="PackedScene" uid="uid://bfdrt2rk4myc2" path="res://towers/terrain/basic_terrain.tscn" id="10_plw24"]
 [ext_resource type="PackedScene" uid="uid://b2kyy21bd4dep" path="res://towers/wall/wall.tscn" id="11_70i1t"]
+[ext_resource type="Script" path="res://world/enemies.gd" id="12_oxqoc"]
 [ext_resource type="PackedScene" uid="uid://cef18jyr72ni8" path="res://towers/missile_tower/missile_tower.tscn" id="12_tmc8m"]
 [ext_resource type="PackedScene" uid="uid://cwte17ddcw616" path="res://towers/laser_tower/laser_tower.tscn" id="13_ythck"]
 [ext_resource type="Script" path="res://world/missiles.gd" id="20_0jy7k"]
+[ext_resource type="Script" path="res://world/enemy_spawn_manager.gd" id="23_aikf7"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sv1bm"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -78,6 +81,8 @@ player_spawn_timer = NodePath("PlayerSpawnTimer")
 [node name="BuildingGUI" parent="GUILayer" instance=ExtResource("3_wdhqa")]
 metadata/_edit_use_anchors_ = true
 
+[node name="WaveAlert" parent="GUILayer" instance=ExtResource("4_hh281")]
+
 [node name="BuildManager" type="Node2D" parent="." node_paths=PackedStringArray("build_icon")]
 script = ExtResource("3_ioyl6")
 build_icon = NodePath("../BuildIcon")
@@ -103,9 +108,13 @@ script = ExtResource("5_vpunx")
 position = Vector2(549, 465)
 
 [node name="Enemies" type="Node2D" parent="Mobs"]
+script = ExtResource("12_oxqoc")
 
 [node name="StandardEnemy" parent="Mobs/Enemies" instance=ExtResource("7_tfv0m")]
 position = Vector2(307, 344)
+
+[node name="StandardEnemy2" parent="Mobs/Enemies" instance=ExtResource("7_tfv0m")]
+position = Vector2(261, 288)
 
 [node name="FrontTileMap" type="TileMap" parent="."]
 scale = Vector2(2, 2)
@@ -145,6 +154,15 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerSpawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="EnemySpawnManager" type="Node2D" parent="." node_paths=PackedStringArray("wave_alert")]
+script = ExtResource("23_aikf7")
+wave_alert = NodePath("../GUILayer/WaveAlert")
+
+[node name="SpawnPoint" type="Marker2D" parent="EnemySpawnManager"]
+
+[node name="SpawnDelayTimer" type="Timer" parent="EnemySpawnManager"]
 one_shot = true
 
 [connection signal="timeout" from="PlayerSpawnTimer" to="." method="_on_player_spawn_timer_timeout"]

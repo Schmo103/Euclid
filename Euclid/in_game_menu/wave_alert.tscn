@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdfwmr3hcam26"]
+
+[ext_resource type="Script" path="res://in_game_menu/wave_alert.gd" id="1_sogbl"]
+[ext_resource type="Texture2D" uid="uid://cyxqog0hwgamp" path="res://in_game_menu/wave_progress_bar_background_image.png" id="2_dhe57"]
+[ext_resource type="Texture2D" uid="uid://istjvgijlljb" path="res://in_game_menu/wave_progress_bar_image.png" id="3_xjg7d"]
+
+[node name="WaveAlert" type="Control" node_paths=PackedStringArray("wave_progress_bar")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_sogbl")
+wave_progress_bar = NodePath("WaveProgressBar")
+
+[node name="WaveProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 950.0
+offset_top = 25.0
+offset_right = 1206.0
+offset_bottom = 281.0
+scale = Vector2(0.25, 0.25)
+value = 100.0
+fill_mode = 4
+texture_under = ExtResource("2_dhe57")
+texture_progress = ExtResource("3_xjg7d")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 866.0
+offset_top = 40.0
+offset_right = 1103.0
+offset_bottom = 110.0
+horizontal_alignment = 1
+
+[node name="FinalCountDownTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="FinalCountDownTimer" to="." method="_on_final_count_down_timer_timeout"]

@@ -16,7 +16,7 @@ height = 62.0
 radius = 76.0066
 
 [node name="StandardEnemy" type="RigidBody2D" node_paths=PackedStringArray("health_display", "nav_agent", "state_machine", "target_detector")]
-collision_layer = 5
+collision_layer = 21
 custom_integrator = true
 max_contacts_reported = 1
 contact_monitor = true

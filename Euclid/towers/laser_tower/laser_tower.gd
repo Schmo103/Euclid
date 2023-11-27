@@ -4,6 +4,7 @@ extends Tower
 @export var enemy_detector : Area2D
 @export var laser_fire_postion : Node2D
 @export var laser_line : Line2D
+@export var laser_ray_cast : RayCast2D
 
 @export var damage : int = 20
 
@@ -32,27 +33,33 @@ func _process(_delta) -> void:
 			fire_laser()
 	if firing:
 		if is_instance_valid(target):
+			update_laser_ray_cast()
 			draw_laser()
 		else:
-			firing = false
+			quit_firing()
 		
 
+#activates laser and related stuff
 func fire_laser() -> void:
 	loaded = false
 	firing = true
-	target.take_damage(damage)
-	draw_laser()
+	target.hit_by_laser(damage)
 	$FireTimer.start()
 	$LoadTimer.start()
+	update_laser_ray_cast()
+	laser_ray_cast.force_raycast_update()
 	
 	
+#draws the laser
 func draw_laser() -> void:
 	laser_line.visible = true
 	laser_line.clear_points()
 	laser_line.add_point(laser_fire_postion.position)
-	laser_line.add_point(to_local(target.global_position))
+#	laser_line.add_point(to_local(target.global_position))
+	laser_line.add_point(to_local(laser_ray_cast.get_collision_point()))
 
 
+#sets the target of the tower as the closeset enemy in range
 func set_target() -> void:
 	var bodies = enemy_detector.get_overlapping_bodies()
 	if is_instance_valid(target) and bodies.has(target):
@@ -62,11 +69,21 @@ func set_target() -> void:
 		var d : float = -1
 		for b in bodies:
 			if b.is_in_group("enemy"):
-				var new_d : float = to_global(position).distance_to(target.global_position)
+				var new_d : float
+				new_d = to_global(position).distance_to(b.global_position)
 				if d == -1 or new_d < d:
 					target = b
 					d = new_d
 		return
+		
+		
+func update_laser_ray_cast() -> void:
+	laser_ray_cast.target_position = to_local(target.global_position)
+	
+	
+func quit_firing() -> void:
+	firing = false
+	laser_line.visible = false
 
 
 func can_fire() -> bool:
@@ -78,5 +95,4 @@ func _on_load_timer_timeout():
 
 
 func _on_fire_timer_timeout():
-	firing = false
-	laser_line.visible = false
+	quit_firing()

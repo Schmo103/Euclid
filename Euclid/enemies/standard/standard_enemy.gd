@@ -58,7 +58,7 @@ func _integrate_forces(s : PhysicsDirectBodyState2D) -> void:
 		#stopping
 		s.set_linear_velocity(Vector2.ZERO)
 		
-	var anim_dir : Vector2 = lv.normalized()
+#	var anim_dir : Vector2 = lv.normalized()
 	
 	
 func set_health(h : int) -> int:

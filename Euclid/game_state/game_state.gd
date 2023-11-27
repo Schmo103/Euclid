@@ -16,6 +16,7 @@ var back_tile_map : TileMap
 var front_tile_map : TileMap
 var world : World
 var missiles : MissileManager
+var enemy_manager : EnemyManager
 
 #tile size information
 var tile_size : Vector2 = Vector2(32, 32)
