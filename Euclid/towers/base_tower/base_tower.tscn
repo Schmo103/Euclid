@@ -1,12 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://buehegmukws0f"]
+[gd_scene load_steps=5 format=3 uid="uid://buehegmukws0f"]
 
 [ext_resource type="Script" path="res://towers/base_tower/base_tower.gd" id="1_ufadr"]
-[ext_resource type="Texture2D" uid="uid://cm6vuj2ilkpwa" path="res://art/filler_art_spritesheet.png" id="2_d11jf"]
-[ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="3_bxk4b"]
-[ext_resource type="PackedScene" uid="uid://l51do8sx5uap" path="res://towers/tower_menu.tscn" id="4_6jqcd"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyx6t"]
-size = Vector2(32, 22)
+[ext_resource type="Texture2D" uid="uid://ca8ouuycdbba6" path="res://towers/base_tower/base.png" id="2_ut4q1"]
+[ext_resource type="PackedScene" path="res://player/health_display.tscn" id="3_bxk4b"]
+[ext_resource type="PackedScene" path="res://towers/tower_menu.tscn" id="4_6jqcd"]
 
 [node name="BaseTower" type="StaticBody2D" node_paths=PackedStringArray("health_display", "tower_menu") groups=["base"]]
 collision_layer = 3
@@ -14,21 +11,20 @@ script = ExtResource("1_ufadr")
 health_display = NodePath("HealthDisplay")
 tower_menu = NodePath("TowerMenu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, 5)
-shape = SubResource("RectangleShape2D_wyx6t")
+polygon = PackedVector2Array(-8, -7, -16, 2, -11, 7, -1, 9, 12, 8, 16, 3, 15, -2, 8, -5, 1, -8)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_d11jf")
-hframes = 16
-vframes = 16
-frame = 1
+position = Vector2(0, -23)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_ut4q1")
 
 [node name="HealthDisplay" parent="." instance=ExtResource("3_bxk4b")]
-offset_left = -21.0
-offset_top = -31.0
-offset_right = 117.0
-offset_bottom = 11.0
+offset_left = -20.0
+offset_top = -72.0
+offset_right = 118.0
+offset_bottom = -30.0
 scale = Vector2(0.3, 0.15)
 
 [node name="Camera2D" type="Camera2D" parent="."]
