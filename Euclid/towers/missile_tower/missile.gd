@@ -32,7 +32,7 @@ func can_hit(body : Node2D) -> bool:
 	
 	
 func hit(body : Node2D) -> void:
-	body.take_damage(damage)
+	body.hit_by_missile(damage)
 	free_missile()
 	
 	

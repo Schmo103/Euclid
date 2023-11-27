@@ -18,6 +18,18 @@ func take_damage(dmg : int) -> void:
 		die()
 		
 		
+func hit_by_laser(dmg : int) -> void:
+	take_damage(dmg)
+	
+	
+func hit_by_missile(dmg : int) -> void:
+	take_damage(dmg)
+	
+	
+func hit_by_shock(dmg : int) -> void:
+	take_damage(dmg)
+		
+		
 func die() -> void:
 	print("Enemy died")
 	queue_free()

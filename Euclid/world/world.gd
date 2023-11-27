@@ -23,7 +23,7 @@ func on_player_died() -> void:
 	player_spawn_timer.start()
 	
 	
-func _on_player_spawn_timer_timeout():
+func _on_player_spawn_timer_timeout() -> void:
 	var p = player_scene.instantiate()
 	p.position = home_tile_pos * GameState.real_tile_size + GameState.real_tile_size * 1.5
 	$Mobs.add_child(p)
