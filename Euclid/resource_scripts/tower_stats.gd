@@ -12,7 +12,7 @@ enum types {UTIL, DEFENSE}
 @export var build_icon : Texture
 
 #price should be in price format (see doc/toweres.txt)
-@export var price : Dictionary
+@export var price : Dictionary = {"iron": 1}
 
 @export_enum("UTIL", "DEFENSE") var type : int = types.UTIL
 

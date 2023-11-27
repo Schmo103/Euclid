@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://wl0jap5jixjj" path="res://towers/commodity_terrain/wood_object/wood_object.tscn" id="5_s60qf"]
 [ext_resource type="Script" path="res://world/back_tile_map.gd" id="5_vpunx"]
 [ext_resource type="PackedScene" uid="uid://c1b6l71w4tch3" path="res://towers/commodity_terrain/iron_object/iron_object.tscn" id="7_p20la"]
-[ext_resource type="PackedScene" uid="uid://duuehqyuhrv7t" path="res://enemies/standard/standard_enemy.tscn" id="7_tfv0m"]
 [ext_resource type="Script" path="res://world/front_tile_map.gd" id="7_yor02"]
 [ext_resource type="PackedScene" uid="uid://d6y70emb2jnc" path="res://towers/commodity_terrain/ruby_object/ruby_object.tscn" id="8_k06a8"]
 [ext_resource type="PackedScene" uid="uid://buehegmukws0f" path="res://towers/base_tower/base_tower.tscn" id="9_autc4"]
@@ -23,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cwte17ddcw616" path="res://towers/laser_tower/laser_tower.tscn" id="13_ythck"]
 [ext_resource type="Script" path="res://world/missiles.gd" id="20_0jy7k"]
 [ext_resource type="Script" path="res://world/enemy_spawn_manager.gd" id="23_aikf7"]
+[ext_resource type="PackedScene" uid="uid://fem8m6v7kedu" path="res://world/spawn_point.tscn" id="23_fwq60"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sv1bm"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -105,16 +105,10 @@ script = ExtResource("5_vpunx")
 [node name="Mobs" type="Node2D" parent="."]
 
 [node name="Player" parent="Mobs" instance=ExtResource("2_bcibk")]
-position = Vector2(549, 465)
+position = Vector2(177, 147)
 
 [node name="Enemies" type="Node2D" parent="Mobs"]
 script = ExtResource("12_oxqoc")
-
-[node name="StandardEnemy" parent="Mobs/Enemies" instance=ExtResource("7_tfv0m")]
-position = Vector2(307, 344)
-
-[node name="StandardEnemy2" parent="Mobs/Enemies" instance=ExtResource("7_tfv0m")]
-position = Vector2(261, 288)
 
 [node name="FrontTileMap" type="TileMap" parent="."]
 scale = Vector2(2, 2)
@@ -160,9 +154,20 @@ one_shot = true
 script = ExtResource("23_aikf7")
 wave_alert = NodePath("../GUILayer/WaveAlert")
 
-[node name="SpawnPoint" type="Marker2D" parent="EnemySpawnManager"]
+[node name="SpawnPoint" parent="EnemySpawnManager" instance=ExtResource("23_fwq60")]
+position = Vector2(531, -428)
+
+[node name="SpawnPoint2" parent="EnemySpawnManager" instance=ExtResource("23_fwq60")]
+position = Vector2(-196, 289)
+
+[node name="SpawnPoint3" parent="EnemySpawnManager" instance=ExtResource("23_fwq60")]
+position = Vector2(567, 1051)
+
+[node name="SpawnPoint4" parent="EnemySpawnManager" instance=ExtResource("23_fwq60")]
+position = Vector2(1302, 289)
 
 [node name="SpawnDelayTimer" type="Timer" parent="EnemySpawnManager"]
 one_shot = true
 
 [connection signal="timeout" from="PlayerSpawnTimer" to="." method="_on_player_spawn_timer_timeout"]
+[connection signal="timeout" from="EnemySpawnManager/SpawnDelayTimer" to="EnemySpawnManager" method="_on_spawn_delay_timer_timeout"]

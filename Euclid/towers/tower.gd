@@ -38,7 +38,7 @@ func _ready():
 	if health_display != null:
 		health_display.max_value = health
 		
-	GameState.front_tile_map.register_tower(tile_pos)
+	GameState.front_tile_map.register_tower(tile_pos, self)
 	
 	if tower_menu != null:
 		tower_menu.sell_clicked.connect(_on_sell_clicked)
