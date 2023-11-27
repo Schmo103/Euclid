@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WallStats" load_steps=4 format=3 uid="uid://c40p81d2owwc7"]
+
+[ext_resource type="Texture2D" uid="uid://tsoxc08vbmom" path="res://art/icon.svg" id="1_leko0"]
+[ext_resource type="PackedScene" uid="uid://5us7sp2ks6st" path="res://towers/door/door.tscn" id="2_4dldx"]
+[ext_resource type="Script" path="res://resource_scripts/wall_stats.gd" id="3_b3r0p"]
+
+[resource]
+script = ExtResource("3_b3r0p")
+name = "door"
+menu_icon = ExtResource("1_leko0")
+build_icon = ExtResource("1_leko0")
+price = {
+"iron": 1
+}
+type = 0
+scene = ExtResource("2_4dldx")
+source_id = -1
+alternative_tile_id = -1
+auto_exit_build_mode = true
+can_replace_walls = false
+use_custom_can_build = true
+use_custom_build = false

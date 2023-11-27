@@ -24,6 +24,8 @@ var start_count_down_num : int = 3
 var count_down_num : int = start_count_down_num
 var last_rep : bool = false
 var last_rep_message : String = "Wave Began"
+
+var wave_count_down_active : bool = true
 		
 		
 func _ready() -> void:
@@ -37,9 +39,10 @@ func reset_counter() -> void:
 	
 	
 func _process(delta) -> void:
-	time_till_wave -= delta
-	if time_till_wave <= 0 and not displaying_final_countdown:
-		display_final_countdown()
+	if wave_count_down_active:
+		time_till_wave -= delta
+		if time_till_wave <= 0 and not displaying_final_countdown:
+			display_final_countdown()
 		
 		
 func display_final_countdown() -> void:
@@ -50,15 +53,20 @@ func display_final_countdown() -> void:
 	last_rep = false
 	$FinalCountDownTimer.wait_time = 1
 	$FinalCountDownTimer.start()
+	wave_count_down_active = false
 	
 	
 func clean_up_final_count_down() -> void:
-	end_of_count_down_reached.emit()
-	reset_counter()
 	displaying_final_countdown = false
 	$Label.visible = false
-	wave_progress_bar.visible = true
 	count_down_num = start_count_down_num
+#	start_wave_count_down()
+	
+func start_wave_count_down() -> void:
+	reset_counter()
+	wave_progress_bar.visible = true
+	wave_count_down_active = true
+	
 	
 	
 func _on_final_count_down_timer_timeout():
@@ -69,6 +77,7 @@ func _on_final_count_down_timer_timeout():
 			$FinalCountDownTimer.start()
 			$Label.text = last_rep_message
 			last_rep = true
+			end_of_count_down_reached.emit()
 		else:
 			clean_up_final_count_down()
 	else:

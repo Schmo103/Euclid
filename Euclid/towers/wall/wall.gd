@@ -23,6 +23,7 @@ var adjacents : Dictionary = {Vector2.UP: false, Vector2.DOWN: false, Vector2.LE
 
 func _ready() -> void:
 	super()
+	add_to_group("wall")
 	WallManager.wall_destroyed.connect(_on_wall_destroyed)
 	WallManager.new_wall_built.connect(_on_new_wall_placed)
 	WallManager.update_image.connect(_on_forced_image_update)
@@ -98,6 +99,7 @@ func fall_without_triggering_explosion() -> void:
 func update_adjacent_walls() -> void:
 	for offset in adjacents:
 		adjacents[offset] = GameState.front_tile_map.tower_data.has(offset + tile_pos)
+		
 		
 func set_image(id : int) -> void:
 	$Sprite2D.frame = id

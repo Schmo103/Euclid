@@ -64,6 +64,8 @@ func _integrate_forces(s : PhysicsDirectBodyState2D) -> void:
 func set_health(h : int) -> int:
 	health_display.value = super(h)
 	return super(h)
+	
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	lv = safe_velocity
+	

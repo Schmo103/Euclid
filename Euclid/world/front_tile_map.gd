@@ -38,8 +38,8 @@ func build_tower(tower : PackedScene, tower_pos : Vector2) -> void:
 	add_child(t)
 	
 	
-func register_tower(tile_pos : Vector2) -> void:
-	tower_data[tile_pos] = true
+func register_tower(tile_pos : Vector2, t : Tower) -> void:
+	tower_data[tile_pos] = t
 	
 
 

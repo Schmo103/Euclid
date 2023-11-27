@@ -41,6 +41,10 @@ func can_build(objects : Array, tile_pos : Vector2) -> bool:
 		if !check_pos_has_only_one_adjacent(tile_pos + ad):
 			custom_can_build_message = "Walls can't be layered"
 			return false
+		#make sure if ad is door, ad does not become corner on this build
+		if check_creates_door_corner(tile_pos, ad):
+			custom_can_build_message = "Doors can't be wall corners"
+			return false
 	for c in corners:
 		if !validate_diagonal(c):
 			custom_can_build_message = "To build walls diagonally you must connect them with a corner"
@@ -61,4 +65,19 @@ func check_pos_has_only_one_adjacent(pos : Vector2) -> bool:
 			else:
 				one = true
 	return true
+	
+	
+func check_creates_door_corner(tile_pos : Vector2, ad : Vector2) -> bool:
+	var door_pos : Vector2 = tile_pos + ad
+	if GameState.front_tile_map.tower_data[door_pos].is_in_group("door"):
+		var this_pos_as_ad : Vector2 = tile_pos - door_pos
+		if this_pos_as_ad == Vector2.UP or this_pos_as_ad == Vector2.DOWN:
+			if GameState.front_tile_map.tower_data.has(door_pos + Vector2.LEFT) or GameState.front_tile_map.tower_data.has(door_pos + Vector2.RIGHT):
+				return true
+		else: #this_pos_as_ad is either Vector2.LEFT or Vector2.RIGHT
+			if GameState.front_tile_map.tower_data.has(door_pos + Vector2.UP) or GameState.front_tile_map.tower_data.has(door_pos + Vector2.DOWN):
+				return true
+		return false
+	else:
+		return false
 		
