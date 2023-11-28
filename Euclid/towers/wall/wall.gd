@@ -11,7 +11,7 @@ var edge : int = edges.MIDDLE
 var middle_ids := [1, 12]
 var left_ids := [0, 18] #left and down
 var right_ids := [2, 6] #right and up
-var solo_id := [7, 7]
+var solo_id := [0, 0]
 
 var top_corner_ids := [20, 21] #left and right
 var bottom_corner_ids := [26, 27] #left and right
@@ -19,7 +19,7 @@ var bottom_corner_ids := [26, 27] #left and right
 var ids : Array = [middle_ids, left_ids, right_ids, solo_id]
 
 #dictionary representing adjacent wall towers
-var adjacents : Dictionary = {Vector2.UP: false, Vector2.DOWN: false, Vector2.LEFT: false, Vector2.RIGHT: false}
+var adjacents: Dictionary = {Vector2.UP: false, Vector2.DOWN: false, Vector2.LEFT: false, Vector2.RIGHT: false}
 
 func _ready() -> void:
 	super()
@@ -95,7 +95,7 @@ func fall_without_triggering_explosion() -> void:
 	super.fall()
 	WallManager.update_image.emit(tile_pos, 1)
 	
-		
+	
 func update_adjacent_walls() -> void:
 	for offset in adjacents:
 		adjacents[offset] = GameState.front_tile_map.tower_data.has(offset + tile_pos)
