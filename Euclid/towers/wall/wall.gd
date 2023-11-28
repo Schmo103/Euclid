@@ -8,13 +8,13 @@ var horizontal : bool = true
 var edge : int = edges.MIDDLE
 
 #ids in spritesheet of correc sprites
-var middle_ids := [1, 12]
-var left_ids := [0, 18] #left and down
-var right_ids := [2, 6] #right and up
-var solo_id := [0, 0]
+var middle_ids := [2, 6] #horizontal and veritcal
+var left_ids := [8, 10] #left and down
+var right_ids := [9, 11] #right and up
+var solo_id := [2, 2]
 
-var top_corner_ids := [20, 21] #left and right
-var bottom_corner_ids := [26, 27] #left and right
+var top_corner_ids := [0, 1] #left and right
+var bottom_corner_ids := [4, 5] #left and right
 
 var ids : Array = [middle_ids, left_ids, right_ids, solo_id]
 
