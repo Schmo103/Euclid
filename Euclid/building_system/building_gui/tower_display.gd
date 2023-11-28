@@ -13,9 +13,11 @@ func _ready() -> void:
 	if tower_stats != null:
 		icon = tower_stats.menu_icon
 		name = tower_stats.name
+		$NameLabel.text = tower_stats.name
 	set_up_price_display()
 	commodity_display_manager.visible = false
 	get_parent().ready.connect(_on_parent_ready)
+	$NameLabel.visible = false
 	
 
 #tells building_gui that it was pressed
@@ -32,12 +34,17 @@ func set_price_visible(b : bool) -> void:
 	commodity_display_manager.visible = b
 	
 	
+func set_name_visible(b : bool) -> void:
+	$NameLabel.visible = b
+	
+	
 func set_up_price_display() -> void:
 	commodity_display_manager.set_commodities_to_price(tower_stats.price)
 			
 			
 func update_size_dependant_properties() -> void:
 	commodity_display_manager.position.x = -commodity_display_manager.size.x / 2
+	$NameLabel.position.x = -1 * $NameLabel.size.x / 2
 	
 	
 func _on_parent_ready() -> void:
@@ -46,7 +53,9 @@ func _on_parent_ready() -> void:
 	
 func _on_focus_entered():
 	set_price_visible(true)
+	set_name_visible(true)
 
 
 func _on_focus_exited():
 	set_price_visible(false)
+	set_name_visible(false)

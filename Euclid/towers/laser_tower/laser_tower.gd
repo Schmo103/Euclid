@@ -6,9 +6,9 @@ extends Tower
 @export var laser_line : Line2D
 @export var laser_ray_cast : RayCast2D
 
-@export var damage : int = 20
+@export var damage : int = 30
 
-@export var load_duration : float = 2.5
+@export var load_duration : float = 2
 var loaded : bool = false
 
 @export var fire_duration : float = 0.5
@@ -45,7 +45,6 @@ func fire_laser() -> void:
 	firing = true
 	target.hit_by_laser(damage)
 	$FireTimer.start()
-	$LoadTimer.start()
 	update_laser_ray_cast()
 	laser_ray_cast.force_raycast_update()
 	
@@ -96,3 +95,4 @@ func _on_load_timer_timeout():
 
 func _on_fire_timer_timeout():
 	quit_firing()
+	$LoadTimer.start()

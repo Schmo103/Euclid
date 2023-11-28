@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="TowerStats" load_steps=4 format=3 uid="uid://dfw0dqebqjti0"]
+
+[ext_resource type="Texture2D" uid="uid://tsoxc08vbmom" path="res://art/icon.svg" id="1_omlrd"]
+[ext_resource type="PackedScene" uid="uid://cltre62dvxnsk" path="res://towers/shock_tower/shock_tower.tscn" id="2_gnpil"]
+[ext_resource type="Script" path="res://resource_scripts/tower_stats.gd" id="3_um1do"]
+
+[resource]
+script = ExtResource("3_um1do")
+name = "Shock Tower"
+menu_icon = ExtResource("1_omlrd")
+build_icon = ExtResource("1_omlrd")
+price = {
+"iron": 1
+}
+type = 0
+scene = ExtResource("2_gnpil")
+source_id = -1
+alternative_tile_id = -1
+auto_exit_build_mode = true
+can_replace_walls = false
+use_custom_can_build = false
+use_custom_build = false

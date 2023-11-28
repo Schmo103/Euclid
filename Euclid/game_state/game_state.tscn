@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://brk4bq6a2nepe"]
+[gd_scene load_steps=11 format=3 uid="uid://brk4bq6a2nepe"]
 
 [ext_resource type="Script" path="res://game_state/game_state.gd" id="1_nxrfd"]
 [ext_resource type="Resource" uid="uid://dclus14rfvurj" path="res://resources/tower_resources/farm_tower_stats.tres" id="3_32cx0"]
@@ -9,8 +9,9 @@
 [ext_resource type="Resource" uid="uid://duk56pcippyn3" path="res://resources/tower_resources/missile_tower_stats.tres" id="5_qjv3k"]
 [ext_resource type="Resource" uid="uid://bf6tpnmarf5d2" path="res://resources/tower_resources/laser_tower_stats.tres" id="6_spmq6"]
 [ext_resource type="Resource" uid="uid://c40p81d2owwc7" path="res://resources/tower_resources/door_stats.tres" id="9_72vc0"]
+[ext_resource type="Resource" uid="uid://dfw0dqebqjti0" path="res://resources/tower_resources/shock_tower_stats.tres" id="10_shsih"]
 
 [node name="GameState" type="Node"]
 script = ExtResource("1_nxrfd")
 commoditys = Array[Resource("res://resource_scripts/commodity.gd")]([ExtResource("3_etdxv"), ExtResource("4_prr8y"), ExtResource("5_4oq3c")])
-towers = Array[Resource("res://resource_scripts/tower_stats.gd")]([ExtResource("3_32cx0"), ExtResource("4_xp82c"), ExtResource("5_qjv3k"), ExtResource("6_spmq6"), ExtResource("9_72vc0")])
+towers = Array[Resource("res://resource_scripts/tower_stats.gd")]([ExtResource("3_32cx0"), ExtResource("4_xp82c"), ExtResource("5_qjv3k"), ExtResource("6_spmq6"), ExtResource("9_72vc0"), ExtResource("10_shsih")])

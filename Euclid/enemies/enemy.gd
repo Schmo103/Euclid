@@ -26,7 +26,7 @@ func hit_by_missile(dmg : int) -> void:
 	take_damage(dmg)
 	
 	
-func hit_by_shock(dmg : int) -> void:
+func hit_by_shock(dmg : int, _t : float) -> void:
 	take_damage(dmg)
 		
 		
