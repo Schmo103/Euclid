@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_yefi0")
-name = "Missile Tower"
+name = "Cannon"
 menu_icon = ExtResource("1_jcrat")
 build_icon = ExtResource("1_jcrat")
 price = {

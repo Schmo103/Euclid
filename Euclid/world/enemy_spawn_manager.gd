@@ -58,6 +58,7 @@ func generate_wave() -> void:
 			wave[e] += 1
 		else:
 			wave[e] = 1
+#	wave = {standard_enemy_scene: 1}
 		
 	
 func spawn_enemy_from_wave_nodes() -> void:
@@ -71,6 +72,7 @@ func get_wave_spawn_point() -> Vector2:
 	#choose randomly from all spawn point children
 	var i = randi_range(0, spawn_points.size() - 1)
 	return spawn_points[i].position
+#	return $SpawnPoint.position
 	
 	
 func increment_wave_difficulty() -> void:

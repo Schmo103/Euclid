@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_7k287")
-name = "Laser Tower"
+name = "Laser Cannon"
 menu_icon = ExtResource("1_xcf85")
 build_icon = ExtResource("1_xcf85")
 price = {
