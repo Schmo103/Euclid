@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=3 format=3 uid="uid://dq6fa80gy114k"]
+
+[ext_resource type="Script" path="res://resource_scripts/enemy_stats.gd" id="1_2xitv"]
+[ext_resource type="PackedScene" uid="uid://d0gitqe6jteul" path="res://enemies/tank/tank.tscn" id="1_8tmgn"]
+
+[resource]
+script = ExtResource("1_2xitv")
+enemy_scene = ExtResource("1_8tmgn")
+cost = 3
+ratio = 1

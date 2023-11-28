@@ -2,15 +2,17 @@ class_name EnemySpawnManager
 extends Node2D
 
 @export var wave_alert : WaveAlert
+@export var enemies : Array[EnemyStats]
+
 
 var standard_enemy_scene : PackedScene = preload("res://enemies/standard/standard_enemy.tscn")
-
-var wave_difficulty : int = 3  #one difficulty point spawns one standard enemy
-var wave_difficulty_increment_rate : int = 2
-
 enum available_enemies {STANDARD}
 var available_enemy_scenes : Array[PackedScene] = [standard_enemy_scene]
 var enemy_ratio : Array[int] = [1]
+
+
+var wave_difficulty : int = 3  #one difficulty point spawns one standard enemy
+var wave_difficulty_increment_rate : int = 2
 
 var wave : Dictionary = {standard_enemy_scene : 3}
 
@@ -27,8 +29,9 @@ func _ready() -> void:
 	
 func _on_final_count_down_ended() -> void:
 	prep_next_wave()
-	launch_wave()
-	increment_wave_difficulty()
+	if not GameState.game_over:
+		launch_wave()
+		increment_wave_difficulty()
 	
 	
 func prep_next_wave() -> void:
@@ -39,11 +42,17 @@ func prep_next_wave() -> void:
 func launch_wave() -> void:
 	#actually instances all the enemies in the wave at wave_spawn_point
 	wave_nodes.clear()
-	for enemy_scene in wave.keys():
-		for i in range(0, wave[enemy_scene]):
-			var e = enemy_scene.instantiate()
-			e.position = wave_spawn_position
-			wave_nodes.append(e)
+	for enemy_stats in enemies:
+		if wave.has(enemy_stats.enemy_scene):
+			for i in range(0, wave[enemy_stats.enemy_scene]):
+				var e = enemy_stats.enemy_scene.instantiate()
+				e.position = wave_spawn_position
+				wave_nodes.append(e)
+#	for enemy_scene in wave.keys():
+#		for i in range(0, wave[enemy_scene]):
+#			var e = enemy_scene.instantiate()
+#			e.position = wave_spawn_position
+#			wave_nodes.append(e)
 	spawn_enemy_from_wave_nodes()
 	#the wave is spawned one enemy at a time, with a small delay between each one
 	$SpawnDelayTimer.start()
@@ -52,20 +61,51 @@ func launch_wave() -> void:
 func generate_wave() -> void:
 	#uses wave difficulty to procedurally generate wave and sets wave Dictionary
 	wave.clear()
-	for i in range(0, wave_difficulty):
-		var e = available_enemy_scenes[available_enemies.STANDARD]
-		if wave.has(e):
-			wave[e] += 1
-		else:
-			wave[e] = 1
-#	wave = {standard_enemy_scene: 1}
+	var points_left : int = wave_difficulty #how many difficulty points we have to spend on enemies
+	var level : int = 0 #the enemy tier we are on
+	var max_level : int = enemies.size() - 1 #the number of enemy tiers
+	var this_round : Dictionary = {} #the enemies we've bought this round
+	while(points_left > 0):
+		#check if can pay
+		var e : EnemyStats = enemies[level]
+		if points_left >= e.cost: #if can afford enemy, buy enemy
+			add_enemy_to_wave(e.enemy_scene)
+			add_enemy_stats_to_dict(e, this_round)
+			points_left -= e.cost
+		else: #if cant afford enemy, go down a level tier
+			if level <= 0:
+				break
+			else:
+				level -= 1
+				continue
+		if this_round.has(e) and this_round[e] >= e.ratio: #if bought enough enemies to advance
+			if level >= max_level: #if at top enemy tier
+				level = 0  #go to bottom enemy tier
+				this_round.clear() #start new round
+			else: #if not at top enemy tier
+				level += 1 #advance to next enemy tier
+	
+	
+	
+func add_enemy_to_wave(ps : PackedScene) -> void:
+	if wave.has(ps):
+		wave[ps] += 1
+	else:
+		wave[ps] = 1
 		
+		
+func add_enemy_stats_to_dict(e : EnemyStats, d : Dictionary) -> void:
+	if d.has(e):
+		d[e] += 1
+	else:
+		d[e] = 1
+
 	
 func spawn_enemy_from_wave_nodes() -> void:
 	if wave_nodes.size() > 0:
-		var e : Enemy = wave_nodes[wave_nodes.size() - 1]
+		var e : Enemy = wave_nodes[0]
 		GameState.enemy_manager.add_child(e)
-		wave_nodes.remove_at(wave_nodes.size() - 1)
+		wave_nodes.remove_at(0)
 	
 	
 func get_wave_spawn_point() -> Vector2:
