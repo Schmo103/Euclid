@@ -50,7 +50,6 @@ offset_right = 110.0
 offset_bottom = -7.0
 
 [node name="EnemyNavAgent" parent="." instance=ExtResource("4_tt4so")]
-debug_enabled = true
 
 [node name="TargetDetector" parent="." instance=ExtResource("5_u1euw")]
 

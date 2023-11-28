@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=3 format=3 uid="uid://c2uf4fh7rp3jw"]
+
+[ext_resource type="PackedScene" uid="uid://duuehqyuhrv7t" path="res://enemies/standard/standard_enemy.tscn" id="1_7d21k"]
+[ext_resource type="Script" path="res://resource_scripts/enemy_stats.gd" id="1_uuea2"]
+
+[resource]
+script = ExtResource("1_uuea2")
+enemy_scene = ExtResource("1_7d21k")
+cost = 1
+ratio = 3

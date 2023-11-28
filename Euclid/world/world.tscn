@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cykj8da6g4hau"]
+[gd_scene load_steps=35 format=3 uid="uid://cykj8da6g4hau"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_ybw44"]
 [ext_resource type="PackedScene" uid="uid://xuh3cejcnnw" path="res://player/player.tscn" id="2_bcibk"]
@@ -22,7 +22,11 @@
 [ext_resource type="PackedScene" uid="uid://cwte17ddcw616" path="res://towers/laser_tower/laser_tower.tscn" id="13_ythck"]
 [ext_resource type="Script" path="res://world/missiles.gd" id="20_0jy7k"]
 [ext_resource type="Script" path="res://world/enemy_spawn_manager.gd" id="23_aikf7"]
-[ext_resource type="PackedScene" path="res://world/spawn_point.tscn" id="23_fwq60"]
+
+[ext_resource type="PackedScene" uid="uid://fem8m6v7kedu" path="res://world/spawn_point.tscn" id="23_fwq60"]
+[ext_resource type="Resource" uid="uid://c2uf4fh7rp3jw" path="res://resources/enemy_resources/standard_enemy_stats.tres" id="23_nbo8p"]
+[ext_resource type="Resource" uid="uid://dq6fa80gy114k" path="res://resources/enemy_resources/tank_stats.tres" id="24_qml70"]
+
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sv1bm"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -155,6 +159,7 @@ one_shot = true
 [node name="EnemySpawnManager" type="Node2D" parent="." node_paths=PackedStringArray("wave_alert")]
 script = ExtResource("23_aikf7")
 wave_alert = NodePath("../GUILayer/WaveAlert")
+enemies = Array[Resource("res://resource_scripts/enemy_stats.gd")]([ExtResource("23_nbo8p"), ExtResource("24_qml70")])
 
 [node name="SpawnPoint" parent="EnemySpawnManager" instance=ExtResource("23_fwq60")]
 position = Vector2(531, -428)

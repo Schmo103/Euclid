@@ -3,6 +3,9 @@ extends Node2D
 
 @export var commodity : Commodity
 
+@export var off_map_image : Sprite2D
+@export var off_map_body : StaticBody2D
+
 var tile_pos : Vector2
 
 
