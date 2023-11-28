@@ -1,21 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://q40fxm5q0pey"]
+[gd_scene load_steps=4 format=3 uid="uid://dnu1cgouhc2by"]
 
 [ext_resource type="Script" path="res://towers/missile_tower/missile.gd" id="1_ri7c0"]
-[ext_resource type="Texture2D" uid="uid://cybeavxvgpui4" path="res://towers/missile_tower/missile-tower.png" id="2_h5rxr"]
+[ext_resource type="Texture2D" uid="uid://c85gy73nrfd1u" path="res://art/filler_missile.png" id="2_8s733"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ys2dh"]
-radius = 11.0454
+radius = 14.0
 
 [node name="Missile" type="Area2D"]
 script = ExtResource("1_ri7c0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(0.02, 0.02)
-texture = ExtResource("2_h5rxr")
+texture = ExtResource("2_8s733")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 9)
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_ys2dh")
 
 [node name="DurationTimer" type="Timer" parent="."]

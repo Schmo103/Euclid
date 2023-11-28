@@ -22,9 +22,11 @@
 [ext_resource type="PackedScene" uid="uid://cwte17ddcw616" path="res://towers/laser_tower/laser_tower.tscn" id="13_ythck"]
 [ext_resource type="Script" path="res://world/missiles.gd" id="20_0jy7k"]
 [ext_resource type="Script" path="res://world/enemy_spawn_manager.gd" id="23_aikf7"]
+
 [ext_resource type="PackedScene" uid="uid://fem8m6v7kedu" path="res://world/spawn_point.tscn" id="23_fwq60"]
 [ext_resource type="Resource" uid="uid://c2uf4fh7rp3jw" path="res://resources/enemy_resources/standard_enemy_stats.tres" id="23_nbo8p"]
 [ext_resource type="Resource" uid="uid://dq6fa80gy114k" path="res://resources/enemy_resources/tank_stats.tres" id="24_qml70"]
+
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sv1bm"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -90,6 +92,7 @@ script = ExtResource("3_ioyl6")
 build_icon = NodePath("../BuildIcon")
 
 [node name="BackTileMap" type="TileMap" parent="."]
+modulate = Color(0.580392, 0.576471, 0.580392, 1)
 z_index = -4026
 scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_efxu0")
@@ -126,6 +129,7 @@ script = ExtResource("20_0jy7k")
 
 [node name="BuildIcon" type="Sprite2D" parent="."]
 z_index = 4026
+texture_filter = 1
 script = ExtResource("3_6n720")
 faded_modulate = Color(0.552941, 0.552941, 0.552941, 1)
 

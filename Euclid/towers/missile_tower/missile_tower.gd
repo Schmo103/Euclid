@@ -7,10 +7,10 @@ var missile_scene : PackedScene = preload("res://towers/missile_tower/missile.ts
 
 @export var damage : int = 10
 
-@export var load_time : float = 1
+@export var load_time : float = 2.5
 var loaded : bool = false
 
-@export var missile_speed : float = 300
+@export var missile_speed : float = 1000
 var target : Node2D = null
 
 

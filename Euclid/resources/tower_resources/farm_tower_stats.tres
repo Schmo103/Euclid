@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="TowerStats" load_steps=4 format=3 uid="uid://dclus14rfvurj"]
+[gd_resource type="Resource" script_class="TowerStats" load_steps=5 format=3 uid="uid://dclus14rfvurj"]
 
-[ext_resource type="Texture2D" uid="uid://d2t34jhxjn023" path="res://art/filler_farm_icon.png" id="1_lo5ek"]
+[ext_resource type="Texture2D" uid="uid://djj72xaub2any" path="res://towers/farm_tower/drill-icon.png" id="1_gjlnh"]
+[ext_resource type="Texture2D" uid="uid://cj6lg6vk6ijn3" path="res://towers/farm_tower/drill-symbol.png" id="2_4gcy6"]
 [ext_resource type="PackedScene" uid="uid://dq3c086d7rslo" path="res://towers/farm_tower/farm_tower.tscn" id="2_boh8r"]
 [ext_resource type="Script" path="res://resource_scripts/tower_stats.gd" id="3_6h2jl"]
 
 [resource]
 script = ExtResource("3_6h2jl")
 name = "Drill"
-menu_icon = ExtResource("1_lo5ek")
-build_icon = ExtResource("1_lo5ek")
+menu_icon = ExtResource("2_4gcy6")
+build_icon = ExtResource("1_gjlnh")
 price = {
 "iron": 4
 }
