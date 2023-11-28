@@ -2,18 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-
-uid="uid://cvap364kws3qv"
-
-path="res://.godot/imported/walls.png-9b0a6e6691429fa490e0a36aa8a78076.ctex"
+uid="uid://kmxx6pqboxyk"
+path="res://.godot/imported/missile-tower.png-e869b7aee084f2f18e0faa915d147542.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://towers/wall/walls.png"
-dest_files=["res://.godot/imported/walls.png-9b0a6e6691429fa490e0a36aa8a78076.ctex"]
+source_file="res://towers/laser_tower/missile-tower.png"
+dest_files=["res://.godot/imported/missile-tower.png-e869b7aee084f2f18e0faa915d147542.ctex"]
 
 [params]
 
