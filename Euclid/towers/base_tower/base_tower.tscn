@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://buehegmukws0f"]
 
 [ext_resource type="Script" path="res://towers/base_tower/base_tower.gd" id="1_ufadr"]
-[ext_resource type="Texture2D" uid="uid://cm6vuj2ilkpwa" path="res://art/filler_art_spritesheet.png" id="2_d11jf"]
+[ext_resource type="Texture2D" uid="uid://tsoxc08vbmom" path="res://art/icon.svg" id="2_o8ojb"]
 [ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="3_bxk4b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wyx6t"]
@@ -12,21 +12,22 @@ collision_layer = 3
 script = ExtResource("1_ufadr")
 health_display = NodePath("HealthDisplay")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, -21)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_o8ojb")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wyx6t")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_d11jf")
-hframes = 16
-vframes = 16
-frame = 1
-
 [node name="HealthDisplay" parent="." instance=ExtResource("3_bxk4b")]
-offset_left = -21.0
-offset_top = -31.0
-offset_right = 117.0
-offset_bottom = 11.0
+offset_left = -17.0
+offset_top = -72.0
+offset_right = 121.0
+offset_bottom = -30.0
 scale = Vector2(0.3, 0.15)
 
 [node name="Camera2D" type="Camera2D" parent="."]
