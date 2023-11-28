@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://d0gitqe6jteul"]
+
+[ext_resource type="Script" path="res://enemies/tank/tank.gd" id="1_1pkwo"]
+[ext_resource type="Texture2D" uid="uid://cm6vuj2ilkpwa" path="res://art/filler_art_spritesheet.png" id="2_6g2o8"]
+[ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="2_qmsl0"]
+[ext_resource type="PackedScene" uid="uid://cjogwv6voqj5x" path="res://enemies/standard/enemy_nav_agent.tscn" id="4_tt4so"]
+[ext_resource type="PackedScene" uid="uid://bo23cd1o3mwmr" path="res://enemies/standard/enemy_target_detector.tscn" id="5_u1euw"]
+[ext_resource type="Script" path="res://enemies/standard/state_machine.gd" id="6_sa71w"]
+[ext_resource type="Script" path="res://enemies/tank/tank_traveling.gd" id="7_5dbks"]
+[ext_resource type="Script" path="res://enemies/tank/tank_attacking.gd" id="8_ygdpy"]
+[ext_resource type="Script" path="res://enemies/tank/tank_fighting.gd" id="9_hxvae"]
+[ext_resource type="Script" path="res://enemies/tank/tank_shocked.gd" id="10_ne0oa"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qcqxl"]
+radius = 20.0
+height = 62.0
+
+[node name="Tank" type="RigidBody2D" node_paths=PackedStringArray("health_display", "nav_agent", "state_machine", "target_detector", "shocked")]
+collision_layer = 21
+custom_integrator = true
+max_contacts_reported = 4
+contact_monitor = true
+lock_rotation = true
+script = ExtResource("1_1pkwo")
+health_display = NodePath("HealthDisplay")
+nav_agent = NodePath("EnemyNavAgent")
+state_machine = NodePath("StateMachine")
+target_detector = NodePath("TargetDetector")
+shocked = NodePath("StateMachine/Shocked")
+damage_dealt = 30
+health = 200
+speed = 5000
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_6g2o8")
+hframes = 16
+vframes = 16
+frame = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_qcqxl")
+
+[node name="HealthDisplay" parent="." instance=ExtResource("2_qmsl0")]
+offset_left = -28.0
+offset_top = -49.0
+offset_right = 110.0
+offset_bottom = -7.0
+
+[node name="EnemyNavAgent" parent="." instance=ExtResource("4_tt4so")]
+debug_enabled = true
+
+[node name="TargetDetector" parent="." instance=ExtResource("5_u1euw")]
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("6_sa71w")
+initial_state = NodePath("Traveling")
+
+[node name="Traveling" type="Node" parent="StateMachine" node_paths=PackedStringArray("fighting", "enemy")]
+script = ExtResource("7_5dbks")
+fighting = NodePath("../Fighting")
+enemy = NodePath("../..")
+
+[node name="Attacking" type="Node" parent="StateMachine" node_paths=PackedStringArray("fighting", "attacking_timer", "enemy")]
+script = ExtResource("8_ygdpy")
+fighting = NodePath("../Fighting")
+attacking_timer = NodePath("Timer")
+enemy = NodePath("../..")
+
+[node name="Timer" type="Timer" parent="StateMachine/Attacking"]
+
+[node name="Fighting" type="Node" parent="StateMachine" node_paths=PackedStringArray("attacking", "traveling", "enemy")]
+script = ExtResource("9_hxvae")
+attacking = NodePath("../Attacking")
+traveling = NodePath("../Traveling")
+enemy = NodePath("../..")
+
+[node name="Shocked" type="Node" parent="StateMachine" node_paths=PackedStringArray("shock_timer", "enemy")]
+script = ExtResource("10_ne0oa")
+shock_timer = NodePath("Timer")
+enemy = NodePath("../..")
+
+[node name="Timer" type="Timer" parent="StateMachine/Shocked"]

@@ -20,6 +20,7 @@ var moving : bool = false
 func _ready() -> void:
 	super()
 	health_display.max_value = health
+	health_display.value = health
 	
 	
 #the enemies standard attack function
@@ -71,7 +72,8 @@ func _integrate_forces(s : PhysicsDirectBodyState2D) -> void:
 	
 	
 func set_health(h : int) -> int:
-	health_display.value = super(h)
+	if health_display != null:
+		health_display.value = super(h)
 	return super(h)
 	
 

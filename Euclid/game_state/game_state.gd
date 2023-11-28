@@ -39,4 +39,6 @@ func end_game() -> void:
 	
 func start_game() -> void:
 	game_over = false
+	
+
  
