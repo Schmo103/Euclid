@@ -3,7 +3,8 @@ extends Wall
 
 
 
-var middle_door_ids : Array = [0, 1] #horizontal, vertical
+var middle_door_ids : Array = [3, 7] #horizontal, vertical
+var solo_door_id : int = 3
 
 func _ready() -> void:
 	super()
@@ -17,3 +18,5 @@ func update_image() -> void:
 	elif adjacents[Vector2.UP] or adjacents[Vector2.DOWN]:
 		horizontal = false
 		set_image(middle_door_ids[1])
+	else:
+		set_image(solo_door_id)
