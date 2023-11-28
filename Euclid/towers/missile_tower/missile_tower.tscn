@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://towers/missile_tower/missile_tower.gd" id="1_v2k5x"]
 [ext_resource type="Texture2D" uid="uid://cybeavxvgpui4" path="res://towers/missile_tower/missile-tower.png" id="2_vt4j8"]
-[ext_resource type="PackedScene" path="res://towers/tower_menu.tscn" id="4_1b52b"]
+[ext_resource type="PackedScene" uid="uid://d1l2j3f38vbc0" path="res://towers/tower_menu.tscn" id="4_1b52b"]
 [ext_resource type="PackedScene" path="res://player/health_display.tscn" id="4_76p3g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5hmj"]

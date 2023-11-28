@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="TowerStats" load_steps=4 format=3 uid="uid://bf6tpnmarf5d2"]
+[gd_resource type="Resource" script_class="TowerStats" load_steps=5 format=3 uid="uid://bf6tpnmarf5d2"]
 
-[ext_resource type="Texture2D" uid="uid://tsoxc08vbmom" path="res://art/icon.svg" id="1_xcf85"]
+[ext_resource type="Texture2D" uid="uid://d0si3ywqbe0he" path="res://towers/laser_tower/laser-tower-icon.png" id="1_o6gxq"]
 [ext_resource type="PackedScene" uid="uid://cwte17ddcw616" path="res://towers/laser_tower/laser_tower.tscn" id="2_4g7m7"]
 [ext_resource type="Script" path="res://resource_scripts/tower_stats.gd" id="2_7k287"]
+[ext_resource type="Texture2D" uid="uid://ce1v7yxu3hjwp" path="res://towers/laser_tower/laser-symbol.png" id="2_wherx"]
 
 [resource]
 script = ExtResource("2_7k287")
 name = "Laser Cannon"
-menu_icon = ExtResource("1_xcf85")
-build_icon = ExtResource("1_xcf85")
+menu_icon = ExtResource("2_wherx")
+build_icon = ExtResource("1_o6gxq")
 price = {
 "iron": 1
 }
