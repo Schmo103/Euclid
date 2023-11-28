@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cwte17ddcw616" path="res://towers/laser_tower/laser_tower.tscn" id="13_ythck"]
 [ext_resource type="Script" path="res://world/missiles.gd" id="20_0jy7k"]
 [ext_resource type="Script" path="res://world/enemy_spawn_manager.gd" id="23_aikf7"]
-[ext_resource type="PackedScene" uid="uid://fem8m6v7kedu" path="res://world/spawn_point.tscn" id="23_fwq60"]
+[ext_resource type="PackedScene" path="res://world/spawn_point.tscn" id="23_fwq60"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sv1bm"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
