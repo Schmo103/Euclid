@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://duuehqyuhrv7t"]
 
 [ext_resource type="Script" path="res://enemies/standard/standard_enemy.gd" id="1_mpa65"]
-[ext_resource type="Texture2D" uid="uid://cm6vuj2ilkpwa" path="res://art/filler_art_spritesheet.png" id="2_xduw2"]
+[ext_resource type="Texture2D" uid="uid://bcoqkcke30td" path="res://enemies/standard/bug-left-right.png" id="2_3x3o2"]
 [ext_resource type="PackedScene" uid="uid://bo23cd1o3mwmr" path="res://enemies/standard/enemy_target_detector.tscn" id="3_cg8cs"]
-[ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="3_yqmvh"]
+[ext_resource type="PackedScene" path="res://player/health_display.tscn" id="3_yqmvh"]
 [ext_resource type="Script" path="res://enemies/standard/state_machine.gd" id="4_7enym"]
 [ext_resource type="PackedScene" uid="uid://cjogwv6voqj5x" path="res://enemies/standard/enemy_nav_agent.tscn" id="4_b0r6s"]
 [ext_resource type="Script" path="res://enemies/standard/traveling.gd" id="5_p03hv"]
@@ -27,14 +27,13 @@ nav_agent = NodePath("EnemyNavAgent")
 state_machine = NodePath("StateMachine")
 target_detector = NodePath("TargetDetector")
 shocked = NodePath("StateMachine/Shocked")
-speed = 7000
+speed = 10000
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("2_xduw2")
-hframes = 16
-vframes = 16
-frame = 5
+texture_filter = 1
+position = Vector2(0, 6)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_3x3o2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12)
@@ -42,6 +41,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3xlfo")
 
 [node name="TargetDetector" parent="." instance=ExtResource("3_cg8cs")]
+visible = false
 
 [node name="HealthDisplay" parent="." instance=ExtResource("3_yqmvh")]
 offset_left = -28.0

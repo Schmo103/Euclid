@@ -88,6 +88,7 @@ script = ExtResource("3_ioyl6")
 build_icon = NodePath("../BuildIcon")
 
 [node name="BackTileMap" type="TileMap" parent="."]
+modulate = Color(0.580392, 0.576471, 0.580392, 1)
 z_index = -4026
 scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_efxu0")

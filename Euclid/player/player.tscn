@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://xuh3cejcnnw"]
+[gd_scene load_steps=14 format=3 uid="uid://xuh3cejcnnw"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_8a4sk"]
 [ext_resource type="Texture2D" uid="uid://cm6vuj2ilkpwa" path="res://art/filler_art_spritesheet.png" id="2_4uf64"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cob8bhqgm31l4" path="res://player/left-right-ref.png" id="4_onb86"]
 [ext_resource type="Texture2D" uid="uid://dvrcqlvp3myr8" path="res://player/ forward-ref.png" id="7_spwbl"]
 [ext_resource type="Texture2D" uid="uid://bt31qd8hbaims" path="res://player/backward-ref.png" id="8_8jfcv"]
+[ext_resource type="Texture2D" uid="uid://b876g15xbbygd" path="res://player/forward.png" id="9_0xm45"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t6cpi"]
 radius = 20.0
@@ -885,12 +886,6 @@ z_index = -3
 position = Vector2(163, -50)
 texture = ExtResource("4_onb86")
 
-[node name="leftrightref2" type="Sprite2D" parent="left_right_visuals"]
-visible = false
-z_index = -3
-position = Vector2(163, -50)
-texture = ExtResource("4_onb86")
-
 [node name="arm_right_top" type="Polygon2D" parent="left_right_visuals"]
 position = Vector2(297, -505)
 offset = Vector2(-1401, -334)
@@ -1034,3 +1029,9 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("8_8jfcv")
 
 [node name="up_visuals" type="Node2D" parent="."]
+visible = false
+
+[node name="torso_mid" type="Polygon2D" parent="up_visuals"]
+texture = ExtResource("9_0xm45")
+polygon = PackedVector2Array(873.171, 719.512, 1231.71, 721.951, 1246.34, 1007.32, 1029.27, 1273.17, 824.39, 1004.88)
+uv = PackedVector2Array(873.171, 719.512, 1231.71, 721.951, 1246.34, 1007.32, 1029.27, 1273.17, 824.39, 1004.88)
