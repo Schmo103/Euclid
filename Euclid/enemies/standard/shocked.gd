@@ -14,12 +14,9 @@ func initiate_state() -> void:
 	super()
 	shock_timer.wait_time = shock_time
 	shock_timer.start()
-	print("enemy shocked")
 	
 	
 func _on_shock_timer_timeout() -> void:
-	print("exiting shock")
-	print("entering state: " + str(old_state))
 	enemy.state_machine.transition_to(old_state)
 
 
