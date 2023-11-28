@@ -42,9 +42,9 @@ func _ready():
 	
 	if tower_menu != null:
 		tower_menu.sell_clicked.connect(_on_sell_clicked)
-#		tower_menu.position =
 	else:
-		push_error("Tower: " + str(self) + " at pos: " + str(tile_pos) + "has no menu assigned") 
+#		push_error("Tower: " + str(self) + " at pos: " + str(tile_pos) + "has no menu assigned") 
+		pass
 	
 	
 func _exit_tree():

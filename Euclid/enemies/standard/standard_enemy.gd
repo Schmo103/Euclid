@@ -6,6 +6,8 @@ extends Enemy
 @export var state_machine : StateMachine
 @export var target_detector : Area2D
 
+@export var shocked : Shocked
+
 var on_route : bool
 
 var lv : Vector2
@@ -23,6 +25,13 @@ func _ready() -> void:
 #the enemies standard attack function
 func attack_target(target : Node) -> void:
 	target.take_damage(damage_dealt)
+	
+	
+func hit_by_shock(dmg : int, t : float) -> void:
+	super(dmg, t)
+	shocked.shock_time = t
+	shocked.old_state = state_machine.state
+	state_machine.transition_to(shocked)
 	
 
 #adjusts z_index so for semi isometric view

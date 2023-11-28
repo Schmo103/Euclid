@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://duuehqyuhrv7t"]
+[gd_scene load_steps=11 format=3 uid="uid://duuehqyuhrv7t"]
 
 [ext_resource type="Script" path="res://enemies/standard/standard_enemy.gd" id="1_mpa65"]
 [ext_resource type="Texture2D" uid="uid://cm6vuj2ilkpwa" path="res://art/filler_art_spritesheet.png" id="2_xduw2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://enemies/standard/traveling.gd" id="5_p03hv"]
 [ext_resource type="Script" path="res://enemies/standard/fighting.gd" id="6_u6d1y"]
 [ext_resource type="Script" path="res://enemies/standard/attacking.gd" id="7_tu2eq"]
+[ext_resource type="Script" path="res://enemies/standard/shocked.gd" id="8_42cdp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3xlfo"]
 radius = 20.0
@@ -15,7 +16,7 @@ height = 62.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_lgs81"]
 radius = 76.0066
 
-[node name="StandardEnemy" type="RigidBody2D" node_paths=PackedStringArray("health_display", "nav_agent", "state_machine", "target_detector")]
+[node name="StandardEnemy" type="RigidBody2D" node_paths=PackedStringArray("health_display", "nav_agent", "state_machine", "target_detector", "shocked")]
 collision_layer = 21
 custom_integrator = true
 max_contacts_reported = 1
@@ -26,6 +27,7 @@ health_display = NodePath("HealthDisplay")
 nav_agent = NodePath("NavigationAgent2D")
 state_machine = NodePath("StateMachine")
 target_detector = NodePath("TargetDetector")
+shocked = NodePath("StateMachine/Shocked")
 speed = 7000
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -81,6 +83,14 @@ attacking_timer = NodePath("AttackingTimer")
 enemy = NodePath("../..")
 
 [node name="AttackingTimer" type="Timer" parent="StateMachine/Attacking"]
+one_shot = true
+
+[node name="Shocked" type="Node" parent="StateMachine" node_paths=PackedStringArray("shock_timer", "enemy")]
+script = ExtResource("8_42cdp")
+shock_timer = NodePath("ShockTimer")
+enemy = NodePath("../..")
+
+[node name="ShockTimer" type="Timer" parent="StateMachine/Shocked"]
 one_shot = true
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

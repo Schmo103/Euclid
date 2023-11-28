@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("3_b3r0p")
-name = "door"
+name = "Gate"
 menu_icon = ExtResource("1_leko0")
 build_icon = ExtResource("1_leko0")
 price = {
