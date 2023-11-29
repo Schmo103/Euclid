@@ -13,7 +13,12 @@ var enemy_ratio : Array[int] = [1]
 
 var wave_difficulty : int = 3  #one difficulty point spawns one standard enemy
 var wave_difficulty_increment_rate : int = 2
+var wave_difficulty_one_time_bonus : int = 0
 
+@export var wave_boss_bonus : int = 15
+
+var wave_count : int = 0
+var first_wave : bool = true
 var wave : Dictionary = {standard_enemy_scene : 3}
 
 var wave_nodes : Array[Enemy]
@@ -28,10 +33,17 @@ func _ready() -> void:
 	
 	
 func _on_final_count_down_ended() -> void:
+	if wave_count % GameState.back_tile_map.waves_per_expansion == 0 and not first_wave:
+		#boss wave stuff here
+		wave_difficulty_one_time_bonus = wave_boss_bonus
+		GameState.back_tile_map.expand_map()
+		
+	first_wave = false
 	prep_next_wave()
 	if not GameState.game_over:
 		launch_wave()
 		increment_wave_difficulty()
+	wave_count += 1
 	
 	
 func prep_next_wave() -> void:
@@ -61,7 +73,8 @@ func launch_wave() -> void:
 func generate_wave() -> void:
 	#uses wave difficulty to procedurally generate wave and sets wave Dictionary
 	wave.clear()
-	var points_left : int = wave_difficulty #how many difficulty points we have to spend on enemies
+	var points_left : int = wave_difficulty + wave_difficulty_one_time_bonus #how many difficulty points we have to spend on enemies
+	wave_difficulty_one_time_bonus = 0
 	var level : int = 0 #the enemy tier we are on
 	var max_level : int = enemies.size() - 1 #the number of enemy tiers
 	var this_round : Dictionary = {} #the enemies we've bought this round
@@ -131,3 +144,5 @@ func register_spawn_points() -> void:
 	for c in get_children():
 		if c.is_in_group("spawn_point"):
 			spawn_points.append(c)
+			
+			

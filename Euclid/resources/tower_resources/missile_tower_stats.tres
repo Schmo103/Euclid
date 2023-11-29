@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="TowerStats" load_steps=5 format=3 uid="uid://duk56pcippyn3"]
+[gd_resource type="Resource" script_class="TowerStats" load_steps=6 format=3 uid="uid://duk56pcippyn3"]
 
 [ext_resource type="Texture2D" uid="uid://d1k5fsc33el1u" path="res://towers/missile_tower/missile-tower-icon.png" id="1_bbl6n"]
 [ext_resource type="Texture2D" uid="uid://d16kmspxgbl3v" path="res://towers/missile_tower/missile-symbol.png" id="2_3twes"]
 [ext_resource type="PackedScene" uid="uid://cef18jyr72ni8" path="res://towers/missile_tower/missile_tower.tscn" id="2_w1l1o"]
 [ext_resource type="Script" path="res://resource_scripts/tower_stats.gd" id="2_yefi0"]
+[ext_resource type="Resource" uid="uid://b0fxcwwdxie5r" path="res://resources/range_resources/standard_circle.tres" id="3_eqir4"]
 
 [resource]
 script = ExtResource("2_yefi0")
@@ -13,6 +14,7 @@ build_icon = ExtResource("1_bbl6n")
 price = {
 "iron": 1
 }
+range_stats = ExtResource("3_eqir4")
 type = 1
 scene = ExtResource("2_w1l1o")
 source_id = 0

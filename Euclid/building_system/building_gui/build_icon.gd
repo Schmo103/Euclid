@@ -7,6 +7,7 @@ extends Sprite2D
 @onready var tower_detector : Area2D = $TowerDetector
 @onready var mob_detector : Area2D = $MobDetector
 @onready var message : Label = $Message
+@onready var range_display : RangeDisplay = $RangeDisplay
 
 #sets areas rect shape to the size of a tile
 func _ready() -> void:
@@ -31,6 +32,11 @@ func get_are_overlapping_towers() -> Array[Node2D]:
 	
 func set_message(m : String) -> void:
 	message.text = m
+	
+	
+func set_range_stats(r : RangeStats) -> void:
+	range_display.range_stats = r
+	range_display.update_range_properties()
 	
 
 #sets whether the modulate is applied

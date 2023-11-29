@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RangeStats" load_steps=2 format=3 uid="uid://bj1p37ol01a2c"]
+
+[ext_resource type="Script" path="res://resource_scripts/range_stats.gd" id="1_aytkb"]
+
+[resource]
+script = ExtResource("1_aytkb")
+display_range = 160.0
+range_mode = 1
+range_modulate = Color(0, 0.36, 0.98, 0.21)

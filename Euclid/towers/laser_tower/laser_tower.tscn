@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwte17ddcw616"]
+[gd_scene load_steps=8 format=3 uid="uid://cwte17ddcw616"]
 
 [ext_resource type="Script" path="res://towers/laser_tower/laser_tower.gd" id="1_i48fo"]
 [ext_resource type="Texture2D" uid="uid://4il3d8qy75lb" path="res://towers/laser_tower/laser-tower.png" id="2_8j6c3"]
-[ext_resource type="PackedScene" path="res://player/health_display.tscn" id="3_m34yn"]
+[ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="3_m34yn"]
 [ext_resource type="PackedScene" uid="uid://d1l2j3f38vbc0" path="res://towers/tower_menu.tscn" id="4_mn7y1"]
+[ext_resource type="PackedScene" uid="uid://b4aordcpip1xt" path="res://towers/range_display/range_display.tscn" id="5_d8h8i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vplbq"]
 size = Vector2(27, 18)
@@ -11,7 +12,7 @@ size = Vector2(27, 18)
 [sub_resource type="CircleShape2D" id="CircleShape2D_5kc2r"]
 radius = 125.0
 
-[node name="LaserTower" type="StaticBody2D" node_paths=PackedStringArray("enemy_detector", "laser_fire_postion", "laser_line", "laser_ray_cast", "health_display", "tower_menu")]
+[node name="LaserTower" type="StaticBody2D" node_paths=PackedStringArray("enemy_detector", "laser_fire_postion", "laser_line", "laser_ray_cast", "health_display", "tower_menu", "range_display")]
 collision_layer = 3
 script = ExtResource("1_i48fo")
 enemy_detector = NodePath("EnemyDetector")
@@ -22,6 +23,12 @@ fire_duration = 1.0
 type = 1
 health_display = NodePath("HealthDisplay")
 tower_menu = NodePath("TowerMenu")
+range_display = NodePath("RangeDisplay")
+
+[node name="RangeDisplay" parent="." instance=ExtResource("5_d8h8i")]
+
+[node name="LaserRayCast" type="RayCast2D" parent="."]
+collision_mask = 16
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2, -5)
@@ -47,7 +54,6 @@ scale = Vector2(0.19, 0.1)
 one_shot = true
 
 [node name="EnemyDetector" type="Area2D" parent="."]
-visible = false
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
@@ -59,9 +65,6 @@ one_shot = true
 [node name="LaserLine" type="Line2D" parent="."]
 width = 2.0
 default_color = Color(0.0392157, 0.607843, 0.941176, 1)
-
-[node name="LaserRayCast" type="RayCast2D" parent="."]
-collision_mask = 16
 
 [connection signal="timeout" from="LoadTimer" to="." method="_on_load_timer_timeout"]
 [connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]

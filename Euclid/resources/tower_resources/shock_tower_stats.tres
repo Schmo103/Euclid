@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="TowerStats" load_steps=4 format=3 uid="uid://dfw0dqebqjti0"]
+[gd_resource type="Resource" script_class="TowerStats" load_steps=5 format=3 uid="uid://dfw0dqebqjti0"]
 
 [ext_resource type="Texture2D" uid="uid://tsoxc08vbmom" path="res://art/icon.svg" id="1_omlrd"]
 [ext_resource type="PackedScene" uid="uid://cltre62dvxnsk" path="res://towers/shock_tower/shock_tower.tscn" id="2_gnpil"]
+[ext_resource type="Resource" uid="uid://b0fxcwwdxie5r" path="res://resources/range_resources/standard_circle.tres" id="2_tp3jn"]
 [ext_resource type="Script" path="res://resource_scripts/tower_stats.gd" id="3_um1do"]
 
 [resource]
@@ -12,6 +13,7 @@ build_icon = ExtResource("1_omlrd")
 price = {
 "iron": 1
 }
+range_stats = ExtResource("2_tp3jn")
 type = 0
 scene = ExtResource("2_gnpil")
 source_id = -1
