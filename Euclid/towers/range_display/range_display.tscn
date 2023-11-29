@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4aordcpip1xt"]
+
+[ext_resource type="Script" path="res://towers/range_display/range_display.gd" id="1_57723"]
+[ext_resource type="Resource" uid="uid://b0fxcwwdxie5r" path="res://resources/range_resources/standard_circle.tres" id="2_m80xy"]
+[ext_resource type="Texture2D" uid="uid://nh0jvmm6i7vm" path="res://towers/range_display/range_square_image.png" id="2_tjv1v"]
+[ext_resource type="Texture2D" uid="uid://d3uhm6obmr1ib" path="res://towers/range_display/range_circle_image.png" id="3_fvcom"]
+
+[node name="RangeDisplay" type="Node2D"]
+z_index = 4090
+z_as_relative = false
+script = ExtResource("1_57723")
+range_stats = ExtResource("2_m80xy")
+
+[node name="Square" type="Sprite2D" parent="."]
+texture = ExtResource("2_tjv1v")
+
+[node name="Circle" type="Sprite2D" parent="."]
+scale = Vector2(16, 16)
+texture = ExtResource("3_fvcom")

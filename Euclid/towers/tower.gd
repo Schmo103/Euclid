@@ -26,6 +26,8 @@ var tile_pos : Vector2
 
 @export var tower_menu : TowerMenu
 
+@export var range_display : RangeDisplay
+
 
 func _ready():
 	#make tile not navigatable
@@ -45,6 +47,7 @@ func _ready():
 	else:
 #		push_error("Tower: " + str(self) + " at pos: " + str(tile_pos) + "has no menu assigned") 
 		pass
+	safe_set_range_visible(false)
 	
 	
 func _exit_tree():
@@ -71,19 +74,30 @@ func _unhandled_input(event) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			var mp = get_local_mouse_position()
 			if max(abs(mp.x), abs(mp.y)) < TILE_SIZE / 2.0:
-				print("tower " + str(self) + "has seriously been clicked at pos: " + str(tile_pos))
-				safe_set_tower_menu_visible(true)
+#				print("tower " + str(self) + "has seriously been clicked at pos: " + str(tile_pos))
+				set_tower_specific_info_visible(true)
 			else:
-				safe_set_tower_menu_visible(false)
+				set_tower_specific_info_visible(false)
 				
 				
 func sell() -> void:
 	fall()
 	
 	
+#shows and hides things when tower is clicked
+func set_tower_specific_info_visible(b : bool) -> void:
+	safe_set_tower_menu_visible(b)
+	safe_set_range_visible(b)
+	
+	
 func safe_set_tower_menu_visible(b : bool) -> void:
 	if tower_menu != null:
 		tower_menu.visible = b
+		
+		
+func safe_set_range_visible(b : bool) -> void:
+	if range_display != null:
+		range_display.set_range_visible(b)
 	
 	
 func safe_get_tower_menu_visible() -> bool:

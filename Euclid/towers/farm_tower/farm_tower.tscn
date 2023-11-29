@@ -1,18 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://dq3c086d7rslo"]
+[gd_scene load_steps=7 format=3 uid="uid://dq3c086d7rslo"]
 
 [ext_resource type="Script" path="res://towers/farm_tower/farm_tower.gd" id="1_05r2u"]
 [ext_resource type="Texture2D" uid="uid://16qi82vuffoj" path="res://towers/farm_tower/drill.png" id="2_kbn8q"]
-[ext_resource type="PackedScene" path="res://player/health_display.tscn" id="3_1itt7"]
+[ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="3_1itt7"]
 [ext_resource type="PackedScene" uid="uid://d1l2j3f38vbc0" path="res://towers/tower_menu.tscn" id="4_6yrhs"]
+[ext_resource type="PackedScene" uid="uid://b5lhmo83d48s4" path="res://towers/range_display/square_range_display.tscn" id="5_gx40i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_retlc"]
 size = Vector2(32, 22)
 
-[node name="FarmTower" type="StaticBody2D" node_paths=PackedStringArray("health_display", "tower_menu") groups=["farm"]]
+[node name="FarmTower" type="StaticBody2D" node_paths=PackedStringArray("health_display", "tower_menu", "range_display") groups=["farm"]]
 collision_layer = 3
 script = ExtResource("1_05r2u")
 health_display = NodePath("HealthDisplay")
 tower_menu = NodePath("TowerMenu")
+range_display = NodePath("SquareRangeDisplay")
+
+[node name="SquareRangeDisplay" parent="." instance=ExtResource("5_gx40i")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.02, 0.02)

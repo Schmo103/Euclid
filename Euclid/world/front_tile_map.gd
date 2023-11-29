@@ -1,3 +1,4 @@
+class_name FrontTileMap
 extends TileMap
 
 var commodity_terrain : Dictionary
@@ -40,6 +41,7 @@ func build_tower(tower : PackedScene, tower_pos : Vector2) -> void:
 	
 func register_tower(tile_pos : Vector2, t : Tower) -> void:
 	tower_data[tile_pos] = t
+	
 	
 
 

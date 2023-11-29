@@ -14,6 +14,8 @@ enum types {UTIL, DEFENSE}
 #price should be in price format (see doc/toweres.txt)
 @export var price : Dictionary = {"iron": 1}
 
+@export var range_stats : RangeStats = null
+
 @export_enum("UTIL", "DEFENSE") var type : int = types.UTIL
 
 #information corresponding to the tile that should be placed when this tower is built

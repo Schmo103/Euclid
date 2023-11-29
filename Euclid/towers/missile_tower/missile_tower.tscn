@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cef18jyr72ni8"]
+[gd_scene load_steps=8 format=3 uid="uid://cef18jyr72ni8"]
 
 [ext_resource type="Script" path="res://towers/missile_tower/missile_tower.gd" id="1_v2k5x"]
+[ext_resource type="PackedScene" uid="uid://b4aordcpip1xt" path="res://towers/range_display/range_display.tscn" id="2_sk0vy"]
 [ext_resource type="Texture2D" uid="uid://cybeavxvgpui4" path="res://towers/missile_tower/missile-tower.png" id="2_vt4j8"]
 [ext_resource type="PackedScene" uid="uid://d1l2j3f38vbc0" path="res://towers/tower_menu.tscn" id="4_1b52b"]
-[ext_resource type="PackedScene" path="res://player/health_display.tscn" id="4_76p3g"]
+[ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="4_76p3g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5hmj"]
 size = Vector2(24, 15.5)
@@ -11,13 +12,17 @@ size = Vector2(24, 15.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_ec7dw"]
 radius = 125.0
 
-[node name="MissileTower" type="StaticBody2D" node_paths=PackedStringArray("missie_launch_point", "enemy_detector", "health_display", "tower_menu")]
+[node name="MissileTower" type="StaticBody2D" node_paths=PackedStringArray("missie_launch_point", "enemy_detector", "health_display", "tower_menu", "range_display")]
 collision_layer = 3
 script = ExtResource("1_v2k5x")
 missie_launch_point = NodePath("MissileLaunchPoint")
 enemy_detector = NodePath("EnemyDetector")
 health_display = NodePath("HealthDisplay")
 tower_menu = NodePath("TowerMenu")
+range_display = NodePath("RangeDisplay")
+
+[node name="RangeDisplay" parent="." instance=ExtResource("2_sk0vy")]
+visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -5)

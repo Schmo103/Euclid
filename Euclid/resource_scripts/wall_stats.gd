@@ -33,6 +33,8 @@ func can_build(objects : Array, tile_pos : Vector2) -> bool:
 					custom_can_build_message = "Towers can't be built on top of each other"
 				else:
 					custom_can_build_message = "Towers can't be built adjacent to each other"
+			if ob.is_in_group("void"):
+				custom_can_build_message = "Towers can't be built off of the map"
 			return false
 	if adjacent_positions.size() > 2:
 		custom_can_build_message = "Walls can't be layered"

@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="TowerStats" load_steps=5 format=3 uid="uid://bf6tpnmarf5d2"]
+[gd_resource type="Resource" script_class="TowerStats" load_steps=6 format=3 uid="uid://bf6tpnmarf5d2"]
 
 [ext_resource type="Texture2D" uid="uid://d0si3ywqbe0he" path="res://towers/laser_tower/laser-tower-icon.png" id="1_o6gxq"]
 [ext_resource type="PackedScene" uid="uid://cwte17ddcw616" path="res://towers/laser_tower/laser_tower.tscn" id="2_4g7m7"]
 [ext_resource type="Script" path="res://resource_scripts/tower_stats.gd" id="2_7k287"]
 [ext_resource type="Texture2D" uid="uid://ce1v7yxu3hjwp" path="res://towers/laser_tower/laser-symbol.png" id="2_wherx"]
+[ext_resource type="Resource" uid="uid://b0fxcwwdxie5r" path="res://resources/range_resources/standard_circle.tres" id="3_cndl4"]
 
 [resource]
 script = ExtResource("2_7k287")
@@ -13,6 +14,7 @@ build_icon = ExtResource("1_o6gxq")
 price = {
 "iron": 1
 }
+range_stats = ExtResource("3_cndl4")
 type = 1
 scene = ExtResource("2_4g7m7")
 source_id = 0

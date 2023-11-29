@@ -61,8 +61,13 @@ func _unhandled_input(event):
 func _on_tower_pressed(tower : TowerStats) -> void:
 	tower_to_be_built = tower
 	if can_pay(tower_to_be_built.price):
-		set_build_mode(true)
 		build_icon.texture = tower_to_be_built.build_icon
+		if tower_to_be_built.range_stats == null:
+			build_icon.range_display.set_range_visible(false)
+		else:
+			build_icon.range_display.set_range_visible(true)
+			build_icon.set_range_stats(tower_to_be_built.range_stats)
+		set_build_mode(true)
 		
 		
 #sets build mode
@@ -130,6 +135,9 @@ func can_build() -> bool:
 	else:
 		if build_icon.get_area_overlapping_entitys().size() > 0:
 			build_icon.set_message("Towers can't be built on top of entities")
+			for e in build_icon.get_area_overlapping_entitys():
+				if e.is_in_group("void"):
+					build_icon.set_message("Towers can't be built off of the map")
 		elif build_icon.get_are_overlapping_towers().size() > 0:
 			build_icon.set_message("Towers can't be built adjacent to each other")
 			for t in build_icon.get_are_overlapping_towers():
