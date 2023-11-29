@@ -13,8 +13,19 @@ var on_route : bool
 var lv : Vector2
 var dir : Vector2
 var moving : bool = false
+var anim_dir : Vector2
+
+var attack_dir = "right"
+var normal_scale = Vector2(0.03, 0.03)
+var attacking = false
 
 @export var damage_dealt : int = 20
+
+@onready var left_right_v = $left_right_visuals
+@onready var up_v = $up_visuals
+@onready var down_v = $down_visuals
+@onready var anim_player = $AnimationPlayer
+@onready var anti_jit = $anti_jitter
 
 
 func _ready() -> void:
@@ -25,7 +36,19 @@ func _ready() -> void:
 	
 #the enemies standard attack function
 func attack_target(target : Node) -> void:
+	attacking = true
 	target.take_damage(damage_dealt)
+	
+	
+	match attack_dir:
+		"right":
+			anim_player.play("bite")
+		"left":
+			anim_player.play("bite")
+		"up":
+			anim_player.play("up_bite")
+		"down":
+			anim_player.play("down_bite")
 	
 	
 func hit_by_shock(dmg : int, t : float) -> void:
@@ -68,7 +91,8 @@ func _integrate_forces(s : PhysicsDirectBodyState2D) -> void:
 		#stopping
 		s.set_linear_velocity(Vector2.ZERO)
 		
-#	var anim_dir : Vector2 = lv.normalized()
+	anim_dir = lv.normalized()
+#	update_visuals(anim_dir)
 	
 	
 func set_health(h : int) -> int:
@@ -80,3 +104,51 @@ func set_health(h : int) -> int:
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	lv = safe_velocity
 	
+	
+func update_visuals(v : Vector2) -> void:
+	var angle = v.angle()
+	var direction = ""
+
+	if -PI/4 <= angle and angle < PI/4:
+		direction = "right"
+	elif PI/4 <= angle and angle < 3*PI/4:
+		direction = "down"
+	elif -3*PI/4 <= angle and angle < -PI/4:
+		direction = "up"
+	else:
+		direction = "left"
+
+	match direction:
+		"up":
+			attack_dir = "up"
+			left_right_v.visible = false
+			up_v.visible = true
+			down_v.visible = false
+			anim_player.play("up_walk")
+		"down":
+			attack_dir = "down"
+			left_right_v.visible = false
+			up_v.visible = false
+			down_v.visible = true
+			anim_player.play("down_walk")
+		"left":
+			attack_dir = "left"
+			left_right_v.visible = true
+			up_v.visible = false
+			down_v.visible = false
+			left_right_v.scale.x = normal_scale.x * -1
+			anim_player.play("walk")
+		"right":
+			attack_dir = "right"
+			left_right_v.visible = true
+			up_v.visible = false
+			down_v.visible = false
+			left_right_v.scale.x = normal_scale.x * 1
+			anim_player.play("walk")
+
+
+func _on_anti_jitter_timeout():
+	if !GameState.game_over:
+		if !attacking:
+			update_visuals(anim_dir)
+

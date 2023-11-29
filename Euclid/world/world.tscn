@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cwte17ddcw616" path="res://towers/laser_tower/laser_tower.tscn" id="13_ythck"]
 [ext_resource type="Script" path="res://world/missiles.gd" id="20_0jy7k"]
 [ext_resource type="Script" path="res://world/enemy_spawn_manager.gd" id="23_aikf7"]
-[ext_resource type="PackedScene" uid="uid://fem8m6v7kedu" path="res://world/spawn_point.tscn" id="23_fwq60"]
+[ext_resource type="PackedScene" path="res://world/spawn_point.tscn" id="23_fwq60"]
 [ext_resource type="Resource" uid="uid://c2uf4fh7rp3jw" path="res://resources/enemy_resources/standard_enemy_stats.tres" id="23_nbo8p"]
 [ext_resource type="Resource" uid="uid://dq6fa80gy114k" path="res://resources/enemy_resources/tank_stats.tres" id="24_qml70"]
 
@@ -84,6 +84,7 @@ player_spawn_timer = NodePath("PlayerSpawnTimer")
 metadata/_edit_use_anchors_ = true
 
 [node name="WaveAlert" parent="GUILayer" instance=ExtResource("4_hh281")]
+total_time_till_wave = 20.0
 
 [node name="BuildManager" type="Node2D" parent="." node_paths=PackedStringArray("build_icon")]
 script = ExtResource("3_ioyl6")
