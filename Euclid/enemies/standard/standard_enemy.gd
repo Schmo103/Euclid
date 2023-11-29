@@ -21,11 +21,17 @@ var attacking = false
 
 @export var damage_dealt : int = 20
 
-@onready var left_right_v = $left_right_visuals
-@onready var up_v = $up_visuals
-@onready var down_v = $down_visuals
-@onready var anim_player = $AnimationPlayer
-@onready var anti_jit = $anti_jitter
+#@onready var left_right_v = $left_right_visuals
+#@onready var up_v = $up_visuals
+#@onready var down_v = $down_visuals
+#@onready var anim_player = $AnimationPlayer
+#@onready var anti_jit = $anti_jitter
+
+@export var left_right_v : Node2D
+@export var up_v : Node2D
+@export var down_v : Node2D
+@export var anim_player : AnimationPlayer
+@export var anti_jit : Timer
 
 
 func _ready() -> void:
@@ -49,6 +55,10 @@ func attack_target(target : Node) -> void:
 			anim_player.play("up_bite")
 		"down":
 			anim_player.play("down_bite")
+			
+			
+func attack_clean_up() -> void:
+	anim_player.play("RESET")
 	
 	
 func hit_by_shock(dmg : int, t : float) -> void:
