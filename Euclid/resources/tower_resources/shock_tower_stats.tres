@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="TowerStats" load_steps=4 format=3 uid="uid://dfw0dqebqjti0"]
+[gd_resource type="Resource" script_class="TowerStats" load_steps=5 format=3 uid="uid://dfw0dqebqjti0"]
 
-[ext_resource type="Texture2D" uid="uid://tsoxc08vbmom" path="res://art/icon.svg" id="1_omlrd"]
+[ext_resource type="Texture2D" uid="uid://hrxq4kfgptmo" path="res://towers/shock_tower/shock-tower-icon.png" id="1_6mb6x"]
+[ext_resource type="Texture2D" uid="uid://ubiq5crcs04x" path="res://towers/shock_tower/shock-symbol.png" id="2_3hf4n"]
 [ext_resource type="PackedScene" uid="uid://cltre62dvxnsk" path="res://towers/shock_tower/shock_tower.tscn" id="2_gnpil"]
 [ext_resource type="Script" path="res://resource_scripts/tower_stats.gd" id="3_um1do"]
 
 [resource]
 script = ExtResource("3_um1do")
 name = "Shock Tower"
-menu_icon = ExtResource("1_omlrd")
-build_icon = ExtResource("1_omlrd")
+menu_icon = ExtResource("2_3hf4n")
+build_icon = ExtResource("1_6mb6x")
 price = {
 "iron": 1
 }
