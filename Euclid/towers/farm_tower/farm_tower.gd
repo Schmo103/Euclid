@@ -6,7 +6,7 @@ extends Tower
 #the list of commodities this farm produces
 var commodities : Array[String] = []
 #the amount this farm produces per cycle
-var production_rate := 1
+var production_rate := 100
 #the "radius" of the square that this farm produces commodities from
 #if the radius is 2, than this will result in a 5 by 5 square
 @export var produce_range_radius : int = 2
