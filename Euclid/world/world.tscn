@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cykj8da6g4hau"]
+[gd_scene load_steps=41 format=3 uid="uid://cykj8da6g4hau"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_ybw44"]
 [ext_resource type="PackedScene" uid="uid://xuh3cejcnnw" path="res://player/player.tscn" id="2_bcibk"]
@@ -7,10 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://cqn1djklucwvp" path="res://building_system/building_gui/building_gui.tscn" id="3_wdhqa"]
 [ext_resource type="Texture2D" uid="uid://lys7qnvna8qx" path="res://art/navigation_tile_image.png" id="4_6hx1i"]
 [ext_resource type="PackedScene" uid="uid://bdfwmr3hcam26" path="res://in_game_menu/wave_alert.tscn" id="4_hh281"]
+[ext_resource type="Script" path="res://world/game_pause_menu.gd" id="5_320fb"]
 [ext_resource type="PackedScene" uid="uid://wl0jap5jixjj" path="res://towers/commodity_terrain/wood_object/wood_object.tscn" id="5_s60qf"]
 [ext_resource type="Script" path="res://world/back_tile_map.gd" id="5_vpunx"]
+[ext_resource type="Texture2D" uid="uid://cv1xw5sqrbwrg" path="res://in_game_menu/pause_menu/play.png" id="6_wu3h4"]
+[ext_resource type="Texture2D" uid="uid://br40hlky5ljq5" path="res://in_game_menu/pause_menu/pause.png" id="7_71feo"]
 [ext_resource type="PackedScene" uid="uid://c1b6l71w4tch3" path="res://towers/commodity_terrain/iron_object/iron_object.tscn" id="7_p20la"]
 [ext_resource type="Script" path="res://world/front_tile_map.gd" id="7_yor02"]
+[ext_resource type="Script" path="res://world/game_over_display.gd" id="8_h012p"]
 [ext_resource type="PackedScene" uid="uid://d6y70emb2jnc" path="res://towers/commodity_terrain/ruby_object/ruby_object.tscn" id="8_k06a8"]
 [ext_resource type="PackedScene" uid="uid://buehegmukws0f" path="res://towers/base_tower/base_tower.tscn" id="9_autc4"]
 [ext_resource type="PackedScene" uid="uid://di3rki5htar22" path="res://towers/commodity_terrain/emerald_object/emerald_object.tscn" id="9_shmtp"]
@@ -87,6 +91,77 @@ metadata/_edit_use_anchors_ = true
 
 [node name="WaveAlert" parent="GUILayer" instance=ExtResource("4_hh281")]
 total_time_till_wave = 20.0
+
+[node name="GamePauseMenu" type="Control" parent="GUILayer"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_320fb")
+play_texture = ExtResource("6_wu3h4")
+pause_texture = ExtResource("7_71feo")
+icon_modulate = Color(0.262745, 0.368627, 0.560784, 1)
+
+[node name="Button" type="Button" parent="GUILayer/GamePauseMenu"]
+layout_mode = 0
+offset_left = 1052.0
+offset_top = 38.0
+offset_right = 1078.0
+offset_bottom = 63.0
+
+[node name="GamePausedDisplay" type="Panel" parent="GUILayer/GamePauseMenu"]
+visible = false
+layout_mode = 0
+offset_left = 501.0
+offset_top = 282.0
+offset_right = 650.0
+offset_bottom = 346.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="GUILayer/GamePauseMenu/GamePausedDisplay"]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 67.0
+text = "Game Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverDisplay" type="Control" parent="GUILayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_h012p")
+
+[node name="GameOverMessage" type="Panel" parent="GUILayer/GameOverDisplay"]
+layout_mode = 0
+offset_left = 501.0
+offset_top = 282.0
+offset_right = 650.0
+offset_bottom = 346.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="GUILayer/GameOverDisplay/GameOverMessage"]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 67.0
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameDisplayTimer" type="Timer" parent="GUILayer/GameOverDisplay"]
+process_mode = 3
+
+[node name="Button" type="Button" parent="GUILayer/GameOverDisplay"]
+process_mode = 3
+layout_mode = 0
+offset_left = 482.0
+offset_top = 371.0
+offset_right = 670.0
+offset_bottom = 444.0
+text = "Main Menu"
 
 [node name="BuildManager" type="Node2D" parent="." node_paths=PackedStringArray("build_icon")]
 script = ExtResource("3_ioyl6")
@@ -191,5 +266,8 @@ direction_from_home = Vector2(1, 0)
 one_shot = true
 
 [connection signal="player_died" from="." to="BuildManager" method="_on_world_player_died"]
+[connection signal="pressed" from="GUILayer/GamePauseMenu/Button" to="GUILayer/GamePauseMenu" method="_on_button_pressed"]
+[connection signal="timeout" from="GUILayer/GameOverDisplay/GameDisplayTimer" to="GUILayer/GameOverDisplay" method="_on_game_display_timer_timeout"]
+[connection signal="pressed" from="GUILayer/GameOverDisplay/Button" to="GUILayer/GameOverDisplay" method="_on_button_pressed"]
 [connection signal="timeout" from="PlayerSpawnTimer" to="." method="_on_player_spawn_timer_timeout"]
 [connection signal="timeout" from="EnemySpawnManager/SpawnDelayTimer" to="EnemySpawnManager" method="_on_spawn_delay_timer_timeout"]
