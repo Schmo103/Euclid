@@ -14,4 +14,4 @@
 [node name="GameState" type="Node"]
 script = ExtResource("1_nxrfd")
 commoditys = Array[Resource("res://resource_scripts/commodity.gd")]([ExtResource("3_etdxv"), ExtResource("4_prr8y"), ExtResource("5_4oq3c")])
-towers = [ExtResource("3_32cx0"), ExtResource("5_qjv3k"), ExtResource("6_spmq6"), ExtResource("10_shsih"), ExtResource("9_bshfv"), ExtResource("10_6k5ws")]
+towers = Array[Resource("res://resource_scripts/tower_stats.gd")]([ExtResource("3_32cx0"), ExtResource("5_qjv3k"), ExtResource("6_spmq6"), ExtResource("10_shsih"), ExtResource("9_bshfv"), ExtResource("10_6k5ws")])
