@@ -20,6 +20,10 @@ config/icon="res://art/icon.svg"
 GameState="*res://game_state/game_state.tscn"
 WallManager="*res://game_state/wall_manager.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 ui_left={
