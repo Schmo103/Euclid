@@ -26,7 +26,8 @@ func initiate_state() -> void:
 	
 func clean_up():
 	super()
-	enemy.get_node("AnimationPlayer").play("RESET")
+	enemy.attack_clean_up()
+#	enemy.get_node("AnimationPlayer").play("RESET")
 #	enemy.get_node("AnimationPlayer").play("UP_RESET")
 	
 #when attack has been carried out, returns to fighting state to plan next attack

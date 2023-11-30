@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://enemies/tank/tank.gd" id="1_1pkwo"]
 [ext_resource type="Texture2D" uid="uid://cm6vuj2ilkpwa" path="res://art/filler_art_spritesheet.png" id="2_6g2o8"]
-[ext_resource type="PackedScene" path="res://player/health_display.tscn" id="2_qmsl0"]
+[ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="2_qmsl0"]
 [ext_resource type="PackedScene" uid="uid://cjogwv6voqj5x" path="res://enemies/standard/enemy_nav_agent.tscn" id="4_tt4so"]
 [ext_resource type="PackedScene" uid="uid://bo23cd1o3mwmr" path="res://enemies/standard/enemy_target_detector.tscn" id="5_u1euw"]
 [ext_resource type="Script" path="res://enemies/standard/state_machine.gd" id="6_sa71w"]
