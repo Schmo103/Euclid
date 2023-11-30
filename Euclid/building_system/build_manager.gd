@@ -127,6 +127,9 @@ func can_pay(price : Dictionary) -> bool:
 	
 #checks if we can build at build_icons current location
 func can_build() -> bool:
+	if GameState.player_dead:
+		build_icon.set_message("Towers can't be built if you are dead")
+		return false
 	var bodies : Array = build_icon.get_area_overlapping_bodies()
 	if tower_to_be_built.use_custom_can_build:
 		build_icon.set_message(tower_to_be_built.custom_can_build_message)
@@ -145,7 +148,7 @@ func can_build() -> bool:
 					build_icon.set_message("Towers can't be built on top of each other")
 		else:
 			build_icon.set_message("")
-		return bodies.size() == 0
+	return bodies.size() == 0
 	
 
 #updates the amounts in the commodity display menu
@@ -165,4 +168,6 @@ func get_mouse_position() -> Vector2:
 	return get_viewport().get_mouse_position() + cam.get_screen_center_position() - Vector2(DisplayServer.window_get_size() / 2)
 		
 		
-		
+func _on_world_player_died():
+#	set_build_mode(false)
+	pass

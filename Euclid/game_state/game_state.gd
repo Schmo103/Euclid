@@ -26,6 +26,7 @@ var tile_scale : Vector2 = Vector2(2, 2)
 @onready var real_tile_size = tile_size * tile_scale
 
 var game_over : bool = false
+var player_dead : bool = false
 
 
 func on_base_fell() -> void:

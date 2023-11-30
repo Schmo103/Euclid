@@ -163,6 +163,7 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerSpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
 
 [node name="EnemySpawnManager" type="Node2D" parent="." node_paths=PackedStringArray("wave_alert")]
@@ -189,5 +190,6 @@ direction_from_home = Vector2(1, 0)
 [node name="SpawnDelayTimer" type="Timer" parent="EnemySpawnManager"]
 one_shot = true
 
+[connection signal="player_died" from="." to="BuildManager" method="_on_world_player_died"]
 [connection signal="timeout" from="PlayerSpawnTimer" to="." method="_on_player_spawn_timer_timeout"]
 [connection signal="timeout" from="EnemySpawnManager/SpawnDelayTimer" to="EnemySpawnManager" method="_on_spawn_delay_timer_timeout"]

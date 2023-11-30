@@ -41,6 +41,7 @@ var already_hit_bodies : Array[Node2D] = []
 var lv : Vector2 = Vector2.ZERO
 
 func _ready() -> void:
+	GameState.player_dead = false
 	health_display.max_value = health
 	attack_timer.wait_time = attack_duration
 	
@@ -61,6 +62,7 @@ func take_damage(dmg : int) -> void:
 	
 func die() -> void:
 	fell.emit()
+	GameState.player_dead = true
 	GameState.world.on_player_died()
 	queue_free()
 	
@@ -88,7 +90,7 @@ func set_enemy_detector_position(dir : Vector2) -> void:
 func _unhandled_input(event) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			if not attacking:
+			if not attacking and not GameState.build_manager.building:
 				attack()
 	
 	
