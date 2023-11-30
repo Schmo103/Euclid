@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://towers/laser_tower/laser_tower.gd" id="1_i48fo"]
 [ext_resource type="Texture2D" uid="uid://4il3d8qy75lb" path="res://towers/laser_tower/laser-tower.png" id="2_8j6c3"]
-[ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="3_m34yn"]
+[ext_resource type="PackedScene" path="res://player/health_display.tscn" id="3_m34yn"]
 [ext_resource type="PackedScene" uid="uid://d1l2j3f38vbc0" path="res://towers/tower_menu.tscn" id="4_mn7y1"]
 [ext_resource type="PackedScene" uid="uid://b4aordcpip1xt" path="res://towers/range_display/range_display.tscn" id="5_d8h8i"]
 

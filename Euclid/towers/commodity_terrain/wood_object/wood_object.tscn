@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://towers/commodity_terrain/wood_object/wood_object.gd" id="1_hrgys"]
 [ext_resource type="Texture2D" uid="uid://bx350kepcynr8" path="res://art/filler_commoditys/wood_rock.png" id="1_yt3kr"]
-[ext_resource type="Resource" uid="uid://diebxvj5e76cf" path="res://resources/commodity_resources/wood.tres" id="2_338ii"]
+[ext_resource type="Resource" path="res://resources/commodity_resources/wood.tres" id="2_338ii"]
 
 [node name="WoodObject" type="Node2D"]
 script = ExtResource("1_hrgys")

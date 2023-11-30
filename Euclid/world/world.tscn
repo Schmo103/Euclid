@@ -22,11 +22,11 @@
 [ext_resource type="Script" path="res://in_game_menu/wave_direction_indicator/wave_direction_indicator.gd" id="9_v6obw"]
 [ext_resource type="Texture2D" uid="uid://b37ykl0t85as" path="res://in_game_menu/wave_direction_indicator/filler_wave_direction_indicator.png" id="9_wn8oc"]
 [ext_resource type="PackedScene" uid="uid://dq3c086d7rslo" path="res://towers/farm_tower/farm_tower.tscn" id="10_krs7q"]
-[ext_resource type="PackedScene" uid="uid://bfdrt2rk4myc2" path="res://towers/terrain/basic_terrain.tscn" id="10_plw24"]
 [ext_resource type="PackedScene" uid="uid://b2kyy21bd4dep" path="res://towers/wall/wall.tscn" id="11_70i1t"]
 [ext_resource type="Script" path="res://world/enemies.gd" id="12_oxqoc"]
 [ext_resource type="PackedScene" uid="uid://cef18jyr72ni8" path="res://towers/missile_tower/missile_tower.tscn" id="12_tmc8m"]
 [ext_resource type="PackedScene" uid="uid://cwte17ddcw616" path="res://towers/laser_tower/laser_tower.tscn" id="13_ythck"]
+[ext_resource type="PackedScene" uid="uid://bfdrt2rk4myc2" path="res://player/basic_terrain.tscn" id="18_tefpo"]
 [ext_resource type="Script" path="res://world/missiles.gd" id="20_0jy7k"]
 [ext_resource type="PackedScene" uid="uid://b4aordcpip1xt" path="res://towers/range_display/range_display.tscn" id="22_afqay"]
 [ext_resource type="Script" path="res://world/enemy_spawn_manager.gd" id="23_aikf7"]
@@ -55,7 +55,7 @@ scenes/4/scene = ExtResource("9_shmtp")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_r3rkx"]
 resource_name = "Terrain"
-scenes/1/scene = ExtResource("10_plw24")
+scenes/1/scene = ExtResource("18_tefpo")
 
 [sub_resource type="TileSet" id="TileSet_efxu0"]
 tile_size = Vector2i(32, 32)
