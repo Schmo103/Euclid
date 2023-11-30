@@ -101,28 +101,28 @@ func _integrate_forces(s : PhysicsDirectBodyState2D):
 	if Input.is_action_pressed("player_up") and not attacking:
 		player_direction = Vector2.UP
 		lv.y -= walk_accel
-		$temp/backward_ref. visible = true
-		$temp/forward_ref. visible = false
+		$up_visuals.visible = true
+		$down_visuals. visible = false
 		$left_right_visuals.visible = false
 	if Input.is_action_pressed("player_down") and not attacking:
 		player_direction = Vector2.DOWN
 		lv.y += walk_accel 
-		$temp/forward_ref. visible = true
-		$temp/backward_ref. visible = false
+		$down_visuals. visible = true
+		$up_visuals. visible = false
 		$left_right_visuals.visible = false
 	if Input.is_action_pressed("player_right") and not attacking:
 		player_direction = Vector2.RIGHT
 		lv.x += walk_accel
 		visuals.scale.x = norm_scale.x
-		$temp/forward_ref. visible = false
-		$temp/backward_ref. visible = false
+		$down_visuals. visible = false
+		$up_visuals. visible = false
 		$left_right_visuals.visible = true
 	if Input.is_action_pressed("player_left") and not attacking:
 		player_direction = Vector2.LEFT
 		lv.x -= walk_accel
 		visuals.scale.x = norm_scale.x * -1
-		$temp/forward_ref. visible = false
-		$temp/backward_ref. visible = false
+		$down_visuals. visible = false
+		$up_visuals. visible = false
 		$left_right_visuals.visible = true
 		
 	#apply friction to x axis
@@ -157,14 +157,28 @@ func _integrate_forces(s : PhysicsDirectBodyState2D):
 	#set linear velocity
 	s.set_linear_velocity(lv * step)
 	
-	if !walking:
-		if lv * step != Vector2.ZERO:
-			walking = true
-			a_player.play("run_left_right", -1, 4.0)
-	elif walking:
-		if lv * step == Vector2.ZERO:
-			walking = false
+	if lv * step != Vector2.ZERO:
+		walking = true
+	else:
+		walking = false
+	
+	if walking == true:
+			if Input.is_action_pressed("player_left") or Input.is_action_pressed("player_right"):
+				a_player.play("run_left_right")
+			else:
+				if Input.is_action_pressed("player_up"):
+					a_player.play("run_up",-1,1.2)
+				if Input.is_action_pressed("player_down"):
+					a_player.play("run_down",-1,1.2)
+	elif !walking:
+		if player_direction == Vector2.LEFT or player_direction == Vector2.RIGHT:
 			a_player.play("RESET")
+		if player_direction == Vector2.UP:
+			a_player.play("UP_RESET")
+		if player_direction == Vector2.DOWN:
+			a_player.play("DOWN_RESET")
+			
+	
 	
 	
 func _on_attack_timer_timeout():
