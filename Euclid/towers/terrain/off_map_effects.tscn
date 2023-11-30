@@ -19,6 +19,7 @@ texture = ExtResource("2_oo3re")
 
 [node name="OffMapBody" type="StaticBody2D" parent="." groups=["void"]]
 process_mode = 4
+visible = false
 collision_layer = 8
 collision_mask = 8
 

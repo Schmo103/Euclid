@@ -15,7 +15,7 @@
 radius = 20.0
 height = 62.0
 
-[node name="Tank" type="RigidBody2D" node_paths=PackedStringArray("health_display", "nav_agent", "state_machine", "target_detector", "shocked")]
+[node name="Tank" type="RigidBody2D" node_paths=PackedStringArray("health_display", "nav_agent", "state_machine", "target_detector", "shocked", "fighting")]
 collision_layer = 21
 custom_integrator = true
 max_contacts_reported = 4
@@ -27,6 +27,7 @@ nav_agent = NodePath("EnemyNavAgent")
 state_machine = NodePath("StateMachine")
 target_detector = NodePath("TargetDetector")
 shocked = NodePath("StateMachine/Shocked")
+fighting = NodePath("StateMachine/Fighting")
 damage_dealt = 30
 health = 200
 speed = 5000

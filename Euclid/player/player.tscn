@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://xuh3cejcnnw"]
+[gd_scene load_steps=15 format=3 uid="uid://xuh3cejcnnw"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_8a4sk"]
 [ext_resource type="Texture2D" uid="uid://cm6vuj2ilkpwa" path="res://art/filler_art_spritesheet.png" id="2_4uf64"]
@@ -844,6 +844,9 @@ _data = {
 "run_left_right": SubResource("Animation_0eo6b")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_d6p0g"]
+radius = 40.0
+
 [node name="Player" type="RigidBody2D" node_paths=PackedStringArray("health_display") groups=["entity", "player"]]
 collision_layer = 9
 custom_integrator = true
@@ -1034,3 +1037,17 @@ visible = false
 texture = ExtResource("9_0xm45")
 polygon = PackedVector2Array(873.171, 719.512, 1231.71, 721.951, 1246.34, 1007.32, 1029.27, 1273.17, 824.39, 1004.88)
 uv = PackedVector2Array(873.171, 719.512, 1231.71, 721.951, 1246.34, 1007.32, 1029.27, 1273.17, 824.39, 1004.88)
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="EnemyDetector" type="Area2D" parent="."]
+position = Vector2(1, -45)
+collision_layer = 0
+collision_mask = 16
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+shape = SubResource("CircleShape2D_d6p0g")
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

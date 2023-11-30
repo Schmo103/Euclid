@@ -6,13 +6,14 @@ extends Node2D
 
 
 var standard_enemy_scene : PackedScene = preload("res://enemies/standard/standard_enemy.tscn")
+var tank_enemy_scene : PackedScene = preload("res://enemies/tank/tank.tscn")
 enum available_enemies {STANDARD}
 var available_enemy_scenes : Array[PackedScene] = [standard_enemy_scene]
 var enemy_ratio : Array[int] = [1]
 
 
-var wave_difficulty : int = 3  #one difficulty point spawns one standard enemy
-var wave_difficulty_increment_rate : int = 2
+@export var wave_difficulty : int = 6  #one difficulty point spawns one standard enemy
+@export var wave_difficulty_increment_rate : int = 2
 var wave_difficulty_one_time_bonus : int = 0
 
 @export var wave_boss_bonus : int = 15
