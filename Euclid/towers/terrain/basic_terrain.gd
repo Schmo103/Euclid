@@ -1,6 +1,7 @@
 extends Sprite2D
 
 @export var off_map_effects : OffMapEffects
+@export var tiles_per_two_plants : int = 20
 var available : bool = false
 
 var tile_pos : Vector2
@@ -21,6 +22,16 @@ func _ready() -> void:
 	randomize()
 	var r : int = randi()
 	frame = frames[r % frames.size()]
+	$Plant.z_index = tile_pos.y
+	$Plant2.z_index = tile_pos.y
+	var r2 : int = randi_range(0, tiles_per_two_plants + 1)
+	if r2 == 0:
+		$Plant.visible = true
+	elif r2 == 1:
+		$Plant2.visible = true
+	else:
+		$Plant.visible = false
+		$Plant.visible = false
 	
 	
 	
