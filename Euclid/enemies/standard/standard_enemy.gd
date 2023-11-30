@@ -43,14 +43,16 @@ func _ready() -> void:
 	
 func hit_by_player(dmg : int) -> void:
 	super(dmg)
-	fighting.target = GameState.player
-	state_machine.transition_to(fighting)
+	if not shocked.active:
+		fighting.target = GameState.player
+		state_machine.transition_to(fighting)
 	
 	
 #the enemies standard attack function
 func attack_target(target : Node) -> void:
 	attacking = true
-	target.take_damage(damage_dealt)
+	if target != null and is_instance_valid(target):
+		target.take_damage(damage_dealt)
 	
 	
 	match attack_dir:
