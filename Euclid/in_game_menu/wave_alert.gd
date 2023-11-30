@@ -25,7 +25,7 @@ var count_down_num : int = start_count_down_num
 var last_rep : bool = false
 var last_rep_message : String = "Wave Began"
 
-var wave_count_down_active : bool = true
+var wave_count_down_active : bool = false
 		
 		
 func _ready() -> void:
