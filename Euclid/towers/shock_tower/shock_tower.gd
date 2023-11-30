@@ -41,6 +41,7 @@ func fire() -> void:
 		if b.is_in_group("enemy"):
 			b.hit_by_shock(damage, fire_time)
 	$FireTimer.start()
+	$AnimationPlayer.play("shock",-1,2.0)
 
 
 func _on_load_timer_timeout():

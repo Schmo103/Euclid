@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsphhumsap8sr"
-path="res://.godot/imported/Door-icon.png-38f1f15a1f9dafe472b3c72cd717c0a3.ctex"
+uid="uid://bpn33i3fwm5rs"
+path="res://.godot/imported/rocky-ground 2.png-f73771ece31a99197f2ba4e6b0443afc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://towers/wall/Door-icon.png"
-dest_files=["res://.godot/imported/Door-icon.png-38f1f15a1f9dafe472b3c72cd717c0a3.ctex"]
+source_file="res://towers/commodity_terrain/rocky-ground 2.png"
+dest_files=["res://.godot/imported/rocky-ground 2.png-f73771ece31a99197f2ba4e6b0443afc.ctex"]
 
 [params]
 

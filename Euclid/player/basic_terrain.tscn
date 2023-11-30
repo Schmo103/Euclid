@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfdrt2rk4myc2"]
+
+[ext_resource type="Texture2D" uid="uid://c1rse2u76k3kx" path="res://towers/terrain/rocky-ground 3.png" id="1_h6evf"]
+[ext_resource type="Script" path="res://towers/terrain/basic_terrain.gd" id="2_2do4t"]
+[ext_resource type="PackedScene" uid="uid://cedxgo8a3kysk" path="res://towers/terrain/off_map_effects.tscn" id="3_i1rkb"]
+[ext_resource type="Texture2D" uid="uid://bxlycj142y1u1" path="res://towers/terrain/plant1.png" id="4_pwx53"]
+[ext_resource type="Texture2D" uid="uid://bxeewhdnlviu5" path="res://towers/terrain/plant2.png" id="5_34t1s"]
+
+[node name="BasicTerrain" type="Sprite2D" node_paths=PackedStringArray("off_map_effects")]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_h6evf")
+hframes = 6
+script = ExtResource("2_2do4t")
+off_map_effects = NodePath("OffMapEffects")
+
+[node name="OffMapEffects" parent="." instance=ExtResource("3_i1rkb")]
+scale = Vector2(2, 2)
+
+[node name="Plant" type="Sprite2D" parent="."]
+visible = false
+z_as_relative = false
+texture_filter = 1
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("4_pwx53")
+
+[node name="Plant2" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 0.666667, 0.337255, 1)
+z_as_relative = false
+texture_filter = 1
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("5_34t1s")
