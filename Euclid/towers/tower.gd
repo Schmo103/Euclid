@@ -29,6 +29,7 @@ var tile_pos : Vector2
 @export var range_display : RangeDisplay
 
 
+
 func _ready():
 	#make tile not navigatable
 	tile_pos = (global_position - GameState.real_tile_size / 2).snapped(GameState.real_tile_size) / GameState.real_tile_size
@@ -109,3 +110,7 @@ func safe_get_tower_menu_visible() -> bool:
 		
 func _on_sell_clicked() -> void:
 	sell()
+	
+	
+func get_price() -> void:
+	pass
