@@ -1,10 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfdrt2rk4myc2"]
+[gd_scene load_steps=9 format=3 uid="uid://cfdt3pdq2dee4"]
 
 [ext_resource type="Texture2D" uid="uid://c1rse2u76k3kx" path="res://towers/terrain/rocky-ground 3.png" id="1_h6evf"]
 [ext_resource type="Script" path="res://towers/terrain/basic_terrain.gd" id="2_2do4t"]
 [ext_resource type="PackedScene" uid="uid://cedxgo8a3kysk" path="res://towers/terrain/off_map_effects.tscn" id="3_i1rkb"]
-[ext_resource type="Texture2D" uid="uid://bxlycj142y1u1" path="res://towers/terrain/plant1.png" id="4_pwx53"]
+[ext_resource type="Shader" path="res://player/basic_terrain.gdshader" id="4_y7f7w"]
 [ext_resource type="Texture2D" uid="uid://bxeewhdnlviu5" path="res://towers/terrain/plant2.png" id="5_34t1s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e0vnh"]
+shader = ExtResource("4_y7f7w")
+shader_parameter/speed = 0.65
+shader_parameter/minStrength = 0.197
+shader_parameter/maxStrength = 0.62
+shader_parameter/strengthScale = 650.0
+shader_parameter/interval = 4.0
+shader_parameter/detail = 4.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l05qh"]
+load_path = "res://.godot/imported/plant1.png-4032368c078914f219baf6ba59092c41.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tyjq2"]
+shader = ExtResource("4_y7f7w")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.255
+shader_parameter/maxStrength = 0.641
+shader_parameter/strengthScale = 700.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.01
+shader_parameter/heightOffset = 0.0
 
 [node name="BasicTerrain" type="Sprite2D" node_paths=PackedStringArray("off_map_effects")]
 texture_filter = 1
@@ -21,13 +46,18 @@ scale = Vector2(2, 2)
 visible = false
 z_as_relative = false
 texture_filter = 1
+material = SubResource("ShaderMaterial_e0vnh")
+position = Vector2(0, 14)
 scale = Vector2(0.02, 0.02)
-texture = ExtResource("4_pwx53")
+texture = SubResource("CompressedTexture2D_l05qh")
+offset = Vector2(0, -700)
 
 [node name="Plant2" type="Sprite2D" parent="."]
 visible = false
-modulate = Color(0, 0.666667, 0.337255, 1)
 z_as_relative = false
 texture_filter = 1
-scale = Vector2(0.02, 0.02)
+material = SubResource("ShaderMaterial_tyjq2")
+position = Vector2(0, 28)
+scale = Vector2(0.035, 0.035)
 texture = ExtResource("5_34t1s")
+offset = Vector2(0, -560)

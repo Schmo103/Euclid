@@ -39,6 +39,7 @@ func _ready():
 	
 	if health_display != null:
 		health_display.max_value = health
+		health_display.value = health
 		
 	GameState.front_tile_map.register_tower(tile_pos, self)
 	

@@ -7,9 +7,9 @@ signal fell
 @onready var norm_scale = $left_right_visuals.scale
 @onready var a_player = $left_right_visuals/AnimationPlayer
 
-var walk_accel := 1000
-var friction := 700
-var max_speed := 18000
+var walk_accel := 10000
+var friction := 7000
+var max_speed := 16000
 var walking = false
 var attacking : bool = false
 
