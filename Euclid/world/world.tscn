@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cykj8da6g4hau"]
+[gd_scene load_steps=44 format=3 uid="uid://cykj8da6g4hau"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_ybw44"]
 [ext_resource type="PackedScene" uid="uid://xuh3cejcnnw" path="res://player/player.tscn" id="2_bcibk"]
@@ -16,8 +16,11 @@
 [ext_resource type="Script" path="res://world/front_tile_map.gd" id="7_yor02"]
 [ext_resource type="Script" path="res://world/game_over_display.gd" id="8_h012p"]
 [ext_resource type="PackedScene" uid="uid://d6y70emb2jnc" path="res://towers/commodity_terrain/ruby_object/ruby_object.tscn" id="8_k06a8"]
+[ext_resource type="Script" path="res://in_game_menu/wave_caller_menu/wave_caller_menu.gd" id="9_0ft1w"]
 [ext_resource type="PackedScene" uid="uid://buehegmukws0f" path="res://towers/base_tower/base_tower.tscn" id="9_autc4"]
 [ext_resource type="PackedScene" uid="uid://di3rki5htar22" path="res://towers/commodity_terrain/emerald_object/emerald_object.tscn" id="9_shmtp"]
+[ext_resource type="Script" path="res://in_game_menu/wave_direction_indicator/wave_direction_indicator.gd" id="9_v6obw"]
+[ext_resource type="Texture2D" uid="uid://b37ykl0t85as" path="res://in_game_menu/wave_direction_indicator/filler_wave_direction_indicator.png" id="9_wn8oc"]
 [ext_resource type="PackedScene" uid="uid://dq3c086d7rslo" path="res://towers/farm_tower/farm_tower.tscn" id="10_krs7q"]
 [ext_resource type="PackedScene" uid="uid://bfdrt2rk4myc2" path="res://towers/terrain/basic_terrain.tscn" id="10_plw24"]
 [ext_resource type="PackedScene" uid="uid://b2kyy21bd4dep" path="res://towers/wall/wall.tscn" id="11_70i1t"]
@@ -163,6 +166,43 @@ offset_right = 670.0
 offset_bottom = 444.0
 text = "Main Menu"
 
+[node name="WaveCallerMenu" type="Control" parent="GUILayer" node_paths=PackedStringArray("wave_alert")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 801.0
+offset_top = 42.0
+offset_right = 860.0
+offset_bottom = 90.0
+script = ExtResource("9_0ft1w")
+wave_alert = NodePath("../WaveAlert")
+
+[node name="Button" type="Button" parent="GUILayer/WaveCallerMenu"]
+layout_mode = 0
+offset_left = -25.0
+offset_top = -5.0
+offset_right = 113.0
+offset_bottom = 40.0
+text = "Call First Wave"
+
+[node name="Label" type="Label" parent="GUILayer/WaveCallerMenu"]
+visible = false
+layout_mode = 0
+offset_left = -23.0
+offset_top = 7.0
+offset_right = 96.0
+offset_bottom = 33.0
+text = "Wave Number: "
+
+[node name="WaveDirectionIndicator" type="Sprite2D" parent="GUILayer"]
+position = Vector2(544, 600)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("9_wn8oc")
+script = ExtResource("9_v6obw")
+left_pos = Vector2(60, 288)
+right_pos = Vector2(1050, 288)
+up_pos = Vector2(544, 50)
+down_pos = Vector2(544, 600)
+
 [node name="BuildManager" type="Node2D" parent="." node_paths=PackedStringArray("build_icon")]
 script = ExtResource("3_ioyl6")
 build_icon = NodePath("../BuildIcon")
@@ -241,9 +281,11 @@ metadata/_edit_use_anchors_ = true
 wait_time = 3.0
 one_shot = true
 
-[node name="EnemySpawnManager" type="Node2D" parent="." node_paths=PackedStringArray("wave_alert")]
+[node name="EnemySpawnManager" type="Node2D" parent="." node_paths=PackedStringArray("wave_alert", "wave_direction_indicator", "wave_caller_menu")]
 script = ExtResource("23_aikf7")
 wave_alert = NodePath("../GUILayer/WaveAlert")
+wave_direction_indicator = NodePath("../GUILayer/WaveDirectionIndicator")
+wave_caller_menu = NodePath("../GUILayer/WaveCallerMenu")
 enemies = Array[Resource("res://resource_scripts/enemy_stats.gd")]([ExtResource("23_nbo8p"), ExtResource("24_qml70")])
 
 [node name="SpawnPoint" parent="EnemySpawnManager" instance=ExtResource("23_fwq60")]
@@ -269,5 +311,6 @@ one_shot = true
 [connection signal="pressed" from="GUILayer/GamePauseMenu/Button" to="GUILayer/GamePauseMenu" method="_on_button_pressed"]
 [connection signal="timeout" from="GUILayer/GameOverDisplay/GameDisplayTimer" to="GUILayer/GameOverDisplay" method="_on_game_display_timer_timeout"]
 [connection signal="pressed" from="GUILayer/GameOverDisplay/Button" to="GUILayer/GameOverDisplay" method="_on_button_pressed"]
+[connection signal="pressed" from="GUILayer/WaveCallerMenu/Button" to="GUILayer/WaveCallerMenu" method="_on_button_pressed"]
 [connection signal="timeout" from="PlayerSpawnTimer" to="." method="_on_player_spawn_timer_timeout"]
 [connection signal="timeout" from="EnemySpawnManager/SpawnDelayTimer" to="EnemySpawnManager" method="_on_spawn_delay_timer_timeout"]

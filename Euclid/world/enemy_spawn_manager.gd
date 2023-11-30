@@ -2,7 +2,10 @@ class_name EnemySpawnManager
 extends Node2D
 
 @export var wave_alert : WaveAlert
+@export var wave_direction_indicator : WaveDirectionIndicator
+@export var wave_caller_menu : WaveCallerMenu
 @export var enemies : Array[EnemyStats]
+
 
 
 var standard_enemy_scene : PackedScene = preload("res://enemies/standard/standard_enemy.tscn")
@@ -24,6 +27,7 @@ var wave : Dictionary = {standard_enemy_scene : 3}
 
 var wave_nodes : Array[Enemy]
 var wave_spawn_position : Vector2 = Vector2.ZERO
+var wave_spawn_point : SpawnPoint
 
 var spawn_points : Array[SpawnPoint] = []
 
@@ -31,6 +35,8 @@ var spawn_points : Array[SpawnPoint] = []
 func _ready() -> void:
 	wave_alert.end_of_count_down_reached.connect(_on_final_count_down_ended)
 	register_spawn_points()
+	wave_spawn_position = get_wave_spawn_point()
+	wave_caller_menu.set_wave_count(wave_count + 1)
 	
 	
 func _on_final_count_down_ended() -> void:
@@ -45,10 +51,11 @@ func _on_final_count_down_ended() -> void:
 		launch_wave()
 		increment_wave_difficulty()
 	wave_count += 1
+	wave_caller_menu.set_wave_count(wave_count + 1)
+	
 	
 	
 func prep_next_wave() -> void:
-	wave_spawn_position = get_wave_spawn_point()
 	generate_wave()
 	
 	
@@ -125,6 +132,8 @@ func spawn_enemy_from_wave_nodes() -> void:
 func get_wave_spawn_point() -> Vector2:
 	#choose randomly from all spawn point children
 	var i = randi_range(0, spawn_points.size() - 1)
+	wave_spawn_point = spawn_points[i]
+	wave_direction_indicator.change_spawn_point(wave_spawn_point)
 	return spawn_points[i].position
 #	return $SpawnPoint.position
 	
@@ -138,6 +147,7 @@ func _on_spawn_delay_timer_timeout():
 		spawn_enemy_from_wave_nodes()
 		$SpawnDelayTimer.start()
 	else:
+		wave_spawn_position = get_wave_spawn_point()
 		wave_alert.start_wave_count_down()
 		
 		
