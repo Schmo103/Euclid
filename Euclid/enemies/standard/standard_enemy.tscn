@@ -2137,7 +2137,7 @@ _data = {
 "walk": SubResource("Animation_ar8d5")
 }
 
-[node name="StandardEnemy" type="RigidBody2D" node_paths=PackedStringArray("health_display", "nav_agent", "state_machine", "target_detector", "shocked", "left_right_v", "up_v", "down_v", "anim_player", "anti_jit")]
+[node name="StandardEnemy" type="RigidBody2D" node_paths=PackedStringArray("health_display", "nav_agent", "state_machine", "target_detector", "shocked", "fighting", "left_right_v", "up_v", "down_v", "anim_player", "anti_jit")]
 collision_layer = 21
 custom_integrator = true
 max_contacts_reported = 4
@@ -2149,6 +2149,7 @@ nav_agent = NodePath("EnemyNavAgent")
 state_machine = NodePath("StateMachine")
 target_detector = NodePath("TargetDetector")
 shocked = NodePath("StateMachine/Shocked")
+fighting = NodePath("StateMachine/Fighting")
 left_right_v = NodePath("left_right_visuals")
 up_v = NodePath("up_visuals")
 down_v = NodePath("down_visuals")

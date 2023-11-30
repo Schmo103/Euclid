@@ -7,6 +7,7 @@ extends Enemy
 @export var target_detector : Area2D
 
 @export var shocked : Shocked
+@export var fighting : Fighting
 
 var on_route : bool
 
@@ -38,6 +39,12 @@ func _ready() -> void:
 	super()
 	health_display.max_value = health
 	health_display.value = health
+	
+	
+func hit_by_player(dmg : int) -> void:
+	super(dmg)
+	fighting.target = GameState.player
+	state_machine.transition_to(fighting)
 	
 	
 #the enemies standard attack function
