@@ -1,13 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://cltre62dvxnsk"]
 
 [ext_resource type="Script" path="res://towers/shock_tower/shock_tower.gd" id="1_qkfbt"]
-
-[ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="3_0qs1b"]
+[ext_resource type="Texture2D" uid="uid://dlao2sgyuprqa" path="res://towers/shock_tower/shock-tower.png" id="2_orya6"]
+[ext_resource type="PackedScene" path="res://player/health_display.tscn" id="3_0qs1b"]
 [ext_resource type="PackedScene" uid="uid://d1l2j3f38vbc0" path="res://towers/tower_menu.tscn" id="4_6d12f"]
 [ext_resource type="PackedScene" uid="uid://b4aordcpip1xt" path="res://towers/range_display/range_display.tscn" id="5_d8rte"]
-
-[ext_resource type="Texture2D" uid="uid://dlao2sgyuprqa" path="res://towers/shock_tower/shock-tower.png" id="2_orya6"]
-
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y48i7"]
 size = Vector2(32, 22)
