@@ -12,8 +12,9 @@ func attack_clean_up() -> void:
 	
 	
 func attack_target(target : Node) -> void:
-	attacking = true
-	target.take_damage(damage_dealt)
+	if is_instance_valid(target):
+		attacking = true
+		target.take_damage(damage_dealt)
 	
 	
 	
