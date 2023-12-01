@@ -31,7 +31,7 @@
 [ext_resource type="Script" path="res://world/missiles.gd" id="20_0jy7k"]
 [ext_resource type="PackedScene" uid="uid://b4aordcpip1xt" path="res://towers/range_display/range_display.tscn" id="22_afqay"]
 [ext_resource type="Script" path="res://world/enemy_spawn_manager.gd" id="23_aikf7"]
-[ext_resource type="PackedScene" path="res://world/spawn_point.tscn" id="23_fwq60"]
+[ext_resource type="PackedScene" uid="uid://fem8m6v7kedu" path="res://world/spawn_point.tscn" id="23_fwq60"]
 [ext_resource type="Resource" uid="uid://c2uf4fh7rp3jw" path="res://resources/enemy_resources/standard_enemy_stats.tres" id="23_nbo8p"]
 [ext_resource type="Resource" uid="uid://bj1p37ol01a2c" path="res://resources/range_resources/farm_square.tres" id="23_ttd1u"]
 [ext_resource type="Resource" uid="uid://dq6fa80gy114k" path="res://resources/enemy_resources/tank_stats.tres" id="24_qml70"]
@@ -323,6 +323,7 @@ wave_direction_indicator = NodePath("../GUILayer/WaveDirectionIndicator")
 wave_caller_menu = NodePath("../GUILayer/WaveCallerMenu")
 boss_wave_alert = NodePath("../GUILayer/BossWaveAlert")
 enemies = Array[Resource("res://resource_scripts/enemy_stats.gd")]([ExtResource("23_nbo8p"), ExtResource("24_qml70")])
+wave_difficulty = 3
 wave_boss_bonus = 10
 spawn_offset = 64.0
 
