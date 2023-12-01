@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cykj8da6g4hau"]
+[gd_scene load_steps=45 format=3 uid="uid://cykj8da6g4hau"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_ybw44"]
 [ext_resource type="PackedScene" uid="uid://xuh3cejcnnw" path="res://player/player.tscn" id="2_bcibk"]
@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" path="res://world/spawn_point.tscn" id="23_fwq60"]
 [ext_resource type="Resource" uid="uid://c2uf4fh7rp3jw" path="res://resources/enemy_resources/standard_enemy_stats.tres" id="23_nbo8p"]
 [ext_resource type="Resource" uid="uid://bj1p37ol01a2c" path="res://resources/range_resources/farm_square.tres" id="23_ttd1u"]
+[ext_resource type="Resource" uid="uid://dq6fa80gy114k" path="res://resources/enemy_resources/tank_stats.tres" id="24_qml70"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sv1bm"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -321,7 +322,7 @@ wave_alert = NodePath("../GUILayer/WaveAlert")
 wave_direction_indicator = NodePath("../GUILayer/WaveDirectionIndicator")
 wave_caller_menu = NodePath("../GUILayer/WaveCallerMenu")
 boss_wave_alert = NodePath("../GUILayer/BossWaveAlert")
-enemies = Array[Resource("res://resource_scripts/enemy_stats.gd")]([ExtResource("23_nbo8p")])
+enemies = Array[Resource("res://resource_scripts/enemy_stats.gd")]([ExtResource("23_nbo8p"), ExtResource("24_qml70")])
 wave_boss_bonus = 10
 spawn_offset = 64.0
 
