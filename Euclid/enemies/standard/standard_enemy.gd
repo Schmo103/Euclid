@@ -21,7 +21,7 @@ var attack_dir = "right"
 var normal_scale = Vector2(0.03, 0.03)
 var attacking = false
 
-@export var damage_dealt : int = 20
+@export var damage_dealt : int = 10
 
 #@onready var left_right_v = $left_right_visuals
 #@onready var up_v = $up_visuals
@@ -82,14 +82,22 @@ func attack_target(target : Node) -> void:
 			
 func attack_clean_up() -> void:
 	anim_player.play("RESET")
+	anim_player.play("UP_RESET")
+	anim_player.play("DOWN_RESET")
 	
 	
 func hit_by_shock(dmg : int, t : float) -> void:
 	super(dmg, t)
 	shocked.shock_time = t
 	shocked.old_state = state_machine.state
+	$"shock?".visible = true
+	$shock_player.play("shock",-1,2.0)
 	state_machine.transition_to(shocked)
 	
+
+func shock_cleanup():
+	$shock_player.play("RESET")
+	$"shock?".visible = false
 
 #adjusts z_index so for semi isometric view
 func _process(_delta):

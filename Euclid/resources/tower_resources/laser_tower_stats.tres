@@ -12,7 +12,8 @@ name = "Laser Cannon"
 menu_icon = ExtResource("2_wherx")
 build_icon = ExtResource("1_o6gxq")
 price = {
-"iron": 1
+"iron": 25,
+"ruby": 10
 }
 range_stats = ExtResource("3_cndl4")
 type = 1

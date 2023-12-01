@@ -5,7 +5,7 @@ var target : Node2D
 var direction : Vector2 = Vector2.UP
 var speed : float
 
-var damage : int = 10
+var damage : int = 7
 
 var duration : float = 5
 
@@ -20,7 +20,10 @@ func _process(delta):
 func move_missile(delta : float) -> void:
 	if is_instance_valid(target):
 		direction = position.direction_to(target.position)
+		look_at(target.global_position)
 	position += direction * speed * delta
+#	rotation = global_position.look_at(target.global_position)
+	
 	
 	
 func free_missile() -> void:

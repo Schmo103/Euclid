@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Commodity" load_steps=3 format=3 uid="uid://c415ea6pim7ii"]
+[gd_resource type="Resource" script_class="Commodity" load_steps=3 format=3 uid="uid://ck6vlqgatogb7"]
 
-[ext_resource type="Texture2D" uid="uid://bo8cdam8p0kc3" path="res://art/filler_commoditys/ruby.png" id="1_s3sc2"]
+[ext_resource type="Texture2D" uid="uid://g8svgjofb8t5" path="res://resources/commodity_resources/Ruby.png" id="1_op4pm"]
 [ext_resource type="Script" path="res://resource_scripts/commodity.gd" id="2_a4fsv"]
 
 [resource]
 script = ExtResource("2_a4fsv")
 name = "ruby"
-icon = ExtResource("1_s3sc2")
-starting_amount = 0
+icon = ExtResource("1_op4pm")
+starting_amount = 5

@@ -12,7 +12,7 @@ name = "Drill"
 menu_icon = ExtResource("2_4gcy6")
 build_icon = ExtResource("1_gjlnh")
 price = {
-"iron": 4
+"iron": 15
 }
 range_stats = ExtResource("3_jtqr3")
 type = 0

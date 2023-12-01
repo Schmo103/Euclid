@@ -12,7 +12,7 @@ name = "Cannon"
 menu_icon = ExtResource("2_3twes")
 build_icon = ExtResource("1_bbl6n")
 price = {
-"iron": 1
+"iron": 10
 }
 range_stats = ExtResource("3_eqir4")
 type = 1

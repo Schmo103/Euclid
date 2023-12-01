@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dnu1cgouhc2by"]
 
 [ext_resource type="Script" path="res://towers/missile_tower/missile.gd" id="1_ri7c0"]
-[ext_resource type="Texture2D" uid="uid://c85gy73nrfd1u" path="res://art/filler_missile.png" id="2_8s733"]
+[ext_resource type="Texture2D" uid="uid://cjw1rf73npefd" path="res://towers/missile_tower/bullet.png" id="2_ss1rk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ys2dh"]
 radius = 14.0
@@ -11,7 +11,8 @@ script = ExtResource("1_ri7c0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_8s733")
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("2_ss1rk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)

@@ -1,9 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://duuehqyuhrv7t"]
+[gd_scene load_steps=33 format=3 uid="uid://duuehqyuhrv7t"]
 
 [ext_resource type="Script" path="res://enemies/standard/standard_enemy.gd" id="1_mpa65"]
 [ext_resource type="Texture2D" uid="uid://bcoqkcke30td" path="res://enemies/standard/bug-left-right.png" id="2_3x3o2"]
 [ext_resource type="PackedScene" uid="uid://bo23cd1o3mwmr" path="res://enemies/standard/enemy_target_detector.tscn" id="3_cg8cs"]
-[ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="3_yqmvh"]
+[ext_resource type="PackedScene" path="res://player/health_display.tscn" id="3_yqmvh"]
 [ext_resource type="Script" path="res://enemies/standard/state_machine.gd" id="4_7enym"]
 [ext_resource type="PackedScene" uid="uid://cjogwv6voqj5x" path="res://enemies/standard/enemy_nav_agent.tscn" id="4_b0r6s"]
 [ext_resource type="Script" path="res://enemies/standard/fighting.gd" id="6_u6d1y"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://b4pinmuxjyt87" path="res://enemies/standard/bug-down.png" id="12_8ajrq"]
 [ext_resource type="Texture2D" uid="uid://dwttw2vhuktlp" path="res://enemies/standard/bug-up-skele.png" id="14_u0qmk"]
 [ext_resource type="Texture2D" uid="uid://c07uioubyd8lw" path="res://enemies/standard/bug-down-skele.png" id="16_tophr"]
+[ext_resource type="Texture2D" uid="uid://cfcpwu2n6isj8" path="res://enemies/standard/shock-tower.png" id="17_2rrou"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3xlfo"]
 radius = 20.0
@@ -2140,6 +2141,43 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_2j2w5"]
 radius = 150.0
 
+[sub_resource type="Animation" id="Animation_ymimh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shock?:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_uxyho"]
+resource_name = "shock"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shock?:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7q17c"]
+_data = {
+"RESET": SubResource("Animation_ymimh"),
+"shock": SubResource("Animation_uxyho")
+}
+
 [node name="StandardEnemy" type="RigidBody2D" node_paths=PackedStringArray("health_display", "nav_agent", "state_machine", "target_detector", "potential_target_detector", "shocked", "fighting", "left_right_v", "up_v", "down_v", "anim_player", "anti_jit")]
 collision_layer = 21
 custom_integrator = true
@@ -2423,5 +2461,19 @@ collision_mask = 34
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PotentialTargetDetector"]
 shape = SubResource("CircleShape2D_2j2w5")
+
+[node name="shock?" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(-1, 11)
+texture = ExtResource("17_2rrou")
+hframes = 8
+vframes = 2
+frame = 1
+
+[node name="shock_player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7q17c")
+}
 
 [connection signal="timeout" from="anti_jitter" to="." method="_on_anti_jitter_timeout"]

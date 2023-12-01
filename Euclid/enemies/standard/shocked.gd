@@ -19,5 +19,6 @@ func initiate_state() -> void:
 func _on_shock_timer_timeout() -> void:
 	if is_instance_valid(enemy):
 		enemy.state_machine.transition_to(old_state)
+		enemy.shock_cleanup()
 
 

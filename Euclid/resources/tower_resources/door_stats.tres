@@ -11,7 +11,8 @@ name = "Gate"
 menu_icon = ExtResource("2_8nn2w")
 build_icon = ExtResource("1_b7dbt")
 price = {
-"iron": 1
+"iron": 5,
+"ruby": 5
 }
 type = 0
 scene = ExtResource("2_4dldx")

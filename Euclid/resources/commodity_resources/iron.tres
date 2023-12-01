@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Commodity" load_steps=3 format=3 uid="uid://dl7pvfw33qej8"]
+[gd_resource type="Resource" script_class="Commodity" load_steps=3 format=3 uid="uid://to1p4d30b85w"]
 
-[ext_resource type="Texture2D" uid="uid://drpmkhvvkdkqj" path="res://art/filler_commoditys/iron.png" id="1_b8ddi"]
+[ext_resource type="Texture2D" uid="uid://depk7do2s5ddi" path="res://resources/commodity_resources/Iron.png" id="1_hj1jt"]
 [ext_resource type="Script" path="res://resource_scripts/commodity.gd" id="2_28f37"]
 
 [resource]
 script = ExtResource("2_28f37")
 name = "iron"
-icon = ExtResource("1_b8ddi")
-starting_amount = 16
+icon = ExtResource("1_hj1jt")
+starting_amount = 45

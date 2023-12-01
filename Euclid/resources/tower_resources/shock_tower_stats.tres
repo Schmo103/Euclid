@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TowerStats" load_steps=5 format=3 uid="uid://dfw0dqebqjti0"]
+[gd_resource type="Resource" script_class="TowerStats" load_steps=6 format=3 uid="uid://dfw0dqebqjti0"]
 
 [ext_resource type="Texture2D" uid="uid://hrxq4kfgptmo" path="res://towers/shock_tower/shock-tower-icon.png" id="1_6mb6x"]
 [ext_resource type="Texture2D" uid="uid://ubiq5crcs04x" path="res://towers/shock_tower/shock-symbol.png" id="2_3hf4n"]
@@ -12,7 +12,8 @@ name = "Shock Tower"
 menu_icon = ExtResource("2_3hf4n")
 build_icon = ExtResource("1_6mb6x")
 price = {
-"iron": 1
+"emerald": 10,
+"iron": 25
 }
 range_stats = ExtResource("2_tp3jn")
 type = 0

@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://game_state/game_state.gd" id="1_nxrfd"]
 [ext_resource type="Resource" uid="uid://dclus14rfvurj" path="res://resources/tower_resources/farm_tower_stats.tres" id="3_32cx0"]
-[ext_resource type="Resource" uid="uid://dl7pvfw33qej8" path="res://resources/commodity_resources/iron.tres" id="3_etdxv"]
-[ext_resource type="Resource" uid="uid://64vl85wduhsw" path="res://resources/commodity_resources/emerald.tres" id="4_prr8y"]
-[ext_resource type="Resource" uid="uid://c415ea6pim7ii" path="res://resources/commodity_resources/ruby.tres" id="5_4oq3c"]
+[ext_resource type="Resource" uid="uid://to1p4d30b85w" path="res://resources/commodity_resources/iron.tres" id="3_etdxv"]
+[ext_resource type="Resource" uid="uid://x4cgetwnhn2y" path="res://resources/commodity_resources/emerald.tres" id="4_prr8y"]
+[ext_resource type="Resource" uid="uid://ck6vlqgatogb7" path="res://resources/commodity_resources/ruby.tres" id="5_4oq3c"]
 [ext_resource type="Resource" uid="uid://duk56pcippyn3" path="res://resources/tower_resources/missile_tower_stats.tres" id="5_qjv3k"]
 [ext_resource type="Resource" uid="uid://bf6tpnmarf5d2" path="res://resources/tower_resources/laser_tower_stats.tres" id="6_spmq6"]
 [ext_resource type="Resource" uid="uid://j1os3ev6vbmi" path="res://resources/tower_resources/wall.tres" id="9_bshfv"]

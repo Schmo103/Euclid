@@ -6,7 +6,7 @@ extends Tower
 @export var laser_line : Line2D
 @export var laser_ray_cast : RayCast2D
 
-@export var damage : int = 30
+@export var damage : int = 45
 
 @export var load_duration : float = 2
 var loaded : bool = false

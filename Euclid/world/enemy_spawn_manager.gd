@@ -44,8 +44,8 @@ func _ready() -> void:
 	
 	
 func _on_final_count_down_ended() -> void:
-	if wave_count % GameState.back_tile_map.waves_per_expansion == 0 and not first_wave:
-		GameState.back_tile_map.expand_map()
+#	if wave_count % GameState.back_tile_map.waves_per_expansion == 0:
+	GameState.back_tile_map.expand_map()
 		
 	if wave_count % waves_per_boss_wave == 0 and not first_wave:
 		#boss wave stuff here
@@ -122,6 +122,7 @@ func generate_wave() -> void:
 				this_round.clear() #start new round
 			else: #if not at top enemy tier
 				level += 1 #advance to next enemy tier
+	
 	
 	
 	

@@ -11,7 +11,7 @@ name = "Wall"
 menu_icon = ExtResource("2_4rk7d")
 build_icon = ExtResource("1_lw0fo")
 price = {
-"iron": 1
+"iron": 5
 }
 type = 0
 scene = ExtResource("2_8s3re")

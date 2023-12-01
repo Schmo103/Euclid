@@ -9,8 +9,8 @@ var navigation_tile_atlas : int = 0
 var navigation_tile_coords : Vector2 = Vector2(0, 0)
 
 @export var initial_radius : int = 5
-var radius : int = initial_radius
-@export var max_radius : int = 10
+@onready var radius : int = initial_radius
+@export var max_radius : int = 30
 @export var radius_expansion_distance : int = 5
 @export var waves_per_expansion : int = 5
 
