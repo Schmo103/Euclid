@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cykj8da6g4hau"]
+[gd_scene load_steps=45 format=3 uid="uid://cykj8da6g4hau"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_ybw44"]
 [ext_resource type="PackedScene" uid="uid://xuh3cejcnnw" path="res://player/player.tscn" id="2_bcibk"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://dq3c086d7rslo" path="res://towers/farm_tower/farm_tower.tscn" id="10_krs7q"]
 [ext_resource type="PackedScene" uid="uid://b2kyy21bd4dep" path="res://towers/wall/wall.tscn" id="11_70i1t"]
 [ext_resource type="Script" path="res://world/enemies.gd" id="12_oxqoc"]
+[ext_resource type="Script" path="res://in_game_menu/tutorial/tutorial.gd" id="12_r0dbt"]
 [ext_resource type="PackedScene" uid="uid://cef18jyr72ni8" path="res://towers/missile_tower/missile_tower.tscn" id="12_tmc8m"]
 [ext_resource type="PackedScene" uid="uid://cwte17ddcw616" path="res://towers/laser_tower/laser_tower.tscn" id="13_ythck"]
 [ext_resource type="PackedScene" uid="uid://cfdt3pdq2dee4" path="res://player/basic_terrain.tscn" id="18_tefpo"]
@@ -202,6 +203,41 @@ right_pos = Vector2(1050, 288)
 up_pos = Vector2(544, 50)
 down_pos = Vector2(544, 600)
 
+[node name="Tutorial" type="Control" parent="GUILayer" node_paths=PackedStringArray("p_men")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_r0dbt")
+p_men = NodePath("../GamePauseMenu")
+
+[node name="Label" type="Label" parent="GUILayer/Tutorial"]
+layout_mode = 0
+offset_left = 828.0
+offset_top = 204.0
+offset_right = 1020.0
+offset_bottom = 298.0
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="GUILayer/Tutorial"]
+layout_mode = 0
+offset_left = 843.0
+offset_top = 135.0
+offset_right = 1000.0
+offset_bottom = 179.0
+text = "Next Tutorial Step"
+
+[node name="BossWaveAlert" type="Label" parent="GUILayer"]
+visible = false
+offset_left = 827.0
+offset_top = 123.0
+offset_right = 910.0
+offset_bottom = 149.0
+text = "Boss Wave"
+
 [node name="BuildManager" type="Node2D" parent="." node_paths=PackedStringArray("build_icon")]
 script = ExtResource("3_ioyl6")
 build_icon = NodePath("../BuildIcon")
@@ -280,13 +316,15 @@ metadata/_edit_use_anchors_ = true
 wait_time = 3.0
 one_shot = true
 
-[node name="EnemySpawnManager" type="Node2D" parent="." node_paths=PackedStringArray("wave_alert", "wave_direction_indicator", "wave_caller_menu")]
+[node name="EnemySpawnManager" type="Node2D" parent="." node_paths=PackedStringArray("wave_alert", "wave_direction_indicator", "wave_caller_menu", "boss_wave_alert")]
 script = ExtResource("23_aikf7")
 wave_alert = NodePath("../GUILayer/WaveAlert")
 wave_direction_indicator = NodePath("../GUILayer/WaveDirectionIndicator")
 wave_caller_menu = NodePath("../GUILayer/WaveCallerMenu")
+boss_wave_alert = NodePath("../GUILayer/BossWaveAlert")
 enemies = Array[Resource("res://resource_scripts/enemy_stats.gd")]([ExtResource("23_nbo8p"), ExtResource("24_qml70")])
 wave_boss_bonus = 10
+spawn_offset = 64.0
 
 [node name="SpawnPoint" parent="EnemySpawnManager" instance=ExtResource("23_fwq60")]
 position = Vector2(531, -428)
@@ -312,5 +350,6 @@ one_shot = true
 [connection signal="timeout" from="GUILayer/GameOverDisplay/GameDisplayTimer" to="GUILayer/GameOverDisplay" method="_on_game_display_timer_timeout"]
 [connection signal="pressed" from="GUILayer/GameOverDisplay/Button" to="GUILayer/GameOverDisplay" method="_on_button_pressed"]
 [connection signal="pressed" from="GUILayer/WaveCallerMenu/Button" to="GUILayer/WaveCallerMenu" method="_on_button_pressed"]
+[connection signal="pressed" from="GUILayer/Tutorial/Button" to="GUILayer/Tutorial" method="_on_button_pressed"]
 [connection signal="timeout" from="PlayerSpawnTimer" to="." method="_on_player_spawn_timer_timeout"]
 [connection signal="timeout" from="EnemySpawnManager/SpawnDelayTimer" to="EnemySpawnManager" method="_on_spawn_delay_timer_timeout"]

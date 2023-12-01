@@ -57,6 +57,7 @@ func attack_target(target : Node) -> void:
 	if is_instance_valid(target):
 		attacking = true
 		target.take_damage(damage_dealt)
+
 	
 	
 func _on_anti_jit_timeout() -> void:
