@@ -28,6 +28,8 @@ var tile_scale : Vector2 = Vector2(2, 2)
 var game_over : bool = false
 var player_dead : bool = false
 
+var using_tutorial : bool = false
+
 
 func on_base_fell() -> void:
 	base_fell.emit()
