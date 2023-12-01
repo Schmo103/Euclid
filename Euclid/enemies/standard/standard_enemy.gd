@@ -5,6 +5,7 @@ extends Enemy
 @export var nav_agent : NavigationAgent2D
 @export var state_machine : StateMachine
 @export var target_detector : Area2D
+@export var potential_target_detector : Area2D
 
 @export var shocked : Shocked
 @export var fighting : Fighting

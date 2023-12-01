@@ -15,13 +15,8 @@ var spawn_point : SpawnPoint
 
 
 func change_spawn_point(s : SpawnPoint) -> void:
-#	print("called")
 	spawn_point = s
-#	print("dir from home: " + str(spawn_point.direction_from_home))
 	position = positions[spawn_point.direction_from_home]
-	
-#	print(str(position))
-#	look_at(spawn_point.position)
-	rotation_degrees = spawn_point.direction_from_home.angle()
+	rotation = spawn_point.direction_from_home.angle()
 	rotation_degrees += 90
 	

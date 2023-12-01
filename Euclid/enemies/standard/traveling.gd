@@ -18,7 +18,7 @@ func clean_up() -> void:
 #enemy heads toward base
 func execute_state() -> void:
 	if not on_route:
-		enemy.nav_agent.target_position = GameState.world.home_tile_pos * GameState.real_tile_size + GameState.real_tile_size / 2
+		enemy.nav_agent.target_position = global_from_tile_pos(GameState.world.home_tile_pos)
 		on_route = true
 	enemy.moving = true
 	var next_path_pos : Vector2
@@ -27,3 +27,7 @@ func execute_state() -> void:
 	if enemy.nav_agent.is_navigation_finished():
 		on_route = false
 		enemy.state_machine.transition_to(fighting)
+		
+		
+func global_from_tile_pos(tile_pos : Vector2) -> Vector2:
+	return tile_pos * GameState.real_tile_size + GameState.real_tile_size / 2

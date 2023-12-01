@@ -1,14 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://d6y70emb2jnc"]
+[gd_scene load_steps=6 format=3 uid="uid://d6y70emb2jnc"]
 
 [ext_resource type="Texture2D" uid="uid://ca88ew57pvcco" path="res://towers/commodity_terrain/rocky-ground.png" id="1_t5nqm"]
 [ext_resource type="Script" path="res://towers/commodity_terrain/ruby_object/ruby_object.gd" id="1_yaoqf"]
-[ext_resource type="Resource" path="res://resources/commodity_resources/ruby.tres" id="2_jrssr"]
+[ext_resource type="Resource" uid="uid://c415ea6pim7ii" path="res://resources/commodity_resources/ruby.tres" id="2_jrssr"]
 [ext_resource type="PackedScene" uid="uid://cedxgo8a3kysk" path="res://towers/terrain/off_map_effects.tscn" id="4_rjees"]
+[ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="5_td7ra"]
 
-[node name="RubyObject" type="Node2D" node_paths=PackedStringArray("off_map_effects")]
+[node name="RubyObject" type="Node2D" node_paths=PackedStringArray("off_map_effects", "commodity_sprite", "health_display")]
 script = ExtResource("1_yaoqf")
 commodity = ExtResource("2_jrssr")
 off_map_effects = NodePath("OffMapEffects")
+disabled_modulate = Color(0.776471, 0.776471, 0.776471, 1)
+commodity_sprite = NodePath("Sprite2D")
+health_display = NodePath("HealthDisplay")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -18,3 +22,10 @@ hframes = 6
 frame = 3
 
 [node name="OffMapEffects" parent="." instance=ExtResource("4_rjees")]
+
+[node name="HealthDisplay" parent="." instance=ExtResource("5_td7ra")]
+offset_left = -14.0
+offset_top = -12.0
+offset_right = 124.0
+offset_bottom = 30.0
+scale = Vector2(0.2, 0.1)

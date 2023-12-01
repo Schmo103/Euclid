@@ -8,6 +8,12 @@ extends Node2D
 var tile_pos : Vector2
 var available : bool = false
 
+@export var starting_commodity_count : int = 30
+@onready var commodity_count : int = starting_commodity_count
+@export var disabled_modulate : Color = Color(0.77, 0.77, 0.77, 1.0)
+@export var commodity_sprite : Sprite2D 
+@export var health_display : TextureProgressBar
+
 
 func _ready() -> void:
 	tile_pos = (global_position - GameState.real_tile_size / 2).snapped(GameState.real_tile_size) / GameState.real_tile_size
@@ -18,6 +24,31 @@ func _ready() -> void:
 	var a = is_in_radius(tile_pos, GameState.back_tile_map.initial_radius, GameState.world.home_tile_pos)
 	safe_set_tile_available(a)
 	GameState.back_tile_map.update_map_size.connect(_on_update_map_size)
+	if health_display != null:
+		health_display.visible = false
+		health_display.max_value = starting_commodity_count
+		health_display.value = starting_commodity_count
+	
+	
+func has_commodity() -> bool:
+	return commodity_count >= 1
+	
+	
+func take_commodity() -> void:
+	commodity_count -= 1
+	if health_display != null:
+		health_display.visible = true
+		health_display.value = commodity_count
+	if commodity_count <= 0:
+		commodity_count = 0
+		disable_commodity()
+		
+		
+func disable_commodity() -> void:
+	if commodity_sprite != null:
+		commodity_sprite.modulate = disabled_modulate
+	if health_display != null:
+		health_display.visible = false
 
 	
 func set_up_commodity() -> void:

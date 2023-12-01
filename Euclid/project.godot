@@ -20,10 +20,6 @@ config/icon="res://art/icon.svg"
 GameState="*res://game_state/game_state.tscn"
 WallManager="*res://game_state/wall_manager.tscn"
 
-[display]
-
-window/stretch/mode="canvas_items"
-
 [input]
 
 ui_left={
@@ -80,6 +76,7 @@ left_click={
 2d_physics/layer_3="EnemyLayer"
 2d_physics/layer_4="PlayerLayer"
 2d_physics/layer_5="EnemyShapeForLaserLayer"
+2d_physics/layer_6="PlayerExclusiveLayer"
 
 [rendering]
 

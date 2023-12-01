@@ -79,7 +79,7 @@ func set_build_mode(b : bool) -> void:
 #builds tower at position
 func build_tower(tower : TowerStats, tower_pos : Vector2) -> void:
 	var cp : Vector2 = Vector2(pos_to_tile(tower_pos))
-	GameState.front_tile_map.build_tower(tower.scene, cp)
+	GameState.front_tile_map.build_tower(tower, cp)
 	
 	
 #pays price

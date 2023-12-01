@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cjogwv6voqj5x"]
 
 [node name="EnemyNavAgent" type="NavigationAgent2D"]
-path_desired_distance = 64.0
-target_desired_distance = 64.0
+path_desired_distance = 40.0
+target_desired_distance = 40.0
 path_postprocessing = 1
 radius = 32.0
