@@ -10,26 +10,24 @@ var target_fell : bool = false
 
 
 func initiate_state() -> void:
-	if is_instance_valid(enemy):
-		super()
-		choose_target()
-		if target != null and is_instance_valid(target) and target.has_signal("fell"):
-			if not target.fell.is_connected(_on_target_fell):
-				target.fell.connect(_on_target_fell)
-			attacking.target = target
-		if target_fell:
-			target_fell = false
-			enemy.state_machine.transition_to(traveling)
+	super()
+	choose_target()
+	if target != null and is_instance_valid(target) and target.has_signal("fell"):
+		if not target.fell.is_connected(_on_target_fell):
+			target.fell.connect(_on_target_fell)
+		attacking.target = target
+	if target_fell:
+		target_fell = false
+		enemy.state_machine.transition_to(traveling)
 
 
 #if target is reachable, attack it
 func execute_state() -> void:
-	if is_instance_valid(enemy):
-		if validate_target():
-			enemy.state_machine.transition_to(attacking)
-		else:
-			target_fell = false
-			enemy.state_machine.transition_to(traveling)
+	if validate_target():
+		enemy.state_machine.transition_to(attacking)
+	else:
+		target_fell = false
+		enemy.state_machine.transition_to(traveling)
 	
 	
 #function to select target from bodies in target detector

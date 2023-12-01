@@ -6,21 +6,20 @@ var homeward_bound : bool = false
 var target : Node2D
 
 func execute_state() -> void:
-	if is_instance_valid(enemy):
-	#	if not on_route:
-	#		enemy.nav_agent.target_position = global_from_tile_pos(GameState.world.home_tile_pos)
-	#		on_route = true
-		select_target()
-		if target != null and target.is_in_group("player") and target.position != enemy.nav_agent.target_position:
-			enemy.nav_agent.target_position = target.global_position
-		enemy.moving = true
-		var next_path_pos : Vector2
-		next_path_pos = enemy.nav_agent.get_next_path_position()
-		enemy.dir = enemy.position.direction_to(next_path_pos)
-		if enemy.nav_agent.is_navigation_finished() or enemy.target_detector.get_overlapping_bodies().has(target):
-			if target != null:
-				fighting.target = target
-			enemy.state_machine.transition_to(fighting)
+#	if not on_route:
+#		enemy.nav_agent.target_position = global_from_tile_pos(GameState.world.home_tile_pos)
+#		on_route = true
+	select_target()
+	if target != null and target.is_in_group("player") and target.position != enemy.nav_agent.target_position:
+		enemy.nav_agent.target_position = target.global_position
+	enemy.moving = true
+	var next_path_pos : Vector2
+	next_path_pos = enemy.nav_agent.get_next_path_position()
+	enemy.dir = enemy.position.direction_to(next_path_pos)
+	if enemy.nav_agent.is_navigation_finished() or enemy.target_detector.get_overlapping_bodies().has(target):
+		if target != null:
+			fighting.target = target
+		enemy.state_machine.transition_to(fighting)
 		
 		
 func select_target() -> void:

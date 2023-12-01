@@ -4,7 +4,6 @@ extends Node2D
 @export var wave_alert : WaveAlert
 @export var wave_direction_indicator : WaveDirectionIndicator
 @export var wave_caller_menu : WaveCallerMenu
-@export var boss_wave_alert : Label
 @export var enemies : Array[EnemyStats]
 
 
@@ -21,9 +20,6 @@ var enemy_ratio : Array[int] = [1]
 var wave_difficulty_one_time_bonus : int = 0
 
 @export var wave_boss_bonus : int = 15
-@export var waves_per_boss_wave : int = 5
-
-@export var spawn_offset : float = 32
 
 var wave_count : int = 0
 var first_wave : bool = true
@@ -45,14 +41,9 @@ func _ready() -> void:
 	
 func _on_final_count_down_ended() -> void:
 	if wave_count % GameState.back_tile_map.waves_per_expansion == 0 and not first_wave:
-		GameState.back_tile_map.expand_map()
-		
-	if wave_count % waves_per_boss_wave == 0 and not first_wave:
 		#boss wave stuff here
 		wave_difficulty_one_time_bonus = wave_boss_bonus
-		boss_wave_alert.visible = true
-	else:
-		boss_wave_alert.visible = false
+		GameState.back_tile_map.expand_map()
 		
 	first_wave = false
 	prep_next_wave()
@@ -71,20 +62,12 @@ func prep_next_wave() -> void:
 func launch_wave() -> void:
 	#actually instances all the enemies in the wave at wave_spawn_point
 	wave_nodes.clear()
-	var total_enemy_count : int = 1
-	var left : bool = false
 	for enemy_stats in enemies:
 		if wave.has(enemy_stats.enemy_scene):
 			for i in range(0, wave[enemy_stats.enemy_scene]):
 				var e = enemy_stats.enemy_scene.instantiate()
-				var offset : Vector2 = wave_spawn_point.direction_from_home.orthogonal() * total_enemy_count * spawn_offset
-				if left:
-					offset = offset.orthogonal().orthogonal()
-				e.position = wave_spawn_position + offset
+				e.position = wave_spawn_position
 				wave_nodes.append(e)
-				if left:
-					total_enemy_count += 1
-				left = !left
 #	for enemy_scene in wave.keys():
 #		for i in range(0, wave[enemy_scene]):
 #			var e = enemy_scene.instantiate()
@@ -150,9 +133,9 @@ func get_wave_spawn_point() -> Vector2:
 	#choose randomly from all spawn point children
 	var i = randi_range(0, spawn_points.size() - 1)
 	wave_spawn_point = spawn_points[i]
-#	wave_spawn_point = $SpawnPoint
+	wave_spawn_point = $SpawnPoint
 	wave_direction_indicator.change_spawn_point(wave_spawn_point)
-#	return $SpawnPoint.position
+	return $SpawnPoint.position
 	return spawn_points[i].position
 
 	
