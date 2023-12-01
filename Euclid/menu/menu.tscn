@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4itb828yaxe0"]
+[gd_scene load_steps=4 format=3 uid="uid://b4itb828yaxe0"]
 
 [ext_resource type="Script" path="res://menu/menu.gd" id="1_exymb"]
+[ext_resource type="Texture2D" uid="uid://dagn2wobowpnp" path="res://menu/space.jpg" id="2_gv78c"]
+[ext_resource type="AudioStream" uid="uid://cxas6w1lr1fc5" path="res://menu/background-music-for-mobile-casual-video-game-short-8-bit-music-164703.mp3" id="2_kl0yy"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -11,7 +13,29 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_exymb")
 
+[node name="Space" type="Sprite2D" parent="."]
+position = Vector2(1049.5, 606.5)
+scale = Vector2(1.7675, 1.71375)
+texture = ExtResource("2_gv78c")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -310.0
+offset_top = -207.0
+offset_right = 331.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 105
+text = "BUG PLANET"
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1167.0
 offset_bottom = 662.0
@@ -32,6 +56,12 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Play"
 
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_kl0yy")
+volume_db = -15.0
+autoplay = true
+
 [node name="CheckBox" type="CheckBox" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -47,5 +77,6 @@ grow_horizontal = 2
 grow_vertical = 2
 button_pressed = true
 text = "Play Tutorial"
+
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
