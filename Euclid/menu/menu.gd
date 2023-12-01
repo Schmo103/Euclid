@@ -8,4 +8,5 @@ func _ready() -> void:
 	
 
 func _on_start_pressed():
+	GameState.using_tutorial = $CheckBox.button_pressed
 	get_tree().change_scene_to_packed(world)
