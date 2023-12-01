@@ -133,9 +133,11 @@ func get_wave_spawn_point() -> Vector2:
 	#choose randomly from all spawn point children
 	var i = randi_range(0, spawn_points.size() - 1)
 	wave_spawn_point = spawn_points[i]
+	wave_spawn_point = $SpawnPoint
 	wave_direction_indicator.change_spawn_point(wave_spawn_point)
+	return $SpawnPoint.position
 	return spawn_points[i].position
-#	return $SpawnPoint.position
+
 	
 	
 func increment_wave_difficulty() -> void:

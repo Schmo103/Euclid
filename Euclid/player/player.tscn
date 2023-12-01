@@ -3173,7 +3173,7 @@ _data = {
 radius = 40.0
 
 [node name="Player" type="RigidBody2D" node_paths=PackedStringArray("health_display") groups=["entity", "player"]]
-collision_layer = 9
+collision_layer = 41
 custom_integrator = true
 max_contacts_reported = 3
 contact_monitor = true

@@ -26,14 +26,22 @@ func get_tile_commodity_type(tile_pos : Vector2) -> String:
 		return ""
 		
 		
+func get_tile_commodity_node(tile_pos : Vector2) -> Node:
+	if commodity_terrain.has(tile_pos):
+		return commodity_terrain[tile_pos]
+	else:
+		return null
+		
+		
 func remove_tower(t : Vector2) -> void:
 	if tower_data.has(t):
 		tower_data.erase(t)
 	erase_cell(0, t)
 
 
-func build_tower(tower : PackedScene, tower_pos : Vector2) -> void:
-	var t = tower.instantiate()
+func build_tower(tower : TowerStats, tower_pos : Vector2) -> void:
+	var t = tower.scene.instantiate()
+	t.price = tower.price
 	var tp = tower_pos * GameState.tile_size + GameState.tile_size / 2
 	t.position = tp
 	add_child(t)

@@ -75,14 +75,26 @@ func _on_new_wall_placed(wall_tile_pos : Vector2) -> void:
 		update_image()
 		
 		
-func _on_wall_destroyed(wall_tile_pos : Vector2) -> void:
+func _on_wall_destroyed(wall_tile_pos : Vector2, sold : bool = false) -> void:
 	if tile_pos.distance_to(wall_tile_pos) <= 1:
 		fall_without_triggering_explosion()
+		if sold:
+			for c in price:
+				(GameState.build_manager as BuildManager).add_commodities(c, price[c])
 		
 		
 func _on_forced_image_update(pos : Vector2, r : int) -> void:
 	if tile_pos.distance_to(pos) <= r:
 		update_image()
+		
+		
+func sell() -> void:
+	#give sell proceeds
+#	for c in price:
+#		(GameState.build_manager as BuildManager).add_commodities(c, price[c])
+	WallManager.update_image.emit(tile_pos, 1)
+	super.fall()
+	WallManager.wall_destroyed.emit(tile_pos, true)
 		
 		
 func fall() -> void:

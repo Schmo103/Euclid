@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://duuehqyuhrv7t"]
+[gd_scene load_steps=29 format=3 uid="uid://duuehqyuhrv7t"]
 
 [ext_resource type="Script" path="res://enemies/standard/standard_enemy.gd" id="1_mpa65"]
 [ext_resource type="Texture2D" uid="uid://bcoqkcke30td" path="res://enemies/standard/bug-left-right.png" id="2_3x3o2"]
@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="3_yqmvh"]
 [ext_resource type="Script" path="res://enemies/standard/state_machine.gd" id="4_7enym"]
 [ext_resource type="PackedScene" uid="uid://cjogwv6voqj5x" path="res://enemies/standard/enemy_nav_agent.tscn" id="4_b0r6s"]
-[ext_resource type="Script" path="res://enemies/standard/traveling.gd" id="5_p03hv"]
 [ext_resource type="Script" path="res://enemies/standard/fighting.gd" id="6_u6d1y"]
+[ext_resource type="Script" path="res://enemies/standard/distractable_traveling.gd" id="7_aypih"]
 [ext_resource type="Script" path="res://enemies/standard/attacking.gd" id="7_tu2eq"]
 [ext_resource type="Script" path="res://enemies/standard/shocked.gd" id="8_42cdp"]
 [ext_resource type="Texture2D" uid="uid://cbjx7nvx5bayc" path="res://enemies/standard/spi_walk.jpg" id="11_22kcs"]
@@ -2137,7 +2137,10 @@ _data = {
 "walk": SubResource("Animation_ar8d5")
 }
 
-[node name="StandardEnemy" type="RigidBody2D" node_paths=PackedStringArray("health_display", "nav_agent", "state_machine", "target_detector", "shocked", "fighting", "left_right_v", "up_v", "down_v", "anim_player", "anti_jit")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_2j2w5"]
+radius = 150.0
+
+[node name="StandardEnemy" type="RigidBody2D" node_paths=PackedStringArray("health_display", "nav_agent", "state_machine", "target_detector", "potential_target_detector", "shocked", "fighting", "left_right_v", "up_v", "down_v", "anim_player", "anti_jit")]
 collision_layer = 21
 custom_integrator = true
 max_contacts_reported = 4
@@ -2148,6 +2151,7 @@ health_display = NodePath("HealthDisplay")
 nav_agent = NodePath("EnemyNavAgent")
 state_machine = NodePath("StateMachine")
 target_detector = NodePath("TargetDetector")
+potential_target_detector = NodePath("PotentialTargetDetector")
 shocked = NodePath("StateMachine/Shocked")
 fighting = NodePath("StateMachine/Fighting")
 left_right_v = NodePath("left_right_visuals")
@@ -2172,7 +2176,6 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3xlfo")
 
 [node name="TargetDetector" parent="." instance=ExtResource("3_cg8cs")]
-visible = false
 
 [node name="HealthDisplay" parent="." instance=ExtResource("3_yqmvh")]
 offset_left = -28.0
@@ -2187,7 +2190,7 @@ script = ExtResource("4_7enym")
 initial_state = NodePath("Traveling")
 
 [node name="Traveling" type="Node" parent="StateMachine" node_paths=PackedStringArray("fighting", "enemy")]
-script = ExtResource("5_p03hv")
+script = ExtResource("7_aypih")
 fighting = NodePath("../Fighting")
 enemy = NodePath("../..")
 
@@ -2413,5 +2416,12 @@ autostart = true
 libraries = {
 "": SubResource("AnimationLibrary_tu6qo")
 }
+
+[node name="PotentialTargetDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 34
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PotentialTargetDetector"]
+shape = SubResource("CircleShape2D_2j2w5")
 
 [connection signal="timeout" from="anti_jitter" to="." method="_on_anti_jitter_timeout"]

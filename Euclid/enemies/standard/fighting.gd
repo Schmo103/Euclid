@@ -1,7 +1,7 @@
 class_name Fighting
 extends State
 
-var target : Node #either player or tower
+var target : Node2D #either player or tower
 
 @export var attacking : Attacking
 @export var traveling : State
@@ -12,7 +12,7 @@ var target_fell : bool = false
 func initiate_state() -> void:
 	super()
 	choose_target()
-	if target != null:
+	if target != null and is_instance_valid(target) and target.has_signal("fell"):
 		if not target.fell.is_connected(_on_target_fell):
 			target.fell.connect(_on_target_fell)
 		attacking.target = target
@@ -32,7 +32,7 @@ func execute_state() -> void:
 	
 #function to select target from bodies in target detector
 func choose_target() -> void:
-	if target != null:
+	if target != null and is_instance_valid(target) and target.has_signal("fell"):
 		if target.fell.is_connected(_on_target_fell):
 			target.disconnect(target.fell.get_name(), _on_target_fell)
 	target = null
@@ -53,8 +53,9 @@ func choose_target() -> void:
 				target = b
 			elif not target.is_in_group("wall") and not target.is_in_group("player"):
 				target = b
-	if target == null:
+	if target == null or not is_instance_valid(target):
 		enemy.state_machine.transition_to(traveling)
+#		print("traveling due to lack of targets")
 		
 		
 #checks if target is reachable

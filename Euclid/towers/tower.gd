@@ -28,6 +28,7 @@ var tile_pos : Vector2
 
 @export var range_display : RangeDisplay
 
+var price : Dictionary = {"iron": 1}
 
 
 func _ready():
@@ -83,6 +84,8 @@ func _unhandled_input(event) -> void:
 				
 				
 func sell() -> void:
+	for c in price:
+		(GameState.build_manager as BuildManager).add_commodities(c, price[c])
 	fall()
 	
 	

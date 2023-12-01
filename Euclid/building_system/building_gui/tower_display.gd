@@ -18,7 +18,9 @@ func _ready() -> void:
 	commodity_display_manager.visible = false
 	get_parent().ready.connect(_on_parent_ready)
 	$NameLabel.visible = false
-	
+	var child_scale = Vector2(1, 1) / get_parent().scale
+	$CommodityManager.scale = child_scale
+	$NameLabel.scale = child_scale
 
 #tells building_gui that it was pressed
 func _on_pressed() -> void:
@@ -48,8 +50,8 @@ func update_size_dependant_properties() -> void:
 	
 	
 func _on_parent_ready() -> void:
-	update_size_dependant_properties()
-		
+#	update_size_dependant_properties()
+	pass
 	
 func _on_focus_entered():
 	set_price_visible(true)

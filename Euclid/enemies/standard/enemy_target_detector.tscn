@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://bo23cd1o3mwmr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lgs81"]
-radius = 76.0066
+radius = 65.0
 
 [node name="TargetDetector" type="Area2D"]
 collision_mask = 10

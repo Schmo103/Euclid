@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bkxe1qk38c3ay"]
 
 [ext_resource type="Script" path="res://building_system/building_gui/tower_display.gd" id="1_v6apf"]
-[ext_resource type="PackedScene" path="res://building_system/building_gui/commodity_manager.tscn" id="2_dcwyf"]
+[ext_resource type="PackedScene" uid="uid://bq2igicwpvari" path="res://building_system/building_gui/commodity_manager.tscn" id="2_dcwyf"]
 
 [node name="TowerDisplay" type="Button" node_paths=PackedStringArray("commodity_display_manager")]
 texture_filter = 1
@@ -14,16 +14,15 @@ commodity_display_manager = NodePath("CommodityManager")
 
 [node name="CommodityManager" parent="." instance=ExtResource("2_dcwyf")]
 layout_mode = 0
-offset_left = 6.0
-offset_top = -44.0
-offset_right = 8.0
-offset_bottom = -31.0
+offset_top = -15.0
+offset_right = 100.0
+offset_bottom = 5.0
 
 [node name="NameLabel" type="Label" parent="."]
 layout_mode = 0
-offset_top = -66.0
+offset_top = -25.0
 offset_right = 1.0
-offset_bottom = -43.0
+offset_bottom = -2.0
 horizontal_alignment = 1
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
