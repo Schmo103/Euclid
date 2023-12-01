@@ -55,6 +55,19 @@ func attack_target(target : Node) -> void:
 	if target != null and is_instance_valid(target):
 		target.take_damage(damage_dealt)
 	
+		var angle = global_position.direction_to(target.global_position).angle()
+		var direction = ""
+
+		if -PI/4 <= angle and angle < PI/4:
+			direction = "right"
+		elif PI/4 <= angle and angle < 3*PI/4:
+			direction = "down"
+		elif -3*PI/4 <= angle and angle < -PI/4:
+			direction = "up"
+		else:
+			direction = "left"
+			
+		attack_dir = direction
 	
 	match attack_dir:
 		"right":

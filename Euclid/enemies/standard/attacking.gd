@@ -21,6 +21,7 @@ func _ready() -> void:
 #begins attack and starts countdown to end attack
 func initiate_state() -> void:
 	super()
+	enemy.attacking = true
 	attacking_timer.start()
 	enemy.attack_target(target)
 	

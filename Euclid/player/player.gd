@@ -72,12 +72,17 @@ func attack() -> void:
 	attack_timer.start()
 	set_enemy_detector_position(player_direction)
 	print("attacking")
+	attack_anim(player_direction)
 	
 	
 func clean_up_attack() -> void:
 	attacking = false
 	already_hit_bodies.clear()
 	print("ended attack")
+	$up_visuals/arm_left_top/sword.visible = true
+	$up_visuals/arm_left_top/sword_hand.visible = false
+	$down_visuals/arm_right_top/sword.visible = true
+	$down_visuals/arm_right_top/sword_hand.visible = false
 	
 	
 func set_enemy_detector_position(dir : Vector2) -> void:
@@ -162,7 +167,7 @@ func _integrate_forces(s : PhysicsDirectBodyState2D):
 	else:
 		walking = false
 	
-	if walking == true:
+	if walking == true and !attacking:
 			if Input.is_action_pressed("player_left") or Input.is_action_pressed("player_right"):
 				a_player.play("run_left_right")
 			else:
@@ -170,7 +175,7 @@ func _integrate_forces(s : PhysicsDirectBodyState2D):
 					a_player.play("run_up",-1,1.2)
 				if Input.is_action_pressed("player_down"):
 					a_player.play("run_down",-1,1.2)
-	elif !walking:
+	elif !walking and !attacking:
 		if player_direction == Vector2.LEFT or player_direction == Vector2.RIGHT:
 			a_player.play("RESET")
 		if player_direction == Vector2.UP:
@@ -179,7 +184,23 @@ func _integrate_forces(s : PhysicsDirectBodyState2D):
 			a_player.play("DOWN_RESET")
 			
 	
-	
-	
+func attack_anim(dir):
+	print(str(dir))
+	randomize()
+	if dir == Vector2.LEFT or dir == Vector2.RIGHT:
+		var rand = randi_range(1,2)
+		if rand == 1:
+			a_player.play("slash_left_right")
+		if rand == 2:
+			a_player.play("stab_left_right")
+	if dir == Vector2.UP:
+		$up_visuals/arm_left_top/sword.visible = false
+		$up_visuals/arm_left_top/sword_hand.visible = true
+		a_player.play("stab_up")
+	if dir == Vector2.DOWN:
+		$down_visuals/arm_right_top/sword.visible = false
+		$down_visuals/arm_right_top/sword_hand.visible = true
+		a_player.play("stab_down")
+
 func _on_attack_timer_timeout():
 	clean_up_attack()

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://towers/base_tower/base_tower.gd" id="1_ufadr"]
 [ext_resource type="Texture2D" uid="uid://ca8ouuycdbba6" path="res://towers/base_tower/base.png" id="2_ut4q1"]
-[ext_resource type="PackedScene" uid="uid://o4hvytrvebhl" path="res://player/health_display.tscn" id="3_bxk4b"]
+[ext_resource type="PackedScene" path="res://player/health_display.tscn" id="3_bxk4b"]
 
 [node name="BaseTower" type="StaticBody2D" node_paths=PackedStringArray("health_display") groups=["base"]]
 collision_layer = 3
